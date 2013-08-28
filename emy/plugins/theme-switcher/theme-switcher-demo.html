@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Theme Switcher plugin Demo - Emy</title>
+	<meta name="description" content="Theme Switcher plugin demo for Emy library">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="../../emy.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/ios/main.css" title="ios" disabled>
+	<link rel="stylesheet" type="text/css" href="../../themes/android/main.css" title="android" disabled>
+	<link rel="stylesheet" type="text/css" href="../../themes/windowsphone/main.css" title="windowsphone" disabled>
+	<link rel="stylesheet" type="text/css" href="../../themes/emy/main.css" title="emy">
+	<script type="text/javascript" src="../../emy.js"></script>
+
+	<script type="text/javascript" src="theme-switcher.js"></script>
+</head>
+
+<body>
+
+  <header id="toolbar" class="toolbar">
+    <div><a id="backButton" class="button" href="#">Back</a></div>
+    <h1 id="viewTitle">Theme Switcher Plugin for Emy</h1>
+  </header>
+
+	<section id="home" data-title="Theme Switcher" selected="true">
+	  <ul>
+      <li class="group">Theme Switcher</li>
+      <li><a href="#select">Select a theme</a></li>
+      <li><a href="#about">About Theme Switcher</a></li>
+    </ul>
+  </section>
+
+	<section id="select" data-title="Select a theme" class="panel">
+	  <h2>Please select a theme from the list below</h2>
+	  <fieldset>
+	    <div class="row">
+	      <label for="ts">Theme</label>
+	      <select size="1" name="ts" id="ts" onchange="emy.plugin.themeSwitcher.setTheme(ts.value)">
+	        <option value="emy" selected="selected">Emy Theme (by default)</option>
+	        <option value="ios">iOS Theme</option>
+	        <option value="android">Android Theme</option>
+	        <option value="windowsphone">WindowsPhone Theme</option>
+	      </select>
+	      <script>if(window.localStorage && localStorage.getItem('emy-theme')) { emy.$('#ts').value=localStorage.getItem('emy-theme'); }</script>
+	    </div>
+	  </fieldset>
+	  <a href="" onclick="emy.plugin.themeSwitcher.rememberTheme()" class="mainButton">Remember this theme</a>
+	  <a href="" onclick="emy.plugin.themeSwitcher.rememberTheme(false)" class="mainButton redButton">Forget current theme</a>
+	</section>
+
+	<section id="about" data-title="About" class="panel">
+		<h2>Theme Switcher plugin</h2>
+		<fieldset>
+			<div class="row">
+				<p><b>Theme Switcher</b> is a plugin for Emy. Its intend is to help you change which Emy theme you want to be used on-the-fly.</p>
+				<p>It comes as a javascript object, "theme-switcher.js" and installs itself in emy.plugin.</p>
+			</div>
+		</fieldset>
+		<h2>Variables</h2>
+		<ul>
+			<li><a href="#about-currenttheme">currentTheme</a></li>
+			<li><a href="#about-defaulttheme">defaultTheme</a></li>
+			<li><a href="#about-themes">themes</a></li>
+		</ul>
+		<h2>functions</h2>
+		<ul>
+			<li><a href="#about-init">init()</a></li>
+			<li><a href="#about-set">setTheme()</a></li>
+			<li><a href="#about-setdefault">setDefaultTheme()</a></li>
+			<li><a href="#about-remember">rememberTheme()</a></li>
+			<li><a href="#about-add">addTheme()</a></li>
+			<li><a href="#about-remove">removeTheme()</a></li>
+		</ul>
+	</section>
+
+	<section id="about-defaulttheme" class="panel" data-title="defaultTheme">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>emy.plugin.themeSwitcher.defaultTheme</strong> (String)<br />
+					<br />
+					It is set once on load by init().
+				</p>
+				<p>
+					First link element in the header with a "<i>title</i>" attribute and "<i>rel</i>" attribute equals to "stylesheet".
+				</p>
+				<p>
+					Ex: "ios", "android"
+				</p>
+			</div>
+		</fieldset>
+	</section>
+
+	<section id="about-currenttheme" class="panel" data-title="currentTheme">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>emy.plugin.themeSwitcher.currentTheme</strong> (String)<br />
+					<br />
+					It is set by init(), updated by setTheme().
+				</p>
+				<p>
+					This is the theme currently in use. By default, same as <i>defaultTheme</i>.
+				</p>
+				<p>
+					Ex: "ios", "android"
+				</p>
+			</div>
+		</fieldset>
+	</section>
+
+	<section id="about-themes" class="panel" data-title="themes">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>emy.plugin.themeSwitcher.themes</strong> (Array)<br />
+					<br />
+					It will be set by <i>init()</i> and updated by <i>addTheme()</i> and <i>removeTheme()</i>.
+				</p>
+				<p>
+					Selecting in the header all link elements with "<i>rel</i>" attribute value containing "<i>stylesheet</i>" and an existing title attribute.
+				</p>
+				<p>
+					Ex: array("iphone", "android", "webos")
+				</p>
+			</div>
+		</fieldset>
+	</section>
+
+	<section id="about-init" class="panel" data-title="init()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>emy.plugin.themeSwitcher.init</strong> (function)<br />
+					<br />
+					Initialized on load.<br />
+					<i>no parameter</i>
+				</p>
+				<p>
+					Selecting in the header all <i>link</i> elements with both a "<i>rel</i>" attribute value containing "<i>stylesheet</i>" and an existing <i>title</i> attribute and store their <i>title</i> attribute value in the <i>themes</i> array. If "<i>stylesheet</i>" attribute does not contain "<i>alternate</i>", both <i>defaultTheme</i> and <i>currentTheme</i> are defined.
+				</p>
+			</div>
+		</fieldset>
+	</section>
+
+	<section id="about-set" class="panel" data-title="setTheme()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>emy.plugin.themeSwitcher.setTheme</strong> (function)<br />
+					<br />
+					Set a theme by its title.<br />
+					- title (string)
+				</p>
+				<p>
+					It disables all <i>link</i> elements with a "<i>rel</i>" attribute that contains "<i>stylesheet</i>" and a "<i>title</i>" attribute, and enable the one with the "<i>title</i>" attribute value equal to the <i>title</i> name given as a parameter.<br />
+					It will also update <i>currentTheme</i> value to <i>title</i> name given as a parameter.
+				</p>
+				<p>
+					Ex: setTheme('android');
+				</p>
+			</div>
+		</fieldset>
+	</section>
+
+	<section id="about-setdefault" class="panel" data-title="setDefaultTheme()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>emy.plugin.themeSwitcher.setDefaultTheme</strong> (function)<br />
+					<br />
+					Alias to <i>setTheme(defaultTheme)</i><br />
+					<i>no parameter</i>
+				</p>
+				<p>
+					Ex: "setDefaultTheme('ios')"
+				</p>
+			</div>
+		</fieldset>
+	</section>
+
+	<section id="about-remember" class="panel" data-title="rememberTheme()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>emy.plugin.themeSwitcher.rememberTheme</strong> (function)<br />
+					<br />
+					Store the theme currently in use<br />
+					<i>no parameter</i>
+				</p>
+				<p>
+					It stores <i>currentTheme</i> value in localStorage (if supported) as "<i>emy-theme</i>".<br />
+					Note that <i>init()</i> will activate this theme over the default one.
+				</p>
+				<p>
+					Ex: emy.plugin.themeSwitcher.rememberTheme();
+				</p>
+			</div>
+		</fieldset>
+	</section>
+
+	<section id="about-add" class="panel" data-title="addTheme()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>emy.plugin.themeSwitcher.addTheme</strong> (function)<br />
+					<br />
+					Add a theme in the DOM.<br />
+					- title (string)<br />
+					- link (string)<br />
+					- setIt (true/false - optional, default is false)
+				</p>
+				<p>
+					It adds a new link element in the header with "<i>title</i>" parameter value as "<i>title</i>" attribute value, and "<i>link</i>" parameter value as "<i>href</i>" attribute value. It also adds/pushes "<i>title</i>" parameter value to <i>themes</i> array. If setIt is defined as <i>true</i>, <i>setTheme()</i> will be activated with it using this new theme.<br>
+					You can use absolute url as "<i>link</i>" value, theme doesn't have to be in emy/themes folder (but it would be cleaner).
+				</p>
+				<p>
+					Ex: emy.plugin.themeSwitcher.addTheme('nokia', 'main.css');
+				</p>
+			</div>
+		</fieldset>
+	</section>
+
+	<section id="about-remove" class="panel" data-title="removeTheme()">
+		<fieldset>
+			<div class="row">
+				<p>
+					<strong>emy.plugin.themeSwitcher.removeTheme</strong> (function)<br />
+					<br />
+					Remove a theme from the DOM.<br />
+					- title (string)
+				</p>
+				<p>
+					It removes the "<i>link</i>" element in the header with "<i>title</i>" parameter value equal to "<i>title</i>" attribute value. It also removes it from the <i>themes</i> array.<br />
+					If you remove the theme currently in use, <i>setDefaultTheme</i> will be used.
+				</p>
+				<p>
+					Ex: emy.plugin.themeSwitcher.addTheme('nokia', 'nokia-theme.css');
+				</p>
+			</div>
+		</fieldset>
+	</section>
+
+</body>
+</html>

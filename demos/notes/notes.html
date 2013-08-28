@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" manifest="notes.manifest">
+<head>
+	<meta charset="utf-8">
+	<title>Emy Notes App</title>
+	<meta name="description" content="Notes demo app using Emy library">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="../emy/emy.css">
+	<link rel="stylesheet" type="text/css" href="../emy/themes/emy/main.css">
+	<script type="application/x-javascript" src="../emy/emy.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="notes.css">
+	<script type="application/x-javascript" src="notes.js"></script>
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39175393-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body onload="notes.init()">
+
+	<header class="toolbar" id="toolbar">
+		<div>
+				<a id="backButton" class="button" href="#">Back</a>
+				<a class="button" href="#about" id="tlbAbout">About</a>
+		</div>
+		<h1 id="viewTitle">Notes</h1>
+		<div>
+				<a class="button" href="javascript:notes.addNote()" id="tlbAdd"><span>+</span></a>
+				<a class="button blueButton" href="javascript:notes.saveNote()" id="tlbSave">Save</a>
+		</div>
+	</header>
+
+
+	<section id="inbox" data-title="Notes App" data-onshow="notes.tlbManager()" selected="true">
+		<ul id="inbox_list">
+		</ul>
+	</section>
+
+
+	<section id="note" data-title="Notes App" class="panel" data-onshow="notes.tlbManager()" data-onexit="notes.emptyForm()">
+        <form name="noteform" method="POST" action="javascript:notes.saveNote()">
+            <fieldset>
+                <div class="row">
+                    <label for="ipt_title">Title</label>
+                    <input type="text" name="note_title" id="note_title" value="">
+                </div>
+                <div class="row">
+                    <label for="ipt_desc">Description</label>
+                    <textarea name="note_desc" id="note_desc"></textarea>
+                </div>
+            </fieldset>
+            <a id="deleteBtn" class="mainButton redButton" href="javascript:notes.deleteNote(notes.currentNote);emy.goBack()">Delete Note</a>
+        </form>
+    </section>
+
+
+	<section id="about" data-title="About" class="panel" data-onshow="notes.tlbManager()">
+		<h2>Notes App</h2>
+		<fieldset>
+			<div class="row">
+				<p>This app is an example of localStorage with Emy.</p>
+				<p>Add, edit & remove notes as you wish. We store everything on the device</p>
+				<p>It even works offline!</p>
+				<p>And it's also a showcase for data-onshow & data-onexit views attributes.
+			</div>
+		</fieldset>
+		<a class="mainButton redButton" href="javascript:notes.deleteNotes();emy.goBack()">Empty datas ?</a>
+	</section>
+
+</body>
+</html>

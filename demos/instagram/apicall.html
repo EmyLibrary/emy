@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Like test</title>
+	</head>
+
+	<body>
+		<form method="post" action="apicall.php">
+			<p>
+				<label>URL</label>
+				<input type="text" name="url" value="https://api.instagram.com/v1/media/328513752819076963_11801826/likes">
+			</p>
+			<p>
+				<label>Token</label>
+				<input type="text" name="access_token" value="1195162.d4cb22e.5f2866a79fa64031acf1b9e24abcdd30">
+			</p>
+			<p>
+				<label>Delete</label>
+				<select name="delete" size="1">
+					<option value="false">False</option>
+					<option value="true">True</option>
+				</select>
+			</p>
+			<p>
+				<input type="submit" value="like">
+			</p>
+		</form>
+	</body>
+</html>

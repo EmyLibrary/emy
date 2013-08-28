@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Extended Styles - Emy</title>
+	<meta name="description" content="Extended Styles plugin demo app for Emy library">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="../../apple-touch-icon-precomposed.png">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="../../emy.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/emy/main.css">
+	<script src="../../emy.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="extended-lists.css">
+
+</head>
+
+<body>
+    <header class="toolbar">
+      <div><a id="backButton" class="button" href="#"></a></div>
+      <h1 id="viewTitle">Extended Styles</h1>
+    </header>
+
+    <section id="home" data-title="Extended Styles" selected="true">
+      <ul>
+        <li><a href="#bubble-list">Bubble in list</a></li>
+        <li><a href="#caption-list">Caption in list</a></li>
+        <li><a href="#icon-board">Icon board</a></li>
+        <li><a href="#groupicon-list">Icon in list</a></li>
+        <li><a href="#halfsize-button">Half size button</a></li>
+      </ul>
+    </section>
+
+  <section id="bubble-list" data-title="Bubble in list">
+    <ul>
+      <li><a href="#panel">List item<span class="bubble">23</span></a></li>
+      <li><a href="#panel">List item<span class="bubble">6</span></a></li>
+      <li><a href="#panel">List item<span class="bubble">56</span></a></li>
+      <li><a href="#panel">List item<span class="bubble">122</span></a></li>
+      <li><a href="#panel">List item<span class="bubble">1</span></a></li>
+      <li><a href="#panel">List item<span class="bubble">70</span></a></li>
+    </ul>
+  </section>
+
+  <section id="caption-list" data-title="Caption in list">
+    <ul>
+      <li><a href="#panel">List item<span class="caption">List item caption text</span></a></li>
+      <li><a href="#panel">List item<span class="caption">List item caption text</span></a></li>
+      <li><a href="#panel">List item<span class="caption">List item caption text</span></a></li>
+      <li><a href="#panel">List item<span class="caption">List item caption text</span></a></li>
+      <li><a href="#panel">List item<span class="caption">List item caption text</span></a></li>
+    </ul>
+  </section>
+
+  <section id="icon-board" data-title="Icon Board" class="board">
+    <ul>
+      <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+      <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+      <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+      <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+      <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+      <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+    </ul>
+  </section>
+
+  <section id="groupicon-list" data-title="Icon in lists">
+    <ul>
+      <li class="icon group"><img src="images/icon-google.png"><span>Google services</span></li>
+      <li><a href="http://google.com" target="_blank"><img src="images/icon-search.png">Search</a></li>
+      <li><a href="http://gmail.com" target="_blank"><img src="images/icon-gmail.png">Gmail</a></li>
+      <li><a href="http://youtube.com" target="_blank"><img src="images/icon-youtube.png">YouTube</a></li>
+      <li class="icon group"><span>Google services</span><img src="images/icon-google.png"></li>
+      <li><a href="http://google.com" target="_blank">Search</a></li>
+      <li><a href="http://gmail.com" target="_blank">Gmail</a></li>
+      <li><a href="http://youtube.com" target="_blank">YouTube</a></li>
+    </ul>
+  </section>
+
+  <section id="halfsize-button" data-title="Half-size button" class="panel">
+	<a href="#halfsize-button" class="mainButton half">Button</a>
+	<a href="#halfsize-button" class="mainButton half">Button</a>
+	<a href="#halfsize-button" class="mainButton">Button</a>
+  </section>
+
+  <section id="panel" data-title="Panel" class="panel">
+    <h2>Empty panel</h2>
+  </section>
+
+  </body>
+</html>

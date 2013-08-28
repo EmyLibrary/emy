@@ -1,0 +1,149 @@
+/*
+   Copyright (c) 2012, Remi Grumeau
+   See LICENSE.txt for licensing terms
+*/
+
+/***** changing default theme *****/
+body,
+body > *:not(.toolbar) {
+    background: 		#feea65;	
+}
+body > .toolbar {
+    background: 		#563c34;
+}
+header.toolbar h1 {
+	color:			#ddd;
+}
+body > .toolbar .button,
+body > .toolbar #backButton {
+	color:						#cdaba0;
+	background: 		#3c2a24;
+	border: 				0;
+	box-shadow: 		inset -.2em 0 .2em rgba(0,0,0,.6);
+}
+body > .toolbar h1+div .button {
+	box-shadow: 		inset .2em 0 .2em rgba(0,0,0,.6);
+}
+body > .toolbar #backButton[selected],
+body > .toolbar #backButton:active,
+header.toolbar .button[selected], 
+body > .toolbar .button:active {
+	color: 					#cdaba0;
+	background: 		#000;
+}
+header.toolbar #backButton::before, 
+header.toolbar #backButton::after {
+	background:		#cdaba0;
+}
+header.toolbar #backButton:active::before, 
+header.toolbar #backButton:active::after,
+header.toolbar #backButton[selected]::before, 
+header.toolbar #backButton[selected]::after {
+	background:		#cdaba0;
+}
+
+#tlbAdd {
+	padding:			.2em auto;
+	line-height:		.8em;
+}
+#tlbAdd > span {
+	font-size:		2em;
+	padding:		0 .3em;
+}
+
+#tlbSave {
+	display:	none;
+	color:						#000;
+	background:		#fff;
+	box-shadow: 		none;
+}
+
+section.panel > :first-child {
+	margin-top:	.2em;
+}
+body > .panel > h2 {
+	color:		#49312a;
+}
+body > .panel > fieldset a {
+	color:		inherit;
+}
+
+section > ul > li {
+	border-bottom:	1px solid #c4a51f;
+	overflow:		hidden;
+}
+section > ul > li:first-child {
+	border-top:		0;
+}
+section > ul > li > a {
+	color:			#563c34;
+}
+section > ul > li > a[selected], 
+section > ul > li > a:active, 
+section.panel > ul > li > a[selected], 
+section.panel > ul > li > a:active {
+	color:						#563c34;
+	background:		#fff;
+}
+section > ul > li > a::before,
+section > ul > li > a::after, 
+section > ul > li > a[selected]::before, 
+section > ul > li > a:active::before, 
+section > ul > li > a[selected]::after, 
+section > ul > li > a:active::after,
+section.panel > ul > li > a::before,
+section.panel > ul > li > a::after,
+section.panel > ul > li > a[selected]::before, 
+section.panel > ul > li > a:active::before, 
+section.panel > ul > li > a[selected]::after, 
+section.panel > ul > li > a:active::after {
+	background:	#563c34;
+}
+
+
+input, textarea, select {
+	-moz-outline-style: none;
+	outline: 	none;
+	font-family:	inherit;
+	font-size:			inherit;
+}
+section fieldset > .row > input, 
+section fieldset > .row > textarea, 
+section fieldset > .row > select {
+	color:		#3c2a24;
+}
+fieldset > .row {
+	border:		0;
+}
+#note_title {
+	text-align:	right;
+}
+
+#inbox ul span {
+	display:			inline-block;
+	width:				100%;
+	margin-top:	4rem;
+	color:					#8f8c47;
+	font-size:			1.5em;
+	text-align:		center;
+}
+#inbox ul span a {
+	color:		inherit;
+	-webkit-tap-highlighted-color:	rgba(0,0,0,0);
+}
+#inbox ul li a time {
+	position:			absolute;
+	right:					2.5em;
+	margin-top:	.3em;
+	font-size:			.7em;
+	font-weight:	normal;
+}
+
+
+label[for="ipt_desc"] {
+	min-width:	100%;
+}
+#note_desc {
+	padding:		2.6em .6em .6em .6em;
+	height:			15em;
+}

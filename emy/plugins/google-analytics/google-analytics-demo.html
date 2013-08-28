@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Google Analytics plugin Demo - Emy</title>
+	<meta name="description" content="Google Analytics plugin Demo - Emy">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="../../emy.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/emy/main.css">
+	<script src="../../emy.js"></script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39175393-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+	<script src="google-analytics.js"></script>
+</head>
+
+<body>
+
+  <header id="toolbar" class="toolbar">
+    <div><a id="backButton" class="button" href="#">Back</a></div>
+    <h1 id="viewTitle">Google Analytics Plugin for Emy</h1>
+  </header>
+
+  <section id="home" data-title="Google Analytics" selected="true">
+    <ul>
+      <li><a href="#page1">Go to Page 1</a></li>
+      <li><a href="#products">Go to Products</a></li>
+      <li><a href="#contact">Go to Contact</a></li>
+      <li><a href="#about">About this plugin</a></li>
+    </ul>
+  </section>
+
+  <section id="page1" data-title="Page 1" class="panel">
+    <h2>Page 1</h2>
+  </section>
+
+  <section id="products" data-title="Products" class="panel">
+    <h2>Products</h2>
+  </section>
+
+  <section id="contact" data-title="Contact" class="panel">
+    <h2>Contact</h2>
+  </section>
+
+  <section id="about" data-title="About" class="panel">
+    <h2>Google Analytics plugin</h2>
+    <fieldset>
+      <div class="row">
+        <p>Just include the <i>emy-google-analytics.js</i> file following what Google gives you to add in the header part of your document.<br>
+          That's it, you're done!
+        </p>
+        <p>
+          Each time you slide to a view, this plugin send a <i>_trackPageview</i> to Google with the document filename + the view ID. For example, since you are looking at this view, a <i>_trackPageview</i> has been sent as "/projects/emy/plugins/google-analytics/google-analytics-demo.html#about".
+        </p>
+      </div>
+    </fieldset>
+  </section>
+
+</body>
+</html>
