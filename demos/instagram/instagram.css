@@ -1,0 +1,353 @@
+a {
+	color:			#0d3257;
+	text-decoration:	none;
+}
+a.hashtag {
+	color:			#4d7b9f;
+}
+
+.mainButton, .mainButton:active, .mainButton[selected] {
+    color:                      #dfe7ef;
+    text-shadow:       none;
+    font-weight:         normal;
+    font-size:               1em;
+    padding:                .6em;
+    background:		  #2a6491;
+	background-image:			-webkit-gradient(linear, left top, left bottom, from(#4780ad), to(#2a6491) );
+	background-image:		    -webkit-linear-gradient(270deg, #4780ad 0%, #2a6491 100%);
+	background-image:		    -moz-linear-gradient(270deg, #4780ad 0%, #2a6491 100%);
+	background-image:		    linear-gradient(180deg, #4780ad 0%, #2a6491 100%);
+	-webkit-border-radius:		0.5em;
+	-moz-border-radius:			0.5em;
+	border-radius:						0.5em;
+    border:                     0;
+	box-shadow:         inset 0 .1em .2em #0d283a;
+	text-shadow:        0 .1em .1em #000;
+}
+
+.mainButton.greenButton {
+    background-color:              #2a9f3f;
+	background-image:			-webkit-gradient(linear, left top, left bottom, from(#3bc855), to(#008a15) );
+	background-image:		    -webkit-linear-gradient(270deg, #3bc855 0%, #008a15 100%);
+	background-image:		    -moz-linear-gradient(270deg, #3bc855 0%, #008a15 100%);
+	background-image:		    linear-gradient(180deg, #3bc855 0%, #008a15 100%);
+	box-shadow:         inset 0 .1em .2em #207430;
+}
+
+header.toolbar {
+    background:		  					#2a6491;
+	background-image:			-webkit-gradient(linear, left top, left bottom, from(#4780ad), to(#2a6491) );
+	background-image:		    -webkit-linear-gradient(270deg, #4780ad 0%, #2a6491 100%);
+	background-image:		    -moz-linear-gradient(270deg, #4780ad 0%, #2a6491 100%);
+	background-image:		    linear-gradient(180deg, #4780ad 0%, #2a6491 100%);
+}
+header.toolbar h1 {
+    font-size:  	1.2em;
+    color:          	#dfe7ef;
+    padding:		0.5em 0;
+}
+header.toolbar .button,
+header.toolbar #backButton,
+header.toolbar #backButton[selected]::before, 
+header.toolbar #backButton[selected]::after, 
+header.toolbar #backButton:active::before, 
+header.toolbar #backButton:active::after {
+	color:			#fff;
+	background:		#0d3257;
+}
+header.toolbar .button[selected], 
+body > .toolbar .button:active {
+	color:			#0d3257;
+	background:		#fff;
+}
+
+#loader {
+	display:	block;
+	position:	fixed;
+	top:			0;
+	z-index:		8;
+	-webkit-transform:	translateY(0);
+	-moz-transform:		translateY(0);
+	transform:					translateY(0);
+	-webkit-transition:	-webkit-transform 250ms ease-in-out;
+	-moz-transition:		-moz-transform 250ms ease-in-out;
+	transition:					transform 250ms ease-in-out;
+}
+#loader.hide {
+	-webkit-transform:	translateY(-3em);
+	-moz-transform:		translateY(-3em);
+	transform:					translateY(-3em);
+}
+#loader span {
+	display:		block;
+	width:			100%;
+	color:				#fff;
+	margin:		0;
+	padding:		.6em;
+	text-align:	center;
+	background:	rgba(0,0,0,.7);
+}
+
+section.blueBg {
+    background: #f6f7f9;
+}
+
+/**** LOGIN ****/
+#home {
+	background:	#f6f7f9;
+}
+#home.login #homeList {
+	display:	block;
+	float:		left;
+	width:		100%;
+	padding-top:	6em;
+	background:		#f6f7f9 url(images/background-login.png) no-repeat center 2em;
+}
+#home.login #homeList a.login {
+	width:				80%;
+	margin:				0 auto;
+	background-image:		-webkit-gradient(linear, left top, left bottom, from(#6bb289), to(#3d8b5f) );
+	background-image:		-webkit-linear-gradient(270deg, #6bb289 0%, #3d8b5f 100%);
+	background-image:		-moz-linear-gradient(270deg, #6bb289 0%, #3d8b5f 100%);
+	background-image:		linear-gradient(180deg, #6bb289 0%, #3d8b5f 100%);
+}
+
+/**** FEED ****/
+article header {
+	display:			block;
+	float:				left;
+	width:				100%;
+	min-height:			2.5em;
+	padding-left:		3.5em;
+	background-color:		 #fff;
+	background-repeat:	 no-repeat;
+	background-position: top left;
+	background-size:		 auto 100%;
+}
+article header h3 {
+	font-size:	        1em;
+	margin-top:	0.6em;
+	overflow:		    hidden;
+}
+article header a {
+  overflow:       hidden;
+	text-overflow:	ellipsis;
+	white-space:		nowrap;
+}
+article header a.website {
+	display:		none;
+	font-size:	.8em;
+	color:			#739fcb;
+}
+article header a.location {
+	font-weight:		normal;
+}
+
+#homeList article {
+	display:	block;
+	float:		left;
+	width:		100%;
+	color:		#555555;
+	font-weight:	normal;
+	margin-bottom:	1em;
+	border-top:			1px solid #e5e7ec;
+	border-bottom:	1px solid #dddfe5;
+}
+#homeList article:first-child {
+	border-top:			0;
+}
+#homeList article header, #homeList article picture, #homeList article aside {
+	display:	block;
+	float:		left;
+	width:		100%;
+	background-color:		 #fff;
+}
+article picture img {
+	display:	block;
+	width:		100%;
+	height:		auto;
+	opacity:	1;
+	-ms-touch-action: pan-y;
+}
+article picture img.liked {
+	-webkit-animation:	'liked' 200ms linear;
+	-moz-animation:			'liked' 200ms linear;
+	-ms-animation:			liked 300ms linear;
+}
+@-webkit-keyframes 'liked' {	from {	opacity:	0; }	to 	 {	opacity:	1; }	}
+@-moz-keyframes 'liked' {	from {	opacity:	0; }	to 	 {	opacity:	1; }	}
+@-ms-keyframes liked {	from {	opacity:	0; }	to 	 {	opacity:	1; }	}
+
+article aside {
+	padding-bottom:	0.5em;
+}
+
+article p {
+	overflow:		hidden;
+	text-overflow:	hidden;
+	padding:		.2em .5em .2em 1.3em;
+	background-repeat:	no-repeat;
+	background-position:	.2em .3em;
+	background-size:	.9em auto;
+}
+article aside p.like {
+	background-image:	url(images/icon-like.png);
+}
+article aside p.liked {
+	background-image:	url(images/icon-liked.png);
+}
+article aside div.comments p {
+    padding-right:         .5em;
+}
+article aside div.comments p:first-child {
+    padding-top:            0em;
+	background-image:	url(images/icon-comment.png);
+}
+article aside p a.user {
+	font-weight:	bold;
+}
+
+article.gallery {
+    display:    inline-block;
+    width:      100%;
+}
+
+article.gallery a.imgThumb,
+article.gallery a.imgThumb img {
+    display:    inline-block;
+    float:          left;
+}
+article.gallery a.imgThumb {
+    width:          4.6em;
+    height:         4.6em;
+    margin:     2px;
+    border:     1px solid #ccc;
+    background: #fff;
+}
+article.gallery a.imgThumb img {
+    width:          4.6em;
+    height:         auto;
+    border:        0;
+}
+
+
+
+#user_profile {
+    padding-left:       0;
+    padding-right:    0;
+	background:	#f6f7f9;
+}
+#user_profile header,
+#user_profile aside,
+#user_profile article {
+    display:    inline-block;
+    float:          left;
+    width:      100%;
+}
+#user_profile header {
+    min-height:      6.3em;
+    margin-top:     0;
+    background:   #363b41;
+}
+#user_profile header img,
+#user_profile header strong,
+#user_profile header div {
+    display:    inline-block;
+    float:          left;
+    width:        25%;
+    height:       auto;
+    margin:     3%;
+}
+#user_profile header img {
+    box-shadow:     0 .3em .4em #25272a;
+}
+#user_profile header strong {
+    width:       66%;
+    color:        #fafafa;
+    margin:     2% 3% 2% 0;
+    font-size:  1.25em;
+    text-shadow:    0 .3em .3em #25272a;
+}
+#user_profile header div {
+    display:    table;
+    width:      69%;
+    margin:    0;
+}
+#user_profile header div p {
+    display:    inline-block;
+    width:      29%;
+    margin-right:    4%;
+    vertical-align:   middle;
+    font-size:  .8em;
+    color:          #f8fdff;
+    line-height:        1.5em;
+    text-align:          center;
+    background:     #234d75;
+    border-radius:  .5em;
+    border-radius:  .5em;
+    box-shadow:     0 .3em .3em #25272a;
+}
+#user_profile header div p:last-child {
+    margin-right:   0;
+}
+#user_profile header div p span {
+    display:    inline-block;
+    width:      100%;
+    font-size:            2em;
+    font-weight:      bold;
+    padding:             .3em 0;
+    background:     #467498;
+    border-top-left-radius:  .25em;
+    border-top-right-radius:  .25em;
+}
+#user_profile aside {
+	margin-bottom:	.2em;
+	border-bottom:	1px solid #dddfe5;
+    background:          #fff;
+}
+#user_profile aside p {
+    padding:             .5em;
+}
+#user_profile aside a {
+    color:      #4d7b9f;
+}
+
+
+
+@media only screen and (min-width: 480px) {
+	#homeList article header, #homeList article picture, #homeList article aside {
+		display:	inline-block;
+		float:		right;
+		width:		49%;
+	}
+	#homeList article {
+		background-color:	#fff;
+	}
+	#homeList article picture {
+		float:		left;
+		max-width:  600px;
+	}
+	#homeList article header {
+		margin-right:		1%;
+		margin-bottom:	1em;
+		min-height:				3.5em;
+		background-size:	3em auto;
+	}
+	#homeList article header h3 {
+		margin-top:				0;
+		padding-top:			0;
+		font-size:				1.5em;
+		text-transform:		capitalize;
+	}
+	#homeList article header h3 a,
+	#homeList article p {
+		white-space:	normal;
+	}
+	#homeList article header a.website {
+		display:	block;
+		margin-top:	.2em;
+	}
+	#homeList article aside {
+		margin-right:		1%;
+	}
+}

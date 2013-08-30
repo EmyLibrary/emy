@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Standalone</title>
+	<meta name="description" content="Standalone webapp test page using Emy library - iOS only">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" href="../emy/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="../emy/apple-touch-icon-precomposed.png">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="../emy/emy.css">
+	<link rel="stylesheet" type="text/css" href="../emy/themes/emy/main.css">
+	<script type="application/x-javascript" src="../emy/emy.js"></script>
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link href="images/startup.png" media="(device-width: 320px)" rel="apple-touch-startup-image">
+	<link href="images/startup-retina.png" media="(device-width: 320px) and (-webkit-min-device-pixel-ratio: 1.3)" rel="apple-touch-startup-image">
+	<link href="images/startup-iphone5.png" media="(device-height: 568px) and (-webkit-min-device-pixel-ratio: 1.3)" rel="apple-touch-startup-image">
+	<link href="images/startup-ipad-portrait.png" media="(device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image">
+	<link href="images/startup-ipad-landscape.png" media="(device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image">
+	<link href="images/startup-ipad-portrait-retina.png" media="(device-width: 1536px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1.3)" rel="apple-touch-startup-image">
+	<link href="images/startup-ipad-landscape-retina.png" media="(device-width: 1536px)  and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.3)" rel="apple-touch-startup-image">
+</head>
+
+<body>
+
+  <header class="toolbar">
+    <div><a id="backButton" class="button" href="#">Back</a></div>
+    <h1 id="viewTitle"></h1>
+  </header>
+
+  <section id="home" data-title="Standalone" class="panel" selected="true">
+		<h2>Standalone mode</h2>
+		<fieldset>
+			<div class="row">
+				<p>Standalone mode makes your webapp to behave like a native app. Hiting the icon from the homescreen will not open Safari, but your webapp in fullscreen.</p>
+				<p>To activate it, just add a meta "apple-mobile-web-app-capable" to "yes" in the header of your HTML page.</p>
+				<p>Please note that standalone mode is only available in iOS (iPhone, iPod Touch & iPad)</p>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div class="row">
+				<p style="text-align: center"><script>
+					if(window.navigator.standalone === true)
+						document.write('Standalone');
+					else
+						document.write('Web browser');
+				</script></p>
+			</div>
+		</fieldset>
+	</section>
+
+</body>
+</html>

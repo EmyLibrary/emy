@@ -1,0 +1,28 @@
+{
+  "version": "1.0",
+  "size": "172496",
+  "name": "Emy demo",
+  "description": "My first Boot2Gecko app using Emy",
+  "launch_path": "/demos/boot2gecko/my-first-app.html",
+  "locales": {
+    "fr_FR": {
+      "name": "Emy démo",
+      "release_notes": "Première version"
+    },
+    "en_EN": {
+      "name": "Emy demo",
+      "release_notes": "First release"
+    }
+  },
+  "icons": {
+    "16": "/icon-16.png",
+    "32": "/icon-32.png",
+    "128": "/icon-128.png",
+    "256": "/icon-256.png"
+  },
+  "developer": {
+    "name": "Rémi Grumeau",
+    "url": "http://www.remi-grumeau.com"
+  },
+  "default_locale": "en"
+}

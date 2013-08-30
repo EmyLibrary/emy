@@ -1,0 +1,108 @@
+/*
+   Copyright (c) 2012, Remi Grumeau
+   See LICENSE.txt for licensing terms
+*/
+
+ul li.listicon {
+	padding:	0.6em 0 0.6em 3em;
+}
+body[orient="landscape"] ul > li.listicon {
+    padding:        0.5em 0 0.5em 3em;
+}
+ul li.listicon img {
+	display:	inline-block;
+	float:			left;
+	width:		auto;
+	height:		2.4em;
+	margin:	-0.6em -0.65em -0.65em -3em;
+	border:		0;
+}
+
+#songs li:nth-child(2n) {
+	background-color:	#f2f7fb;
+}
+#player {
+	background:		#000;
+}
+#player .cover, #player > div.player {
+	float:			left;
+}
+#player .cover {
+	position:				relative;
+	width:					100%;
+	padding-top:		100%;
+	text-align:			center;
+	overflow:				hidden;
+	background:		#d8e1e8;
+	-webkit-transform-origin:	0 50%;
+	transform-origin:						0 50%;
+	-webkit-transition:	-webkit-transform 250ms ease-in-out;
+	transition:					transform 250ms ease-in-out;
+}
+#player .cover img {
+	position:				absolute;
+	top:						50%;
+	left:						50%;
+	width:					80%;
+	margin-top:		-40%;
+	margin-left:		-40%;
+}
+#player > div.player {
+	width:					100%;
+	margin-top:		0px;
+	height:					auto;
+	text-align:			center;
+	background: 		-webkit-gradient(linear, left top, left bottom, from(#5e5f60), color-stop(.5,#2b2c2d), color-stop(.5,#000), to(#000));
+	background:		-webkit-linear-gradient(-90deg, #5e5f60 0%, #2b2c2d 50%, #000 50%, #000 100%);
+	background:		-moz-linear-gradient(-90deg, #5e5f60 0%, #2b2c2d 50%, #000 50%, #000 100%);
+	background:		linear-gradient(180deg, #5e5f60 0%, #2b2c2d 50%, #000 50%, #000 100%);
+}
+@media screen and (orientation: landscape) {
+	#player .cover, #player > div.player {
+		width:		50%;
+	}
+	#player .cover {
+		padding-top:		50%;
+		background:		transparent;
+		-webkit-transform:		translateX(25%) perspective(1000px) scale(.8) rotateY(20deg);
+		transform:						translateX(25%) perspective(1000px) scale(.8) rotateY(20deg);
+	}
+	#player .cover img {
+		width:				100%;
+		max-height:	auto;
+		margin-top:	-50%;
+		margin-left:	-50%;
+	}
+	#player > div.player {
+		padding-top:	3em;
+		background:	none;
+	}
+}
+
+#player p {
+	width:			100%;
+	height:			50px;
+	text-align:		center;
+}
+#player p > a {
+	display:	inline-block;
+	width:		50px;
+	height:		40px;
+	margin:		0 auto;
+	background-repeat: 		no-repeat;
+	background-position:	center center;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+#player #music-play {
+	background-image: url(images/play.png);
+}
+#player #music-pause {
+	display:	none;
+	background-image: url(images/pause.png);
+}
+#player > div.player > span {
+	display:	block;
+	width:		100%;
+	color:			#fff;
+	font-size:	1em;
+}
