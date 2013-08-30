@@ -1,0 +1,1 @@
+Demo of an offline capable app using localStorage & custom theme with Emy library

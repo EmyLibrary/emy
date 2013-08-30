@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Facebook Demo</title>
+	<meta name="description" content="Demo of using the Facebook API and Emy together">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="../emy/emy.css">
+	<link rel="stylesheet" type="text/css" href="../emy/themes/emy/main.css">
+	<script type="application/x-javascript" src="../emy/emy.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="facebook.css">
+	<script src="facebook.js"></script>
+	 <script src="//connect.facebook.net/en_US/all.js"></script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39175393-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+	<div id="fb-root"></div>
+
+  <header id="toolbar" class="toolbar" data-hide="true">
+    <div><a id="backButton" class="button" href="#">Back</a></div>
+    <h1 id="viewTitle">Facebook App</h1>
+    <div>
+      <a class="button" href="" onclick="fbapp.userLogout()" id="userLogoutBtn">Logout</a>
+    </div>
+  </header>
+
+
+    <section id="home" data-title="Facebook App" selected="true" class="login">
+    	<p><img src="images/apple-touch-icon-precomposed.png"></p>
+       <a href="" id="userLoginBtn" class="mainButton facebook" onclick="fbapp.login()">Login</a>
+    </section>
+
+	<section id="friends" data-title="My friends">
+		<ul id="friendsList">
+			Loading...
+		</ul>
+	</section>
+
+	<section id="friend" data-title="Friend" class="panel" data-beforeload="fbapp.getFriends()">
+    <h2 id="friendName"></h2>
+    <fieldset>
+      <div class="row">
+        <label>lastname</label>
+        <input type="text" value="" id="friendLastName" readonly>
+      </div>
+      <div class="row">
+        <label>firstname</label>
+        <input type="text" value="" id="friendFirstName" readonly>
+      </div>
+      <div class="row">
+        <label>picture</label>
+        <img src="" id="friendPic" width="100" style="margin-left: 7em">
+      </div>
+    </fieldset>
+    <a class="mainButton" id="friendPostWall" href="javascript:;" target="_blank">Post on his/her wall</a>
+  </section>
+
+
+  <section id="profile" data-title="My profile" class="panel">
+    <h2 id="profileName"></h2>
+    <fieldset>
+      <div class="row">
+        <label>lastname</label>
+        <input type="text" value="" id="profileLastName" readonly>
+      </div>
+      <div class="row">
+        <label>firstname</label>
+        <input type="text" value="" id="profileFirstName" readonly>
+      </div>
+      <div class="row">
+        <label>birthday</label>
+        <input type="text" value="" id="profileBirthday" readonly>
+      </div>
+      <div class="row">
+        <label>email</label>
+        <input type="text" value="" id="profileEmail" readonly>
+      </div>
+      <div class="row">
+        <label>picture</label>
+        <img src="" id="profilePic" width="100" style="margin-left: 7em">
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="row">
+        <p id="profileBio"></p>
+      </div>
+    </fieldset>
+  </section>
+
+
+	<section id="albums" data-title="Photo albums">
+		<ul id="albumsList">
+			Loading...
+		</ul>
+	</section>
+
+	<section id="photos" data-title="AlbumName">
+		<ul id="photosList">
+			Loading...
+		</ul>
+	</section>
+
+
+	<section id="likes" data-title="My interests">
+		<ul id="likesList">
+			Loading...
+		</ul>
+	</section>
+
+
+  <section id="about" data-title="About" class="panel">
+		<h2>Maps App</h2>
+		<fieldset>
+			<div class="row">
+				<p>Main goal of this app is to show how to interact with a maps API</p>
+				<p>It uses Google Maps since it's the most popular solution, and OpenLayers since it's fully open source.</p>
+			</div>
+		</fieldset>
+  </section>
+
+
+<script>
+  // Avoid relying on broken Facebook fbAsyncInit
+  var isLoading = 0;
+  window.fbAsyncInit = function()
+  {  if(isLoading!=1) { appInit(); } }
+
+  if(document.addEventListener ) {
+    document.addEventListener( "DOMContentLoaded", function() {
+      setTimeout(function(){ if(isLoading!=1){appInit();} },100);
+      document.removeEventListener( "DOMContentLoaded", arguments.callee, false );
+    }, false );
+  }
+
+  function appInit()
+  {
+    isLoading = 1;
+    FB.init({
+      appId      : '342091325902549',
+      status     : true,
+      cookie     : false,
+      xfbml      : false
+    });
+    FB.getLoginStatus(function(response) {
+	  if(response.authResponse) {
+	    fbapp.userLogin(response);
+	  }
+	});
+  };
+
+  (function(d, debug){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document, false));
+</script>
+</body>
+</html>

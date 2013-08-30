@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Instagram Demo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" href="../../emy/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="../../emy/apple-touch-icon-precomposed.png">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="../../emy/emy.css">
+	<link rel="stylesheet" type="text/css" href="../../emy/themes/ios/main.css">
+	<script>var initialHash = window.location.hash</script>
+	<script type="application/x-javascript" src="../../emy/emy.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="instagram.css">
+	<script src="instagram.js"></script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39175393-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <header id="toolbar" class="toolbar">
+    <div><a id="backButton" class="button" href="#">Back</a></div>
+    <h1 id="viewTitle">Instagram App</h1>
+    <div><a class="button" id="btnLogout" href="javascript:igapp.logout()">Logout</a></div>
+  </header>
+
+  <section id="home" data-title="Instagram App" selected="true" class="login">
+    <ul id="homeList">
+      <a href="javascript:igapp.login()" class="mainButton greenButton login" target="_self">Login</a>
+    </ul>
+  </section>
+
+  <section id="about" data-title="About" class="panel">
+		<h2>Instagram App</h2>
+		<fieldset>
+			<div class="row">
+				<p>Main goal of this app is to recreate Instagram as a webapp</p>
+				<p>To be honnest, i was missing Instagram on my brand new WindowsPhone 8 so i did this to browse my feed... then i add this, this, this, and this also, then was missing that, ...</p>
+			</div>
+		</fieldset>
+  </section>
+
+</body>
+</html>

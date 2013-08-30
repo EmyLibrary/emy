@@ -1,0 +1,1 @@
+Using contents the Facebook Graph API returns to generate Emy views

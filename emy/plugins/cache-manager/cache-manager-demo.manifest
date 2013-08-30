@@ -1,0 +1,19 @@
+CACHE MANIFEST
+# version: 1.1
+# all file URLS browser adds to its application cache
+CACHE:
+cache-manager.js
+icon-fallback.png
+image.jpg
+../../favicon.png
+../../apple-touch-icon-precomposed.png
+../../emy.css
+../../emy.js
+../../themes/emy/main.css
+../../themes/emy/loading.gif
+
+NETWORK:
+*
+
+FALLBACK:
+icon.png       icon-fallback.png

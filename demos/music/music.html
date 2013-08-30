@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Music App</title>
+	<meta name="description" content="Music player demo app using Emy library">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" href="../emy/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="../emy/apple-touch-icon-precomposed.png">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="../emy/emy.css">
+	<link rel="stylesheet" type="text/css" href="../emy/themes/emy/main.css">
+	<script type="application/x-javascript" src="../emy/emy.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="music.css">
+	<script type="application/x-javascript" src="music.js"></script>
+
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39175393-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+</head>
+
+<body>
+
+  <header class="toolbar">
+    <div><a id="backButton" class="button" href="#">Back</a></div>
+    <h1 id="viewTitle">Music App</h1>
+    <div><a class="button" href="#player">Player</a></div>
+  </header>
+
+  <section id="home" data-title="Music App" selected="true">
+    <ul>
+      <li><a href="#artists">Artists</a></li>
+      <li><a href="#albums">Albums</a></li>
+      <li><a href="#genre">Genre</a></li>
+      <li><a href="#about">About this app</a></li>
+    </ul>
+  </section>
+
+  <section id="artists" data-title="Artists">
+    <ul>
+      <li class="group">B</li>
+      <li><a href="#songs">The Beatles</a></li>
+      <li><a href="#songs">Bonobo</a></li>
+      <li class="group">C</li>
+      <li><a href="#songs">Coldplay</a></li>
+      <li class="group">R</li>
+      <li><a href="#songs">Radiohead</a></li>
+      <li class="group">Z</li>
+      <li><a href="#songs">Zenzile</a></li>
+    </ul>
+  </section>
+
+  <section id="albums" data-title="Albums">
+    <ul>
+      <li class="group">The Beatles</li>
+      <li><a href="#songs">Abbey Road</a></li>
+      <li><a href="#songs">Help</a></li>
+      <li class="group">Bonobo</li>
+      <li><a href="#songs">Black Sands</a></li>
+      <li><a href="#songs">Days To Come</a></li>
+      <li><a href="#songs">Dial M For Monkey</a></li>
+      <li><a href="#songs">Sweetness</a></li>
+      <li class="group">Coldplay</li>
+      <li><a href="#songs">A Rush of Blood to the Head</a></li>
+      <li><a href="#songs">Parachutes</a></li>
+      <li><a href="#songs">Viva la Vida or Death and All His Friends</a></li>
+      <li><a href="#songs">X&Y</a></li>
+      <li class="group">Radiohead</li>
+      <li><a href="#songs">The Bend</a></li>
+      <li><a href="#songs">I Might Be Wrong: Live Recordings</a></li>
+      <li><a href="#songs">In Rainbows</a></li>
+      <li><a href="#songs">Kid A</a></li>
+      <li class="group">Zenzile</li>
+      <li><a href="#songs">Living In Monochrome</a></li>
+      <li><a href="#songs">Modus Vivendi</a></li>
+      <li><a href="#songs">Totem</a></li>
+		</ul>
+	</section>
+
+  <section id="genre" data-title="Genres">
+    <ul>
+      <li class="listicon"><a href="#songs"><img src="images/list-icon.png">Dub</a></li>
+      <li class="listicon"><a href="#songs"><img src="images/list-icon.png">Electro</a></li>
+      <li class="listicon"><a href="#songs"><img src="images/list-icon.png">Brit-Pop</a></li>
+      <li class="listicon"><a href="#songs"><img src="images/list-icon.png">Rock</a></li>
+    </ul>
+  </section>
+
+  <section id="songs" data-title="Songs">
+    <ul>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 1</a></li>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 2</a></li>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 3</a></li>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 4</a></li>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 5</a></li>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 6</a></li>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 7</a></li>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 8</a></li>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 9</a></li>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 10</a></li>
+      <li><a href="#player" onclick="music.play('SteveDavison_BayouBartholomewBlues')">Song 11</a></li>
+		</ul>
+	</section>
+
+  <section id="player" data-title="Now Playing">
+    <figure class="cover">
+      <img src="images/cover.jpg">
+    </figure>
+
+    <div class="player">
+      <p>
+        <a href="javascript:music.pause()" id="music-pause"></a>
+        <a href="javascript:music.play('SteveDavison_BayouBartholomewBlues')" id="music-play"></a>
+      </p>
+      <span id="music-preload">Buffering...</span>
+    </div>
+  </section>
+
+  <section id="about" data-title="About" class="panel">
+    <h2>Music App</h2>
+    <fieldset>
+      <div class="row">
+        <p>Main goal of this app is to show a simple listing navigation.</p>
+        <p>Music playback is just here for the fun.</p>
+        <p>Music from Steve Davison - Bayou Bartholomew Blues. Found online at <a href="http://freesologuitar.com" target="_blank">FreeSoloGuitar.com</a></p>
+      </div>
+    </fieldset>
+  </section>
+
+</body>
+</html>

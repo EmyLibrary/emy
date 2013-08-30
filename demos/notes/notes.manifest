@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# Manifest Version No : 1.3
+
+CACHE:
+../emy/emy.js
+../emy/emy.css
+
+../emy/themes/emy/main.css
+../emy/themes/ios/loading.gif
+
+notes.html
+notes.js
+notes.css
+
+images/apple-touch-icon-precomposed.png
+images/favicon.ico
+images/favicon.png
+images/notes-startup-ipad.jpg
+images/notes-startup.jpg
+
+NETWORK:
+*

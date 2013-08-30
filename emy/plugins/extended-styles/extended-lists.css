@@ -1,0 +1,122 @@
+/******************** TEXT ALIGNEMENT *****************/
+.tleft		{	text-align:	left;		}
+.tright		{	text-align:	right;		}
+.tcenter	{	text-align:	center;		}
+
+
+/******************** BOARD *****************/
+section.board {
+  background: 	#000;
+}
+section.board li, section.board li:last-child {
+  width: auto;
+	font-size:			1em;
+	text-align:   center;
+  font-weight: normal;
+  border: 0;
+}
+section.board li > a {
+  color:  #fff;
+  padding-right: .7em;
+}
+section.board li > a:active,
+section.board li > a[selected] /* to reset system sets */
+{
+    background-color: 	rgba(255,255,255,.3) !important;
+    background-image: 	none !important;
+    -webkit-border-radius:	.4em;
+    -moz-border-radius:		    .4em;
+    border-radius:					          .4em;
+}
+section.board li > a::after {
+  display:  none;
+}
+section.board li > a span {
+  font-size:  .7em;
+}
+section.board li a img {
+	display:			block;
+	width:				3em;
+	height:			  	3em;
+	margin:			0 auto;
+	border: 			none;
+}
+section ul.board a > span
+{
+  display:        block;
+	width: 				  100%;
+	text-align:	  center;
+	color:				      #fff;
+	overflow:			hidden;
+	text-overflow:	  ellipsis;
+	white-space : 		nowrap;
+}
+
+
+/******************** CAPTION IN LIST *****************/
+span.caption {
+  display:  block;
+	color:		#444;
+	font-size:	.8em;
+	font-weight:  normal;
+}
+a:active span.caption,
+a[selected] span.caption {
+	color:		#fff;
+}
+
+/******************** BUBBLE IN LIST *****************/
+span.bubble {
+    float:               right;
+    min-width:   2.5em;
+    margin-top: -.2em;
+    padding: 		  .3em .5em;
+    font-size:       0.9em;
+    color:              #fff;
+    text-align:    center;
+    border:			      0px;
+    background-color:	          #8894aa;
+    -webkit-border-radius:	1em;
+    -moz-border-radius:		    1em;
+    border-radius:					          1em;
+}
+a:active span.bubble,
+a[selected] span.bubble {
+    color:    #194fdb;
+    background-color:   #fff;
+}
+
+
+/******************** ICON IN LIST *****************/
+ul li a img {
+	border:	0;
+}
+ul li.icon {
+  display:  table-row;
+  float:    none;
+  width:    100%;
+  padding:  0;
+}
+ul li.icon img, ul li.icon span {
+  display:  table-cell;
+  vertical-align: middle;
+}
+ul li.icon span {
+  width:    100%;
+  padding-left:  .4em;
+}
+ul li.icon img+span {
+  padding-left:  .2em;
+}
+
+ul li a img {
+  vertical-align: middle;
+  margin: -.65em .5em -.65em -.7em;
+}
+
+
+/******************** HALF SIZE BUTTON *****************/
+.mainButton.half {
+	display:	inline-block;
+	width:		47%;
+}

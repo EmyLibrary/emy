@@ -1,0 +1,22 @@
+CACHE MANIFEST
+#manifest Version No : 1.4
+
+CACHE:
+contacts.html
+../emy/emy.js
+../emy/emy.css
+
+../emy/themes/emy/main.css
+../emy/themes/ios/loading.gif
+
+../emy/plugins/cache-manager/cache-manager.js
+
+images/apple-touch-icon-precomposed.png
+
+offline.html
+
+NETWORK:
+*
+
+FALLBACK:
+search.php      offline.html
