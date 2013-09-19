@@ -1,7 +1,7 @@
 window.igapp = {
 
 	clientId : 		'd4cb22ef9b7642e386e595206b69864f',
-	responseUrl : 'http://www.remi-grumeau.com/projects/emy/demos/instagram/',
+	responseUrl : 'http://www.emy-library.org/demos/instagram/',
 	scope : 			'likes+comments+relationships',
 
 	token : null,
