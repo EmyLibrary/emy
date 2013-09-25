@@ -414,16 +414,12 @@
 	Returns all views, aka direct body childnodes with both `id` and `data-title` attributes
 	*/
 		getAllViews: function() {
-			var nodes = document.body.children,
-				views = [];
-			if (nodes) {
-				for (var i = 0, inb = nodes.length; i < inb; i++) {
-					if (nodes[i].id && nodes[i].getAttribute('data-title')) {
-						views.push(nodes[i]);
-					}
-				}
-				return views;
-			} else return false;
+			var views=[];
+			for (var child = document.body.firstChild; child; child = child.nextSibling) {
+				if (child.nodeType == 1 && child.getAttribute("data-title"))
+					views.push(child);
+			}
+			return (views.length>0)?views:false;
 		},
 
 		/*
@@ -452,8 +448,7 @@
 	Returns true/false if the given element `el` has the class `name`.
 	*/
 		hasClass: function(el, name) {
-			return ((el.className)
-				.indexOf(name) > -1) ? true : false;
+			return ((el.className).indexOf(name) > -1) ? true : false;
 		},
 
 		/*
