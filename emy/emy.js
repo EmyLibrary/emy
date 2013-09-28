@@ -633,7 +633,7 @@ anchor-based load will win because it is done second.
 			} else if (!link.target && link.getAttribute('href')) {
 				followAjax(link, null);
 			} else if (link.getAttribute('href') == '') {
-
+				return;
 			} else {
 				return;
 			}
