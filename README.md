@@ -1,6 +1,4 @@
-# emy
-
-# Efficient Mobile web librarY
+# Emy - Efficient Mobile web librarY
 
 ### Getting Started
 
