@@ -213,7 +213,10 @@
 				viewHistory = viewHistory.slice(0, (viewHistory.length - a));
 				window.history.go(-a);
 			} else {
-				window.history.go(-1);
+				if(window.history.length == 1)
+					emy.showView(emy.originalView, true);
+				else
+					window.history.go(-1);
 				viewHistory.pop();
 			}
 			emy.log(viewHistory);
@@ -553,7 +556,7 @@ anchor-based load will win because it is done second.
 			var locView = getViewFromLocation();
 
 			if (view) {
-				originalView = view;
+				emy.originalView = view;
 				emy.showView(view);
 			}
 
