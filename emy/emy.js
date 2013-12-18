@@ -219,21 +219,6 @@
 			emy.log(viewHistory);
 		},
 
-
-		/*
-	method: emy.replaceView(viewId)
-	Loads a new view at the same level in the history stack.
-	Currently it will do a slide-in animation, but replaces
-	the current view in the navStack.
-	It should probably use a different animation (slide-up/slide-down).
-	Since for now it just doesn't work, we removed it
-
-	replaceView: function(view)
-	{
-	    gotoView(view, true);
-	},
-	*/
-
 		/*
 	method: emy.showViewByHref(href, args, method, replace, cb)
 	Outside callers should use this version to do an ajax load programmatically
