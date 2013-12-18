@@ -358,9 +358,10 @@
 	and if any of them are already in the DOM, they will be replaced by the
 	incoming elements.
 	*/
-		insertViews: function(frag) {
-			var nodes = frag.childNodes;
-			var targetView;
+		insertViews: function(frag, go) {
+			var nodes = frag.childNodes, targetView;
+			// set go to false if you dont want to navigate to the inserted view
+			go = (go==false)?false:true;
 			for (var i = 0; i < nodes.length; ++i) {
 				var child = nodes[i];
 				if (child.nodeType == 1) {
@@ -390,7 +391,7 @@
 				fragment: frag
 			})
 
-			if (targetView) setTimeout(function() {
+			if (targetView && go) setTimeout(function() {
 				emy.showView(targetView)
 			}, 1);
 
