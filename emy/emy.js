@@ -755,10 +755,12 @@ All forms without target="_self" will use emy's Ajax from submission.
 	}
 
 	function hideForm(form) {
-		emy.$('header.toolbar')
-			.style.display = '';
-		if (undefined == form.srcElement) form.removeAttribute("selected");
+		if (undefined == form.srcElement) {
+			form.removeAttribute("selected");
+		}
 		else {
+			var toolbarElement = emy.$('#'+form.srcElement.id+' .toolbar')[0];
+			toolbarElement.style.display = '';
 			form.srcElement.removeAttribute("selected");
 			form.srcElement.removeEventListener(emy.prefixedProperty['transitionEnd'], hideForm, false);
 		}
