@@ -27,7 +27,7 @@
       <li><a href="#screen1">Simple screen</a></li>
       <li><a href="#screen2">Panel screen</a></li>
       <li><a href="#dialog">Dialog screen</a></li>
-      <li><a href="panel.html">External file screen</a></li>
+      <li><a onclick="this.setAttribute('selected','progress')">External file screen</a></li>
       <li><a href="#hidebackbutton">Hide back button</a></li>
       <li class="group">Buttons</li>
       <li><a href="#buttons">Buttons</a></li>
@@ -220,9 +220,9 @@
 
   <section id="dialog" data-title="Search" class="dialog">
     <header class="toolbar">
-      <div><a class="button" type="cancel">Cancel</a></div>
+      <div><button class="button" type="cancel">Cancel</button></div>
       <h1>Dialog View</h1>
-      <div><a href="form.dialogform.submit()" class="button blueButton">Submit</a></div>
+      <div><button type="submit" class="button blueButton" onclick="dialogform.submit()" target="_replace">Submit</button></div>
     </header>
 
     <form id="dialogform" method="get" action="panel.html">

@@ -71,12 +71,15 @@ header.toolbar .button {
     -webkit-border-radius:	.3em;
     border-radius:	.3em;
 }
-header.toolbar .button[selected], body > .toolbar .button:active,
-	background:		#054a75;
+header.toolbar .button[selected], body > .toolbar .button:active {
+	background:		#1a5372;
 }
 header.toolbar .blueButton {
-    color: 			#e13636;
-    background: 	#fff;
+    background: 	#01598f;
+	background-image:		-webkit-gradient(linear, left top, bottom left, from(#0c7cba), to(#004169));
+    background-image:		-webkit-linear-gradient(0deg, #0c7cba 0%, #004169 100%);
+    background-image:		linear-gradient(180deg, #0c7cba 0%, #004169 100%);
+	border-color:	#09293a;
 }
 header.toolbar .redButton {
     background: 	#ff0000;
@@ -106,10 +109,11 @@ header.toolbar #backButton::before {
 header.toolbar #backButton:active, 
 header.toolbar #backButton[selected] {
 	background:		rgba(0,45,75,.6);
+	border-color:	#09293a;
 	-webkit-box-shadow:	inset 0 .2em .3em rgba(0,25,50,.7);
 }
 
-/******************************** MAIN BUTTON *******************************************************/
+/***** MAIN BUTTON **************************************/
 .mainButton {
     display:					   	block;
     position:           			relative;
@@ -119,7 +123,13 @@ header.toolbar #backButton[selected] {
     text-align:			   		center;
     font-size: 			   		1.1em;
     text-decoration:   	none;
-  	background: 		       	#355163;
+    background: 		#e13636;
+	background-image:		-webkit-gradient(linear, left top, left bottom, from(#0ca6e0), to(#1688c4));
+    background-image:		-webkit-linear-gradient(270deg, #0ca6e0 0%, #1688c4 100%);
+    background-image:		linear-gradient(180deg, #0ca6e0 0%, #1688c4 100%);
+    border:				.2em solid rgba(5,75,120,.5);
+    -webkit-border-radius:	.3em;
+    border-radius:	.3em;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -ms-touch-action: 		pan-y;
 }
@@ -131,20 +141,18 @@ button.mainButton {
     border: 	0;
 }
 
-.panel .mainButton {
-	color:	 #355163;
-	background:	#c2cbd0;
-}
-.panel .mainButton[selected], .panel .mainButton:active {
-	color:	 #355163;
-	background:	#fff;
-}
-
 .mainButton.darkButton {
-	background:       #253945;
+	background:	#146c9a;
+	background-image:		-webkit-gradient(linear, left top, left bottom, from(#146c9a), to(#00517b));
+    background-image:		-webkit-linear-gradient(270deg, #146c9a 0%, #00517b 100%);
+    background-image:		linear-gradient(180deg, #146c9a 0%, #00517b 100%);
 }
 .mainButton.redButton {
 	background:       #e13636;
+	background-image:		-webkit-gradient(linear, left top, left bottom, from(#f31818), to(#a80707));
+    background-image:		-webkit-linear-gradient(270deg, #f31818 0%, #a80707 100%);
+    background-image:		linear-gradient(180deg, #f31818 0%, #a80707 100%);
+    border-color:	#850606;
 }
 .panel .mainButton.redButton {
 	color:	#fff;
@@ -154,10 +162,14 @@ button.mainButton {
 	background:       #f00;
 }
 .mainButton.greenButton {
-	background:       #00a504;
+	background:       #09b50d;
+	background-image:		-webkit-gradient(linear, left top, left bottom, from(#0ccf11), to(#049c07));
+    background-image:		-webkit-linear-gradient(270deg, #0ccf11 0%, #049c07 100%);
+    background-image:		linear-gradient(180deg, #0ccf11 0%, #049c07 100%);
+    border-color:	#028105;
 }
 .mainButton.disable {
-    opacity:        .7;
+    opacity:        .5;
 }
 
 /******************************** LIST *******************************************************/
@@ -181,11 +193,7 @@ section > ul > li.group,
 section.panel > ul > li.group {
 	padding: 			  		.4em 0 .4em 1em;
 	font-size:		    		.75em;
-	font-weight: 			normal;
-  	text-transform: 	uppercase;
-	color:				        	#C2CDD5;
-	background: 			#355163;
-	border:     0;
+	border-bottom:     2px solid #00a7de;
 }
 section.panel > ul > li.group {
 	padding: 			.4em .4em;
@@ -205,68 +213,23 @@ section > ul > li > a {
 	-moz-transform:  				skew(0deg, 0deg);
 	transform:  							skew(0deg, 0deg);
 }
-section > ul > li > a::before,
-section > ul > li > a::after {
-	content:	        '';
-	position:	      	absolute;
-	top:			        50%;
-	right:		            .2em;
-	width:		        .5em;
-	height:		        .1em;
-	margin:		    -.3em .5em 0 0;
-	background-color:  #355163;
-	-webkit-transform:  	skew(-45deg, 45deg);
-	-moz-transform:  			skew(-45deg, 45deg);
-	transform:  						skew(-45deg, 45deg);
-}
-section > ul > li > a::after {
-	margin-top:		    .2em;
-	-webkit-transform:  	skew(45deg, -45deg);
-	-moz-transform:  			skew(45deg, -45deg);
-	transform:  						skew(45deg, -45deg);
-}
 
 section > ul > li > a[selected], 
 section > ul > li > a:active,
 section.panel > ul > li > a[selected], 
 section.panel > ul > li > a:active,
 section > ul > li > a[target="_replace"]:active {
-  color:      		        #fff;
-  background: 	#e13636;
-}
-
-section > ul > li > a[selected]::before, 
-section > ul > li > a:active::before,
-section > ul > li > a[selected]::after, 
-section > ul > li > a:active::after,
-section.panel > ul > li > a[selected]::before, 
-section.panel > ul > li > a:active::before,
-section.panel > ul > li > a[selected]::after, 
-section.panel > ul > li > a:active::after {
-	background-color:		#fff;
-}
-section > ul > li > a[selected="progress"]::before {
-	background:	transparent;
-}
-section > ul > li > a[selected="progress"]::after {
-	-webkit-transform:		none;
-	-moz-transform:			none;
-	transform:						none;
-	border:					0;
-	width:					1.1em;
-	height:					1.1em;
-	margin:				-.55em .25em 0 0;
-	background: 		url(loading.gif) no-repeat center center;
-	background-size:	1em auto;
+	color:      		#fff;
+    background: 		#e13636;
+	background-image:		-webkit-gradient(linear, left top, left bottom, from(#089ed7), to(#0c7fbb));
+    background-image:		-webkit-linear-gradient(270deg, #089ed7 0%, #0c7fbb 100%);
+    background-image:		linear-gradient(180deg, #089ed7 0%, #0c7fbb 100%);
 }
 section > ul > li > a[target="_replace"] {
 	padding-top: 			1.6em;
 	padding-bottom: 	1.6em;
 	color: 							#6495ed;
 	background-image: none;
-}
-section > ul > li > a[target="_replace"]::after {
-    display:    none;
 }
 section > footer {
     padding:		.8em 0;
@@ -308,7 +271,7 @@ section fieldset > .row > select {
 	margin: 				0;
 	height: 					inherit;
 	font-size:				.9em;
-	color:						#355163;
+	color:						#333;
 	background:		transparent;
 	-webkit-appearance: none;
 	-moz-appearance:		none;
@@ -329,12 +292,20 @@ section fieldset > .row > textarea {
 section fieldset > .row > select {
 	float:			    right;
 	width:			auto;
-	color:			    #425c8d;
-	font-size:		.8em;
-	padding:	  	1em;
+	color:			#000;
+	font-size:		.9em;
+	margin:			.2em .3em 0 0;
+    padding: 		.6em .8em;
 	border:			0;
 	clear:			    both;
 	-moz-appearance:		menuitem; /* since none does not work */
+	background:		#e2e2e2;
+	background-image:		-webkit-gradient(linear, left top, bottom left, from(#fafafa), to(#e2e2e2));
+    background-image:		-webkit-linear-gradient(0deg, #fafafa 0%, #e2e2e2 100%);
+    background-image:		linear-gradient(180deg, #fafafa 0%, #e2e2e2 100%);
+    border:				.2em solid #c8c8c8;
+    -webkit-border-radius:	.3em;
+    border-radius:	.3em;
 }
 section fieldset > .row > select::-ms-expand {
     display: none;
@@ -374,20 +345,38 @@ section.dialog {
 	-ms-touch-action: 		none;
 }
 section.dialog header.toolbar {
-  position:   absolute;
-  width:        100%;
-  z-index:     11;
+	position:   absolute;
+	width:        100%;
+	z-index:     11;
+	background:	#323232;
+	background-image:		-webkit-gradient(linear, left top, bottom left, from(#323232), to(#161616));
+    background-image:		-webkit-linear-gradient(0deg, #323232 0%, #161616 100%);
+    background-image:		linear-gradient(180deg, #323232 0%, #161616 100%);
 }
+section.dialog header .button {
+	border-color:	#000;
+	background:		#333333;
+	background-image:		-webkit-gradient(linear, left top, bottom left, from(#464646), to(#1e1e1e));
+    background-image:		-webkit-linear-gradient(0deg, #464646 0%, #1e1e1e 100%);
+    background-image:		linear-gradient(180deg, #464646 0%, #1e1e1e 100%);
+}
+section.dialog header .button:hover, section.dialog header .button:active {
+    background: 		#019eda;
+	background-image:		-webkit-gradient(linear, left top, left bottom, from(#0c9de8), to(#005c8b));
+    background-image:		-webkit-linear-gradient(270deg, #0c9de8 0%, #005c8b 100%);
+    background-image:		linear-gradient(180deg, #0c9de8 0%, #005c8b 100%);
+}
+
 section.dialog fieldset {
 	margin-top:       	2.8em;
 	width:                   100%;
 	border: 			    none;
 	padding: 			    .3em 0;
-	background: 	    #e13636;
+	background: 	    #000;
 	-webkit-transform:	  	  translateY(-100%);
 	-moz-transform:			  translateY(-100%);
-	transform:			      		  translateY(-100%);
-	-webkit-transition:	  	  all 300ms ease-in-out;
+	transform:			      	  translateY(-100%);
+	-webkit-transition:	  	 	 all 300ms ease-in-out;
 	-moz-transition:		      all 300ms ease-in-out;
 	transition:			      		  all 300ms ease-in-out;
 }
@@ -398,7 +387,7 @@ section.dialog.show {
 section.dialog.show fieldset {
 	-webkit-transform:	  translateY(0%);
 	-moz-transform:		  translateY(0%);
-	transform:			          translateY(0%);
+	transform:			      translateY(0%);
 }
 
 section.dialog fieldset > div.row {
@@ -421,10 +410,10 @@ section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > 
 
 /******************************** PANEL *******************************************************/
 section.panel {
-	padding-left: 	        .4em;
+	padding-left: 	    .4em;
 	padding-right: 	    .4em;
-	border:						0;
-	background:			#355163;
+	border:					0;
+	background:			#d8d8d8;
 }
 section.panel > *:first-child {
 	margin-top:		.7em;
@@ -449,6 +438,9 @@ section.panel fieldset {
 	border:				    0;
 	background:		#fff;
 }
+section.panel fieldset {
+	border:					.1em solid #aaa;
+}
 section.panel ul > li {
     list-style:		        none;
 }
@@ -461,24 +453,39 @@ section.panel footer {
 /******************************** TOGGLE *******************************************************/
 
 .toggle {
-    top:                    0;
-    right:                 0;
-    width: 				6em;
-    height: 				1.6em;
-    margin:            .4em;
-    font-size: 		1.2em;
-    line-height:		1.5em;
-    background-color:   #ddd;
+    top:                  0;
+    right:                0;
+    width: 				4.9em;
+    height: 				1.8em;
+    margin:            .3em .4em 0 0;
+    font-size: 			1.2em;
+    line-height:		1.7em;
+	background:		#e2e2e2;
+	background-image:		-webkit-gradient(linear, left top, bottom left, from(#dadada), to(#eee));
+    background-image:		-webkit-linear-gradient(0deg, #dadada 0%, #eee 30%);
+    background-image:		linear-gradient(180deg, #dadada 0%, #eee 30%);
+    box-shadow:				0 0 .1em .1em #aaa;
+    -webkit-border-radius:	1em;
+    border-radius:	1em;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -ms-touch-action: 		pan-y;
+
 }
 .toggle > .thumb {
     position:      absolute;
-    width: 			3em;
-    height:         inherit;
+    width: 			1.7em;
+    height:         0;
     color:            #444;
     text-align: 	center;
-    background-color:   	#bbb;
+    margin:			0.1em 0 0 0.1em;
+    padding-top:	1.6em;
+	background:		#e2e2e2;
+	background-image:		-webkit-gradient(linear, left top, bottom left, from(#fafafa), to(#e2e2e2));
+    background-image:		-webkit-linear-gradient(0deg, #fafafa 0%, #e2e2e2 100%);
+    background-image:		linear-gradient(180deg, #fafafa 0%, #e2e2e2 100%);
+    box-shadow:				inset 0 0 .1em #aaa;
+    -webkit-border-radius:	1em;
+    border-radius:	1em;
     -webkit-transition:	  	all 200ms ease-in-out;
     -moz-transition:		  	all 200ms ease-in-out;
     transition:			          	all 200ms ease-in-out;
@@ -490,29 +497,25 @@ section.panel footer {
     -webkit-transform:    translateX(3em);
     -moz-transform:         translateX(3em);
     transform:                     translateX(3em);
-    background-color:    #e13636;
+    background-color:    	#2285c4;
+	background-image:		-webkit-gradient(linear, left top, bottom left, from(#3991cb), to(#0072be));
+    background-image:		-webkit-linear-gradient(0deg, #3991cb 0%, #0072be 100%);
+    background-image:		linear-gradient(180deg, #3991cb 0%, #0072be 100%);
 }
 
 .toggle > .thumb::before, .toggle > .thumb::after {
     position:      	absolute;
-    left: 				    0;
     top: 				    0;
     width: 			    inherit;
     z-index:		    1;
 }
 .toggle > .thumb::before {
-    content:    	'OFF';
+    content:    	'O';
+    left: 				2em;
 }
 .toggle > .thumb::after {
-    content:    	'ON';
-    color:         	#fff;
-    opacity:    	0;
-}
-.toggle[toggled] > .thumb::before {
-    opacity:  		0;
-}
-.toggle[toggled] > .thumb::after {
-    opacity:  		1;
+    content:    	'I';
+    left: 				 -2.2em;
 }
 
 /************************************************************************************************/
