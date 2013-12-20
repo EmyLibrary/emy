@@ -45,9 +45,10 @@
   		</div>
   	</fieldset>
 
-	<form method="post" action="javascript:chat.sendText()">
-		<input type="text" name="message" id="chat_message" placeholder="Type your message here...">
-	</form>
+    <form id="message_box" method="post" action="" onsubmit="app.sendText()">
+      <input type="text" name="message" id="chat_message" placeholder="Type your message here...">
+      <input type="submit" value="send">
+    </form>
 
   </section>
 

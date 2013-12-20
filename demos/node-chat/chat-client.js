@@ -17,6 +17,16 @@ window.app = {
 		}
 	},
 
+	sendText : function()
+	{
+		if(app.ready && app.nickname) 
+		{
+			var msg = emy.$('#message_chat').value;
+			if(msg)
+				chat.emit('message', { uid: app.uid, msg: msg });
+		}
+	},
+
 	history : function() 	{ chat.emit('history'); }
 };
 
@@ -30,6 +40,7 @@ chat.on('connect', function ()
 		app.uid += Math.floor(Math.random()*10);
 	}
 	app.ready=true;
+	emy.showViewById('me');
 });
 
 chat.on('info', function (o)
@@ -37,7 +48,6 @@ chat.on('info', function (o)
 	if(app.ready) 
 	{
 		if(o.type=="newuser") {
-			console.log(o.data);
 			console.log('#'+o.data.uid+' : Bienvenu '+o.data.me+' !');
 		}
 		else if(o.type=="nickchange") {
