@@ -33,44 +33,29 @@
 <body>
 
   <header class="toolbar">
-    <div><a class="button" href="#me">Me</a></div>
+    <div><a class="button" id="backButton">Back</a></div>
     <h1 id="viewTitle">Chat App</h1>
     <div><a class="button" href="#about">About</a></div>
   </header>
 
   <section id="home" data-title="Music App" class="panel" selected="true">
-  	<fieldset id="layout">
-  		<div class="row">
-  			<p>Bla bla</p>
-  		</div>
-  	</fieldset>
 
-    <form id="message_box" method="post" action="" onsubmit="app.sendText()">
-      <input type="text" name="message" id="chat_message" placeholder="Type your message here...">
-      <input type="submit" value="send">
+  	<div id="chatroom"></div>
+
+
+	<form id="nickname_box" action="javascript:void();" onsubmit="app.setNickname();">
+		<input type="text" name="nickname" id="chat_nickname" placeholder="Choose a nickname !">
+		<input type="submit" value="ok">
+    </form>
+
+    <form id="chat_box" class="hide" action="javascript:void();" onsubmit="app.sendText()">
+		<input type="text" name="message" id="chat_message" placeholder="Type your message here...">
+		<input type="submit" value="send">
     </form>
 
   </section>
 
 
-
-  <section id="me" data-title="Me" class="dialog">
-    <header class="toolbar">
-      <div><button class="button" type="cancel">Cancel</button></div>
-      <h1>Me</h1>
-      <div><button type="submit" class="button blueButton" onclick="app.setNickname();" target="_replace">Submit</button></div>
-    </header>
-
-    <form id="nicknameform">
-      <fieldset>
-        <div class="row">
-          <label>My nickname</label>
-          <input type="text" name="nickname" id="nickname" placeholder="Choose a nickname">
-        </div>
-      </fieldset>
-    </form>
-  </section>
-  
 
 
   <section id="about" data-title="About" class="panel">

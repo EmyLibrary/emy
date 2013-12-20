@@ -2,15 +2,29 @@
    Copyright (c) 2012, Remi Grumeau
    See LICENSE.txt for licensing terms
 */
-#message_box {
-	position: 	absolute;
-	left:		0;
-	bottom:		0;
-	width:		100%;
-	background:	#e13636;
+.hide {
+	display:	none;
 }
 
-#message_box input[type='text'] {
+#home {
+	padding-bottom:	6em;
+}
+
+#message_master { display: none; }
+.message_block {
+
+}
+
+
+#nickname_box, #chat_box {
+	position: 	fixed;
+	left:		0;
+	bottom:	0;
+	width:		100%;
+	margin-top:	-4em;
+	background:	#e13636;
+}
+#nickname_box input[type='text'], #chat_box input[type='text'] {
 	font-size:		inherit;
 	width:			100%;
 	color:			#fff;
@@ -18,10 +32,10 @@
 	border:			0;
 	background:		transparent;
 }
-#message_box input[type='submit'] {
+#nickname_box input[type="submit"], #chat_box input[type="submit"] {
 	position:		absolute;
 	right:			0;
-	bottom:			0;
+	bottom:		0;
 	font-size:		inherit;
 	width:			auto;
 	color:			#e13636;
@@ -30,4 +44,8 @@
 	border:			0;
 	background:		#fff;
 	z-index:		1;
+	-webkit-border-radius:	0;
+	border-radius:	0;
+	-webkit-appearance:	none;
+	appearance:	none;
 }

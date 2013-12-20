@@ -39,8 +39,8 @@ io.sockets.on('connection', function (socket)
 	});
 
 	socket.on('message', function (data) {
-		socket.emit('message', { msg: msg });
-		logs.push({type:'msg', content: msg });
+		socket.emit('message', data);
+		logs.push({type:'msg', content: data });
 	});
 
 	socket.on('history', function () {

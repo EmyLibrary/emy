@@ -6,7 +6,7 @@ window.app = {
 
 	setNickname : function() 
 	{
-		var n = emy.$('#nickname').value;
+		var n = emy.$('#chat_nickname').value;
 		if(n!='') {
 			if(app.nickname)
 				chat.emit('nickchange', { uid: app.uid, from: app.nickname, to: n });
@@ -14,6 +14,9 @@ window.app = {
 				chat.emit('newuser', { uid: app.uid, me: n });
 
 			app.nickname = n;
+			emy.$('#chat_nickname').blur();
+			emy.addClass(emy.$('#nickname_box'), 'hide');
+			emy.changeClass(emy.$('#chat_box'), 'hide','');
 		}
 	},
 
@@ -21,9 +24,11 @@ window.app = {
 	{
 		if(app.ready && app.nickname) 
 		{
-			var msg = emy.$('#message_chat').value;
-			if(msg)
+			var msg = emy.$('#chat_message').value;
+			if(msg) {
 				chat.emit('message', { uid: app.uid, msg: msg });
+				emy.$('#chat_message').value = '';
+			}
 		}
 	},
 
@@ -55,6 +60,18 @@ chat.on('info', function (o)
 		}
 	}
 });
+
+chat.on('message', function (o)
+{
+	if(app.ready && app.nickname)
+	{
+		console.log('#'+o.uid+' : Message '+o.msg);
+		var msgElementText = '', msgElement = emy.$('#message_master').cloneNode(true);
+		msgElement.removeAttribute('id');
+		emy.$('#chatroom').appendChild(msgElement);
+	}
+});
+
 
 chat.on('history', function (o)
 {
