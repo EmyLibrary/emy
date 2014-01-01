@@ -1,6 +1,6 @@
 /*
 Theme:		Emy Theme
-Version:	1.0
+Version:	1.1
 Author:		@remi_grumeau
 */
 
@@ -76,6 +76,7 @@ header.toolbar .redButton {
 header.toolbar .greenButton {
     background: 		#1fb728;
 }
+
 header.toolbar #backButton {
 	position:   			relative;
 	width:        			3em;
@@ -90,10 +91,10 @@ header.toolbar #backButton::before,
 header.toolbar #backButton::after {
 	content:    	'';
 	position:   	absolute;
-	top:             	.45em;
-	left:              	50%;
+	top:             	.9em;
+	left:              	1.7em;
 	width:         	.2em;
-	height:        	1em;
+	height:        	.6em;
 	margin:      	0 0 0 -.3em;
 	background: #fff;
 }
@@ -103,7 +104,7 @@ header.toolbar #backButton::before {
   transform:  					skew(-45deg, 45deg);
 }
 header.toolbar #backButton::after {
-  top:             1.3em;
+  top:             1.35em;
   -webkit-transform:  	skew(45deg, -45deg);
   -moz-transform:  		skew(45deg, -45deg);
   transform:  					skew(45deg, -45deg);
