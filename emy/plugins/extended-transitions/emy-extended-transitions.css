@@ -178,22 +178,22 @@ body > section[emy-transition^='fadenslide'] {
 body > section[emy-transition='fadenslidein'] {
     -webkit-animation-name: 'anim-fadenslidein';
     -moz-animation-name: 'anim-fadenslidein';
-    animation-name: anim-zoomin;
+    animation-name: anim-fadenslidein;
 }
 body > section[emy-transition='fadenslideout'] {
     -webkit-animation-name: 'anim-fadenslideout';
     -moz-animation-name: 'anim-fadenslideout';
-    animation-name: anim-zoomout;
+    animation-name: anim-fadenslideout;
 }
 body > section[emy-transition='fadenslidebackin'] {
     -webkit-animation-name: 'anim-fadenslidebackin';
     -moz-animation-name: 'anim-fadenslidebackin';
-    animation-name: anim-zoombackin;
+    animation-name: anim-fadenslidebackin;
 }
 body > section[emy-transition='fadenslidebackout'] {
     -webkit-animation-name: 'anim-fadenslidebackout';
     -moz-animation-name: 'anim-fadenslidebackout';
-    animation-name: anim-zoombackout;
+    animation-name: anim-fadenslidebackout;
 }
 
 @-webkit-keyframes 'anim-fadenslidein' {
