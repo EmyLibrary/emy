@@ -21,6 +21,11 @@ body > section {
     background: #fff;
 }
 
+::-webkit-input-placeholder { color:#aaa; }
+::-moz-placeholder { color:#aaa; } /* firefox 19+ */
+:-ms-input-placeholder { color:#aaa; } /* ie */
+input:-moz-placeholder { color:#aaa; }
+
 /******************************** HEADER *******************************************************/
 header.toolbar {
 	position:				fixed;
@@ -193,6 +198,7 @@ section > ul > li.group,
 section.panel > ul > li.group {
 	padding: 			  		.4em 0 .4em 1em;
 	font-size:		    		.75em;
+	font-weight:			bold;
 	border-bottom:     2px solid #00a7de;
 }
 section.panel > ul > li.group {
@@ -287,50 +293,80 @@ section fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
     border-radius: 						0;
 }
 section fieldset > .row > textarea {
-  min-height:   6em;
+	min-height:   	7em;
+	padding:			2.6em .8em 1em .8em;
 }
 section fieldset > .row > select {
 	float:			    right;
 	width:			auto;
-	color:			#000;
+	color:				#000;
 	font-size:		.9em;
-	margin:			.2em .3em 0 0;
-    padding: 		.6em .8em;
+	margin:		.3em .3em 0 0;
+    padding: 		.5em .8em;
 	border:			0;
 	clear:			    both;
-	-moz-appearance:		menuitem; /* since none does not work */
+}
+section fieldset > .row > select,
+section fieldset > .row > input[type|=radio], 
+section fieldset > .row > input[type|=checkbox] {
+    border:					.2em solid #c8c8c8;
 	background:		#e2e2e2;
 	background-image:		-webkit-gradient(linear, left top, bottom left, from(#fafafa), to(#e2e2e2));
-    background-image:		-webkit-linear-gradient(0deg, #fafafa 0%, #e2e2e2 100%);
+    background-image:		-webkit-linear-gradient(270deg, #fafafa 0%, #e2e2e2 100%);
     background-image:		linear-gradient(180deg, #fafafa 0%, #e2e2e2 100%);
-    border:				.2em solid #c8c8c8;
-    -webkit-border-radius:	.3em;
-    border-radius:	.3em;
+    -webkit-border-radius:		.3em;
+    border-radius:						.3em;
+	-webkit-appearance: 		none;
+	-moz-appearance:				menuitem; /* since none does not work */
+	appearance: 							none;
 }
 section fieldset > .row > select::-ms-expand {
     display: none;
-} 
+}
 section fieldset > .row > input[type|=radio], 
 section fieldset > .row > input[type|=checkbox] {
+	position:		relative;
 	float:				right;
 	padding:		0;
 	margin:		.5em 10px 0 0;
-	height:			2em;
-	width:			2em;
-	-webkit-appearance: 		radio;
-	-moz-appearance: 				radio;
-	appearance: 							radio;
-	-webkit-border-radius: 	1em;
-	-moz-border-radius: 			1em;
-	border-radius: 						1em;
+	height:			2.1em;
+	width:			2.1em;
 }
-section fieldset > .row > input[type|=checkbox] {
-	-webkit-border-radius: 	.5em;
-	-moz-border-radius: 		    .5em;
-	border-radius:					    .5em;
-	-webkit-appearance: 		checkbox;
-	-moz-appearance: 				checkbox;
-	appearance: 						    checkbox;
+section fieldset > .row > input[type|=radio] {
+    -webkit-border-radius:		3em;
+    border-radius:						3em;
+}
+section fieldset > .row > input[type|=checkbox]:checked:after {
+	content:		'';
+	position:		absolute;
+	top:				.1em;
+	left:				.5em;
+	width:			.6em;
+	height:			1.15em;
+	border-bottom:		.3em solid #f1f1f1;
+	border-right:				.3em solid #f1f1f1;
+	-webkit-transform:	rotateZ(45deg);
+	transform:	rotateZ(45deg);
+}
+section fieldset > .row > input[type|=radio]:checked:after {
+	content:		'';
+	position:		absolute;
+	top:				.45em;
+	left:				.45em;
+	width:			1em;
+	height:			1em;
+	background:	#e2e2e2;
+	background-image:		-webkit-gradient(linear, left top, bottom left, from(#fafafa), to(#e2e2e2));
+    background-image:		-webkit-linear-gradient(270deg, #fafafa 0%, #e2e2e2 100%);
+    background-image:		linear-gradient(180deg, #fafafa 0%, #e2e2e2 100%);
+    -webkit-border-radius:		1em;
+    border-radius:						1em;
+}
+section fieldset > .row > input[type|=radio]:checked,
+section fieldset > .row > input[type|=checkbox]:checked {
+	background-image:		-webkit-gradient(linear, left top, left bottom, from(#26c6fd), to(#0c7fbb));
+    background-image:		-webkit-linear-gradient(270deg, #26c6fd 0%, #0c7fbb 100%);
+    background-image:		linear-gradient(180deg, #26c6fd 0%, #0c7fbb 100%);
 }
 
 /******************************** DIALOG *******************************************************/
@@ -345,19 +381,17 @@ section.dialog {
 	-ms-touch-action: 		none;
 }
 section.dialog header.toolbar {
-	position:   absolute;
-	width:        100%;
 	z-index:     11;
-	background:	#323232;
+	background:		#323232;
 	background-image:		-webkit-gradient(linear, left top, bottom left, from(#323232), to(#161616));
-    background-image:		-webkit-linear-gradient(0deg, #323232 0%, #161616 100%);
+    background-image:		-webkit-linear-gradient(270deg, #323232 0%, #161616 100%);
     background-image:		linear-gradient(180deg, #323232 0%, #161616 100%);
 }
 section.dialog header .button {
-	border-color:	#000;
+	border-color:		#000;
 	background:		#333333;
 	background-image:		-webkit-gradient(linear, left top, bottom left, from(#464646), to(#1e1e1e));
-    background-image:		-webkit-linear-gradient(0deg, #464646 0%, #1e1e1e 100%);
+    background-image:		-webkit-linear-gradient(270deg, #464646 0%, #1e1e1e 100%);
     background-image:		linear-gradient(180deg, #464646 0%, #1e1e1e 100%);
 }
 section.dialog header .button:hover, section.dialog header .button:active {
@@ -453,17 +487,17 @@ section.panel footer {
 /******************************** TOGGLE *******************************************************/
 
 .toggle {
-    top:                  0;
-    right:                0;
-    width: 				4.9em;
-    height: 				1.8em;
-    margin:            .3em .4em 0 0;
+    top:                  		0;
+    right:                		0;
+    width: 					4.9em;
+    height: 					1.8em;
+    margin:            	.3em .4em 0 0;
     font-size: 			1.2em;
-    line-height:		1.7em;
+    line-height:			1.5em;
 	background:		#e2e2e2;
 	background-image:		-webkit-gradient(linear, left top, bottom left, from(#dadada), to(#eee));
-    background-image:		-webkit-linear-gradient(0deg, #dadada 0%, #eee 30%);
-    background-image:		linear-gradient(180deg, #dadada 0%, #eee 30%);
+    background-image:		-webkit-linear-gradient(270deg, #dadada 0%, #eee 15%);
+    background-image:		linear-gradient(180deg, #dadada 0%, #eee 15%);
     box-shadow:				0 0 .1em .1em #aaa;
     -webkit-border-radius:	1em;
     border-radius:	1em;
@@ -473,17 +507,17 @@ section.panel footer {
 }
 .toggle > .thumb {
     position:      absolute;
-    width: 			1.7em;
+    width: 			1.5em;
     height:         0;
     color:            #444;
     text-align: 	center;
-    margin:			0.1em 0 0 0.1em;
-    padding-top:	1.6em;
+    margin:			0.2em 0 0 0.2em;
+    padding-top:	1.5em;
 	background:		#e2e2e2;
 	background-image:		-webkit-gradient(linear, left top, bottom left, from(#fafafa), to(#e2e2e2));
-    background-image:		-webkit-linear-gradient(0deg, #fafafa 0%, #e2e2e2 100%);
+    background-image:		-webkit-linear-gradient(270deg, #fafafa 0%, #e2e2e2 100%);
     background-image:		linear-gradient(180deg, #fafafa 0%, #e2e2e2 100%);
-    box-shadow:				inset 0 0 .1em #aaa;
+    box-shadow:				0 0 .2em #666;
     -webkit-border-radius:	1em;
     border-radius:	1em;
     -webkit-transition:	  	all 200ms ease-in-out;
@@ -494,13 +528,13 @@ section.panel footer {
     transform:                     	translateX(0);
 }
 .toggle[toggled] > .thumb {
-    -webkit-transform:    translateX(3em);
-    -moz-transform:         translateX(3em);
-    transform:                     translateX(3em);
+    -webkit-transform:    translateX(3.1em);
+    -moz-transform:         translateX(3.1em);
+    transform:                     translateX(3.1em);
     background-color:    	#2285c4;
-	background-image:		-webkit-gradient(linear, left top, bottom left, from(#3991cb), to(#0072be));
-    background-image:		-webkit-linear-gradient(0deg, #3991cb 0%, #0072be 100%);
-    background-image:		linear-gradient(180deg, #3991cb 0%, #0072be 100%);
+	background-image:		-webkit-gradient(linear, left top, bottom left, from(#26c6fd), to(#0072be));
+    background-image:		-webkit-linear-gradient(270deg, #26c6fd 0%, #0072be 100%);
+    background-image:		linear-gradient(180deg, #26c6fd 0%, #0072be 100%);
 }
 
 .toggle > .thumb::before, .toggle > .thumb::after {
