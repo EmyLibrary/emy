@@ -334,7 +334,8 @@ section fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
     border-radius: 						0;
 }
 section fieldset > .row > textarea {
-  min-height:   6em;
+	min-height:   6em;
+	vertical-align: 	top;
 }
 section fieldset > .row > select {
 	float:			    right;
