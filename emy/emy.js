@@ -33,7 +33,12 @@
 	*/
 
 	window.emy = {
-		/*
+	/*
+	version
+	useful for plugins, support & debug
+	*/
+	v : 1.0,
+	/*
 	used in emy.log()
 	initialized at: onload.
 	This is set to `true`, console.log is enabled
