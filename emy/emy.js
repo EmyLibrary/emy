@@ -445,8 +445,7 @@
 	Returns true/false if the given element `el` has the class `name`.
 	*/
 		hasClass: function(el, name) {
-			return ((el.className)
-				.indexOf(name) > -1) ? true : false;
+			return ((el.className).indexOf(name) > -1)?true:false;
 		},
 
 		/*
@@ -454,7 +453,8 @@
 	Add the given class `name` to element `el`
 	*/
 		addClass: function(el, name) {
-			if (!emy.hasClass(el, name)) el.className += " " + name;
+			if (!emy.hasClass(el, name)) 
+				el.className += " "+name;
 		},
 
 		/*
@@ -462,7 +462,7 @@
 	change the given class `name` to `newname` to element `el`
 	*/
 		changeClass: function(el, name, newname) {
-			if (emy.hasClass(el, name)) el.className = el.className.replace(new RegExp('(\\s|^)' + name + '(\\s|$)'), newname);
+			if (emy.hasClass(el, name)) el.className = el.className.replace(new RegExp('(\\s|^)' + name + '(\\s|$)'), ' '+newname+' ');
 		},
 
 		/*
