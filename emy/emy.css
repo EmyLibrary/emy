@@ -10,7 +10,7 @@ body {
 textarea {
 	font-family:	inherit;
 }
-input, textarea, select,
+input, textarea, select, button,
 .button, .whiteButton, .redButton, .grayButton, .toggle,
 body section li > a {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
