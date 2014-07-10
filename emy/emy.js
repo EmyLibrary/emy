@@ -476,8 +476,8 @@
 		$: function(a) {
 			if(document.querySelectorAll) {
 				var res = document.querySelectorAll(a);
-				return (res.length==0)?null:(res.length==1 & '#'+res[0].id==a)?res[0]:res;
-			} else {
+				return (res.length==0)?null:((res.length==1 && '#'+res[0].id==a)?res[0]:res);
+			} else {
 				// this should soon be removed, since all modern browsers supports querySelectorAll now
 				if (a.substr(0, 1) == '#') return (document.getElementById(a.substr(1))) ? document.getElementById(a.substr(1)) : null;
 				else if (a.substr(0, 1) == '.') return (document.getElementsByClassName(a.substr(1))) ? document.getElementsByClassName(a.substr(1)) : null;
