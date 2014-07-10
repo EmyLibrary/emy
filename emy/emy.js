@@ -1,7 +1,7 @@
 /*
    Copyright (c) 2012-13, Emy Project Members.
    See LICENSE.txt for licensing terms.
-   Version 1.0
+   Version 1.1
  */
 
 (function() {
@@ -33,6 +33,10 @@
 	*/
 
 	window.emy = {
+	/* version
+	useful for plugins, support & debug
+	*/
+	v : 1.1,
 		/*
 	used in emy.log()
 	initialized at: onload.
