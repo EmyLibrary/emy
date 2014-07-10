@@ -76,47 +76,37 @@ header.toolbar .redButton {
 header.toolbar .greenButton {
     background: 		#1fb728;
 }
-
 header.toolbar #backButton {
-	position:   			relative;
-	width:        			3em;
-	height:       			2.8em;
+	position:   		relative;
+	width:        		3em;
+	height:       		2.8em;
 	text-indent:  		4em;
 	background: 		#e13636;
-	-webkit-transform:  	skew(0deg, 0deg);
-	-moz-transform:  			skew(0deg, 0deg);
-	transform:  						skew(0deg, 0deg);
-}
-header.toolbar #backButton::before, 
-header.toolbar #backButton::after {
-	content:    	'';
-	position:   	absolute;
-	top:             	.9em;
-	left:              	1.7em;
-	width:         	.2em;
-	height:        	.6em;
-	margin:      	0 0 0 -.3em;
-	background: #fff;
 }
 header.toolbar #backButton::before {
-  -webkit-transform:  	skew(-45deg, 45deg);
-  -moz-transform:  		skew(-45deg, 45deg);
-  transform:  					skew(-45deg, 45deg);
+	content:    	'';
+	position:   	absolute;
+	top:            50%;
+	left:           1.2em;
+	width:         	.8em;
+	height:        	.85em;
+	margin:      	-.45em 0 0 0;
+	border:			0;
+	border-left: 	.15em solid #fff;
+	border-bottom: 	.15em solid #fff;
+	 -webkit-transform:  	rotateZ(45deg);
+	 -moz-transform:  		rotateZ(45deg);
+	 transform:  			rotateZ(45deg);
 }
-header.toolbar #backButton::after {
-  top:             1.35em;
-  -webkit-transform:  	skew(45deg, -45deg);
-  -moz-transform:  		skew(45deg, -45deg);
-  transform:  					skew(45deg, -45deg);
-}
-header.toolbar #backButton:active, header.toolbar #backButton[selected] {
+header.toolbar #backButton:active, 
+header.toolbar #backButton[selected] {
     background:   #fff;
 }
 header.toolbar #backButton[selected]::before, 
 header.toolbar #backButton[selected]::after, 
 header.toolbar #backButton:active::before,
 header.toolbar #backButton:active::after {
-    background:   #e13636;
+    border-color:   #e13636;
 }
 
 /******************************** MAIN BUTTON *******************************************************/
@@ -211,30 +201,23 @@ section > ul > li > a {
 	color:      		          				#333;
 	text-decoration:  				none;
 	background:			    		transparent;
-	-webkit-transform:  		skew(0deg, 0deg);
-	-moz-transform:  				skew(0deg, 0deg);
-	transform:  							skew(0deg, 0deg);
 }
-section > ul > li > a::before,
-section > ul > li > a::after {
+section > ul > li > a::before {
 	content:	        '';
 	position:	      	absolute;
-	top:			        50%;
-	right:		            .2em;
+	top:			    50%;
+	right:		        .3em;
 	width:		        .5em;
-	height:		        .1em;
-	margin:		    -.3em .5em 0 0;
-	background-color:  #355163;
-	-webkit-transform:  	skew(-45deg, 45deg);
-	-moz-transform:  			skew(-45deg, 45deg);
-	transform:  						skew(-45deg, 45deg);
+	height:		        .5em;
+	margin:		    	-.25em .5em 0 0;
+	border-top:  		.1em solid #355163;
+	border-right:  		.1em solid #355163;
+	background:			transparent;
+	-webkit-transform:  	rotateZ(45deg);
+	-moz-transform:  		rotateZ(45deg);
+	transform:  			rotateZ(45deg);
 }
-section > ul > li > a::after {
-	margin-top:		    .2em;
-	-webkit-transform:  	skew(45deg, -45deg);
-	-moz-transform:  			skew(45deg, -45deg);
-	transform:  						skew(45deg, -45deg);
-}
+
 
 section > ul > li > a[selected], 
 section > ul > li > a:active,
@@ -247,21 +230,14 @@ section > ul > li > a[target="_replace"]:active {
 
 section > ul > li > a[selected]::before, 
 section > ul > li > a:active::before,
-section > ul > li > a[selected]::after, 
-section > ul > li > a:active::after,
 section.panel > ul > li > a[selected]::before, 
-section.panel > ul > li > a:active::before,
-section.panel > ul > li > a[selected]::after, 
-section.panel > ul > li > a:active::after {
-	background-color:		#fff;
+section.panel > ul > li > a:active::before {
+	border-color:		#fff;
 }
 section > ul > li > a[selected="progress"]::before {
-	background:	transparent;
-}
-section > ul > li > a[selected="progress"]::after {
 	-webkit-transform:		none;
 	-moz-transform:			none;
-	transform:						none;
+	transform:				none;
 	border:					0;
 	width:					1.1em;
 	height:					1.1em;
@@ -275,7 +251,7 @@ section > ul > li > a[target="_replace"] {
 	color: 							#6495ed;
 	background-image: none;
 }
-section > ul > li > a[target="_replace"]::after {
+section > ul > li > a[target="_replace"]::before {
     display:    none;
 }
 section > footer {
@@ -334,8 +310,8 @@ section fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
     border-radius: 						0;
 }
 section fieldset > .row > textarea {
-	min-height:   6em;
-	vertical-align: 	top;
+  min-height:   6em;
+  vertical-align: 	top;
 }
 section fieldset > .row > select {
 	float:			    right;
