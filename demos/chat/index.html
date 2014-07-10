@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Chat app Demo</title>
+	<meta name="description" content="Demo of using Firebase service to create realtime apps">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="/emy/latest/emy.css">
+	<link rel="stylesheet" type="text/css" href="/emy/latest/themes/emy/main.css">
+	<script type="application/x-javascript" src="/emy/latest/emy.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="chat.css">
+	<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+	<script type="application/x-javascript" src="chat.js"></script>
+
+</head>
+
+<body class="online">
+
+	<header id="toolbar" class="toolbar">
+		<div><a id="backButton" class="button" href="#">Back</a></div>
+		<h1 id="viewTitle">Chat App</h1>
+		<div id="toolbarRight"></div>
+	</header>
+
+    <section id="home" data-title="Chat App" selected="true">
+    	<ul id="room_add"><li>Loading rooms...</li></ul>
+    	<ul id="rooms_list"></ul>
+    </section>
+
+</body>
+</html>

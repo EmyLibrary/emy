@@ -1,0 +1,112 @@
+body.offline::before {
+	content: 		'offline';
+	position: 		fixed;
+	display: 		block;
+	top: 				0;
+	left: 				0;
+	padding-top: 20%;
+	width: 				100%;
+	min-height: 	100%;
+	font-size: 		2.5em;
+	color: 				#fff;
+	text-align: 		center;
+	z-index: 			10;
+	background-color: rgba(0,0,0,0.7);
+}
+
+/*** HOMESCREEN ***/
+section > ul > li > a > span.bubble {
+    float:               	right;
+    min-width:   	2.5em;
+    margin-top: 	-.2em;
+    padding: 		  	.2em .5em;
+    font-size:       	0.95em;
+    color:              	#fff;
+    text-align:    	center;
+    border:				0px;
+    background-color:	          	#8894aa;
+    -webkit-border-radius:		1em;
+    -moz-border-radius:			1em;
+    border-radius:						1em;
+    -webkit-animation:				kbump 250ms ease-in-out;
+    animation:								kbump 250ms ease-in-out;
+}
+section > ul > li > a:active > span.bubble,
+section > ul > li > a[selected] > span.bubble {
+    color:    				#e13636;
+    background-color:   #fff;
+}
+
+@-webkit-keyframes kbump {
+	0%		{	-webkit-transform:		scale(1);	opacity:	0;	}
+	30%	{	-webkit-transform:		scale(1.2);	opacity:	1;		}
+	80%	{	-webkit-transform:		scale(.9);	}
+	100%	{	-webkit-transform:		scale(1);	}
+}
+@keyframes kbump {
+	0%		{	transform:		scale(1);	opacity:	0;	}
+	30%	{	transform:		scale(1.2);	opacity:	1;	}
+	80%	{	transform:		scale(.9);	}
+	100%	{	transform:		scale(1);	}
+}
+
+
+/*** ROOMS ***/
+section[id^='room'] {
+	padding-bottom:		4em;
+}
+
+form.messageform {
+	position: 			fixed;
+	display:			table;
+	bottom:			0;
+	left: 					0;
+	margin: 			0;
+	font-size:			1.2em;
+	width: 				100%;
+	min-height:	2em;
+	background:		#fff;
+}
+form.messageform > div {
+	display:			table-cell;
+	width:				100%;
+	vertical-align:	top;
+}
+form.messageform textarea,
+form.messageform button {
+	display:			inline-block;
+	font-family:	inherit;
+	font-size:			inherit;
+	margin:			0;
+	height:				100%;
+	min-height:	3em;
+	border:				0;
+}
+form.messageform textarea {
+	display:				block;
+	position:				relative;
+	padding:				.5em;
+	width:					100%;
+}
+form.messageform button {
+	width:					3em;
+	color:						#fff;
+    background: 		#e13636;
+}
+
+/*** ROOMS MESSAGES ***/
+fieldset div[id^='message'] {
+	padding:				.3em;
+	min-height:		2em;
+	background:		#fff;
+	border-bottom:	1px solid #aaa;
+}
+fieldset div[id^='message'] p.date {
+	font-size:				.7em;
+	color:						#aaa;
+	text-align:			right;
+}
+fieldset div[id^='message'] p.text {
+	color:						#000;
+	padding-bottom:	.2em;
+}
