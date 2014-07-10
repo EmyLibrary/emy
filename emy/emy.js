@@ -384,10 +384,9 @@
 				fragment: frag
 			})
 
-			if (targetView && go) setTimeout(function() {
-				emy.showView(targetView)
-			}, 1);
-
+			if (targetView && go) {
+				setTimeout(function() { emy.showView(targetView); }, 1);
+			}
 		},
 
 		/*
@@ -454,7 +453,7 @@
 	Add the given class `name` to element `el`
 	*/
 		addClass: function(el, name) {
-			if (!emy.hasClass(el, name)) 
+			if (!emy.hasClass(el, name))
 				el.className += " "+name;
 		},
 
