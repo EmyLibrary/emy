@@ -17,7 +17,7 @@
 	var currentWidth = 0;
 	var currentHeight = 0;
 	var currentHash = location.hash;
-	var hashPrefix = "#";
+	var hashPrefix = "#_";
 	var viewHistory = []; // Navigation stack (poorly named, different from browser history)
 	var newViewCount = 0;
 	var checkTimer;
@@ -174,7 +174,7 @@
 				nodeId = node.id;
 			} else {
 				nodeId = view;
-				node = emy.$(hashPrefix + nodeId);
+				node = emy.$('#'+nodeId);
 			}
 
 			if (!node) emy.log("gotoView: node is null");
@@ -773,7 +773,7 @@ All forms without target="_self" will use emy's Ajax from submission.
 	function updateView(view, fromView) {
 		if (!view.id) view.id = "__" + (++newViewCount) + "__";
 
-		currentHash = hashPrefix + '' + view.id;
+		currentHash = hashPrefix + view.id;
 		if (!fromView) { // If fromView is null, this is the initial load and we want to replace a hash of "" with "#_home" or whatever the initial view id is.
 			//		location.replace(location.protocol + "//" + location.hostname + location.port + location.pathname + newHash + location.search);
 			location.replace(currentHash);
