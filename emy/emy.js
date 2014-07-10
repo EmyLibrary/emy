@@ -349,6 +349,7 @@
 	fragment into the view DOM. Each child-node of the HTML fragment is a panel
 	and if any of them are already in the DOM, they will be replaced by the
 	incoming elements.
+	go parameter can be set to false if you don't want Emy to navigate to this newly inserted screen
 	*/
 		insertViews: function(frag, go) {
 			var nodes = frag.childNodes, targetView;
