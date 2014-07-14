@@ -18,7 +18,8 @@
 	var currentHeight = 0;
 	var currentHash = location.hash;
 	var hashPrefix = "#_";
-	var viewHistory = []; // Navigation stack (poorly named, different from browser history)
+	var navStackStartIndex = 0; // Browser navigation stack index onload
+	var navStack = []; // Navigation stack
 	var newViewCount = 0;
 	var checkTimer;
 	var screenHeight = 0;
@@ -181,13 +182,13 @@
 
 			if (!emy.busy) {
 				emy.busy = true;
-				var index = viewHistory.indexOf(nodeId);
+				var index = navStack.indexOf(nodeId);
 				var backwards = index != -1;
 				if (backwards) {
 					// we're going back, remove history from index on
 					// remember - viewId will be added again in updateView
-					viewHistory.splice(index);
-				} else if (replace) viewHistory.pop();
+					navStack.splice(index);
+				} else if (replace) navStack.pop();
 
 				emy.showView(node, backwards);
 				return false;
@@ -213,17 +214,26 @@
 	*/
 		goBack: function(viewId) {
 			if (viewId) {
-				var a = viewHistory.length - (viewHistory.indexOf(viewId) + 1);
-				viewHistory = viewHistory.slice(0, (viewHistory.length - a));
-				window.history.go(-a);
-			} else {
-				if(window.history.length == 1)
-					emy.showView(emy.originalView, true);
+				var a = navStack.length - (navStack.indexOf(viewId) + 1);
+				navStack = navStack.slice(0, (navStack.length - a));
+				if(window.history.length > navStackStartIndex)
+					window.history.go(-a);
 				else
+					emy.showView(viewId, true);
+			} else {
+				if(window.history.length - (navStackStartIndex-1) == 1) {
+					// history.length can't be equal to 1 when you ask to go back so it means 
+					// the cache manifest is goofing browser's history stack. In this case, we use
+					// showView to navigate between views
+					// navStackStartIndex is important here since window.history can be more than 1
+					// if user comes from another page
+					emy.showView(navStack.pop(), true);
+				} else {
+					navStack.pop();
 					window.history.go(-1);
-				viewHistory.pop();
+				}
 			}
-			emy.log(viewHistory);
+			return navStack;
 		},
 
 		/*
@@ -555,6 +565,8 @@ anchor-based load will win because it is done second.
 				emy.prefixedProperty['animationDuration'] = 'MSAnimationDuration';
 				emy.prefixedProperty['animationEnd'] = 'MSAnimationEnd';
 			}
+			
+			navStackStartIndex = history.length;
 
 			var view = emy.getSelectedView();
 			var locView = getViewFromLocation();
@@ -716,7 +728,7 @@ All forms without target="_self" will use emy's Ajax from submission.
 
 	function checkLocation() {
 		emy.log('checkLocation');
-		emy.log(viewHistory);
+		emy.log(navStack);
 		if (location.hash != currentHash) {
 			var viewId = location.hash.substr(hashPrefix.length);
 			if ((viewId == "") && originalView) // Workaround for WebKit Bug #63777
@@ -782,7 +794,7 @@ All forms without target="_self" will use emy's Ajax from submission.
 			location.assign(currentHash);
 		}
 
-		viewHistory.push(view.id);
+		navStack.push(view.id);
 
 		var viewTitle = emy.$('#viewTitle');
 		if (view.getAttribute('data-title')) {
@@ -793,7 +805,7 @@ All forms without target="_self" will use emy's Ajax from submission.
 
 		var backButton = emy.$("#backButton");
 		if (backButton) {
-			var prevView = emy.$('#' + viewHistory[viewHistory.length - 2]);
+			var prevView = emy.$('#' + navStack[navStack.length - 2]);
 			if (prevView && !view.getAttribute("data-hidebackbutton")) {
 				backButton.style.display = "block";
 				backButton.innerHTML = (prevView.getAttribute('data-title')) ? prevView.getAttribute('data-title') : "Back";
