@@ -311,6 +311,192 @@ body > section[emy-transition='switchbackout'] {
 }
 
 /************************************************************************************************/
+body > section[emy-transition^='rotate'] {
+    -webkit-animation-duration:     	900ms;
+    -moz-animation-duration:            900ms;
+    animation-duration:                 900ms;
+    -webkit-transform-style:            preserve-3d;
+}
+body > section[emy-transition='rotatein'] {
+    -webkit-animation-name:         'anim-rotatein';
+    -moz-animation-name:            'anim-rotatein';
+    animation-name:                         anim-rotatein;
+}
+body > section[emy-transition='rotateout'] {
+    -webkit-animation-name:     'anim-rotateout';
+    -moz-animation-name:        'anim-rotateout';
+    animation-name:                     anim-rotateout;
+}
+body > section[emy-transition='rotatebackin'] {
+    -webkit-animation-name:     'anim-rotatebackin';
+    -moz-animation-name:        'anim-rotatebackin';
+    animation-name:                     anim-rotatebackin;
+}
+body > section[emy-transition='rotatebackout'] {
+    -webkit-animation-name:     'anim-rotatebackout';
+    -moz-animation-name:        'anim-rotatebackout';
+    animation-name:                     anim-rotatebackout;
+}
+
+@-webkit-keyframes 'anim-rotatein' {
+    0%      { -webkit-transform: scale(1,1) rotateY(180deg);	}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateY(0deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateY(0deg);	}
+	100%   	{ -webkit-transform: scale(1,1) rotateY(0deg);		}
+}
+@-webkit-keyframes 'anim-rotateout' {
+    0%      { -webkit-transform: scale(1,1) rotateY(0deg);		}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateY(0deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateY(0deg);   	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateY(-180deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateY(-180deg);	}
+	100%   	{ -webkit-transform: scale(1,1)	rotateY(-180deg);	}
+}
+@-webkit-keyframes 'anim-rotatebackin' {
+    0%      { -webkit-transform: scale(1,1) rotateY(180deg);	}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateY(360deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateY(360deg);	}
+	100%   	{ -webkit-transform: scale(1,1) rotateY(360deg);	}
+}
+@-webkit-keyframes 'anim-rotatebackout' {
+    0%      { -webkit-transform: scale(1,1) rotateY(0deg);		}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateY(0deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateY(0deg);   	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+	100%   	{ -webkit-transform: scale(1,1)	rotateY(180deg);	}
+}
+@keyframes anim-rotatein {
+    0%      { transform: scale(1,1) rotateY(180deg);	}
+    20%   	{ transform: scale(.8,.8) rotateY(180deg);	}
+    30%   	{ transform: scale(.8,.8) rotateY(180deg);	}
+    70% 	{ transform: scale(.8,.8) rotateY(0deg);	}
+	80%   	{ transform: scale(.8,.8) rotateY(0deg);	}
+	100%   	{ transform: scale(1,1) rotateY(0deg);		}
+}
+@keyframes anim-rotateout {
+    0%      { transform: scale(1,1) rotateY(0deg);		}
+    20%   	{ transform: scale(.8,.8) rotateY(0deg);	}
+    30%   	{ transform: scale(.8,.8) rotateY(0deg);   	}
+    70% 	{ transform: scale(.8,.8) rotateY(-180deg);	}
+	80%   	{ transform: scale(.8,.8) rotateY(-180deg);	}
+	100%   	{ transform: scale(1,1)	rotateY(-180deg);	}
+}
+@keyframes anim-rotatebackin {
+    0%      { transform: scale(1,1) rotateY(180deg);	}
+    20%   	{ transform: scale(.8,.8) rotateY(180deg);	}
+    30%   	{ transform: scale(.8,.8) rotateY(180deg);	}
+    70% 	{ transform: scale(.8,.8) rotateY(360deg);	}
+	80%   	{ transform: scale(.8,.8) rotateY(360deg);	}
+	100%   	{ transform: scale(1,1) rotateY(360deg);	}
+}
+@keyframes anim-rotatebackout {
+    0%      { transform: scale(1,1) rotateY(0deg);		}
+    20%   	{ transform: scale(.8,.8) rotateY(0deg);	}
+    30%   	{ transform: scale(.8,.8) rotateY(0deg);   	}
+    70% 	{ transform: scale(.8,.8) rotateY(180deg);	}
+	80%   	{ transform: scale(.8,.8) rotateY(180deg);	}
+	100%   	{ transform: scale(1,1)	rotateY(180deg);	}
+}
+
+/************************************************************************************************/
+body > section[emy-transition^='rotatehor'] {
+    -webkit-animation-duration:     	900ms;
+    -moz-animation-duration:            900ms;
+    animation-duration:                 900ms;
+    -webkit-transform-style:            preserve-3d;
+}
+body > section[emy-transition='rotatehorin'] {
+    -webkit-animation-name:         'anim-rotatehorin';
+    -moz-animation-name:            'anim-rotatehorin';
+    animation-name:                 anim-rotatehorin;
+}
+body > section[emy-transition='rotatehorout'] {
+    -webkit-animation-name:     'anim-rotatehorout';
+    -moz-animation-name:        'anim-rotatehorout';
+    animation-name:             anim-rotatehorout;
+}
+body > section[emy-transition='rotatehorbackin'] {
+    -webkit-animation-name:     'anim-rotatehorbackin';
+    -moz-animation-name:        'anim-rotatehorbackin';
+    animation-name:             anim-rotatehorbackin;
+}
+body > section[emy-transition='rotatehorbackout'] {
+    -webkit-animation-name:     'anim-rotatehorbackout';
+    -moz-animation-name:        'anim-rotatehorbackout';
+    animation-name:             anim-rotatehorbackout;
+}
+
+@-webkit-keyframes 'anim-rotatehorin' {
+    0%      { -webkit-transform: scale(1,1) rotateX(180deg);	}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateX(0deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateX(0deg);	}
+	100%   	{ -webkit-transform: scale(1,1) rotateX(0deg);		}
+}
+@-webkit-keyframes 'anim-rotatehorout' {
+    0%      { -webkit-transform: scale(1,1) rotateX(0deg);		}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateX(0deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateX(0deg);   	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateX(-180deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateX(-180deg);	}
+	100%   	{ -webkit-transform: scale(1,1)	rotateX(-180deg);	}
+}
+@-webkit-keyframes 'anim-rotatehorbackin' {
+    0%      { -webkit-transform: scale(1,1) rotateX(180deg);	}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateX(360deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateX(360deg);	}
+	100%   	{ -webkit-transform: scale(1,1) rotateX(360deg);	}
+}
+@-webkit-keyframes 'anim-rotatehorbackout' {
+    0%      { -webkit-transform: scale(1,1) rotateX(0deg);		}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateX(0deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateX(0deg);   	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+	100%   	{ -webkit-transform: scale(1,1)	rotateX(180deg);	}
+}
+@keyframes anim-rotatehorin {
+    0%      { transform: scale(1,1) rotateX(180deg);	}
+    20%   	{ transform: scale(.8,.8) rotateX(180deg);	}
+    30%   	{ transform: scale(.8,.8) rotateX(180deg);	}
+    70% 	{ transform: scale(.8,.8) rotateX(0deg);	}
+	80%   	{ transform: scale(.8,.8) rotateX(0deg);	}
+	100%   	{ transform: scale(1,1) rotateX(0deg);		}
+}
+@keyframes anim-rotatehorout {
+    0%      { transform: scale(1,1) rotateX(0deg);		}
+    20%   	{ transform: scale(.8,.8) rotateX(0deg);	}
+    30%   	{ transform: scale(.8,.8) rotateX(0deg);   	}
+    70% 	{ transform: scale(.8,.8) rotateX(-180deg);	}
+	80%   	{ transform: scale(.8,.8) rotateX(-180deg);	}
+	100%   	{ transform: scale(1,1)	rotateX(-180deg);	}
+}
+@keyframes anim-rotatehorbackin {
+    0%      { transform: scale(1,1) rotateX(180deg);	}
+    20%   	{ transform: scale(.8,.8) rotateX(180deg);	}
+    30%   	{ transform: scale(.8,.8) rotateX(180deg);	}
+    70% 	{ transform: scale(.8,.8) rotateX(360deg);	}
+	80%   	{ transform: scale(.8,.8) rotateX(360deg);	}
+	100%   	{ transform: scale(1,1) rotateX(360deg);	}
+}
+@keyframes anim-rotatehorbackout {
+    0%      { transform: scale(1,1) rotateX(0deg);		}
+    20%   	{ transform: scale(.8,.8) rotateX(0deg);	}
+    30%   	{ transform: scale(.8,.8) rotateX(0deg);   	}
+    70% 	{ transform: scale(.8,.8) rotateX(180deg);	}
+	80%   	{ transform: scale(.8,.8) rotateX(180deg);	}
+	100%   	{ transform: scale(1,1)	rotateX(180deg);	}
+}
+
+/************************************************************************************************/
 body > section[emy-transition^='flip3d'] {
     -webkit-animation-duration:     750ms;
     -moz-animation-duration:            750ms;
