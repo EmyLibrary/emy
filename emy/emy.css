@@ -39,11 +39,9 @@ body * {
 }
 
 body > *:not(.toolbar) {
-	display:		none;
-	position: 	  	absolute;
 	width: 			100%;
-	height: 			auto;
-	z-index:        -1;
+	height: 		auto;
+	vertical-align:	top;
 	-webkit-animation-duration:   300ms;
 	-moz-animation-duration:        300ms;
 	animation-duration:                    300ms;
@@ -54,8 +52,22 @@ body > *:not(.toolbar) {
 	-moz-animation-fill-mode:        forwards;
 	animation-fill-mode:                    forwards;
 }
+.no-js body > *:not(.toolbar):not([selected]) {
+	padding-top:	0;
+	padding-bottom:	1em;
+	border-bottom:	1px solid rgba(50,50,50,.6);
+}
+.no-js body > *:not(.toolbar):not([selected]).panel {
+	border-bottom:	1px solid rgba(255,255,255,.6);
+}
+.js body > *:not(.toolbar) {
+	display:		none;
+	position: 	  	absolute;
+	z-index:        -1;
+}
 
-body > *[selected] {
+.no-js body > *,
+.js body > *[selected] {
 	display:	  inline-block;
 }
 

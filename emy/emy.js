@@ -532,6 +532,8 @@ anchor-based load will win because it is done second.
 	{
 		if(!emy.ready)
 		{
+			emy.changeClass(emy.$('html')[0],'no-js','js');
+		
 			emy.ready=true;
 			var a = document.createElement('div').style;
 			prefix = (a.WebkitTransform == '') ? 'webkit' : (a.MozTransform == '') ? 'moz' : (a.msTransform == '') ? 'ms' : (a.transform == '') ? 'none' : null;
