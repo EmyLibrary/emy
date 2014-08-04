@@ -133,7 +133,7 @@
 
 				if (currentDialog) {
 					currentDialog.removeAttribute("selected");
-					sendEvent("blur", currentDialog); // EVENT: BLUR
+					emy.sendEvent("blur", currentDialog); // EVENT: BLUR
 					currentDialog = null;
 				}
 
@@ -143,7 +143,7 @@
 			when hidden. Currently they don't receive any `load` or `unload` events.
 			*/
 				if (emy.hasClass(view, "dialog")) {
-					sendEvent("focus", view); // EVENT: FOCUS
+					emy.sendEvent("focus", view); // EVENT: FOCUS
 					showDialog(view);
 				}
 				/*
@@ -153,15 +153,17 @@
 			*/
 				else {
 					//			  emy.$('header.toolbar').style.display='';
-					sendEvent("load", view); // EVENT: LOAD
+					emy.sendEvent("load", view); // EVENT: LOAD
 					var fromView = currentView;
-					sendEvent("blur", currentView); // EVENT: BLUR
+					emy.sendEvent("blur", currentView); // EVENT: BLUR
 					currentView = view;
-					sendEvent("focus", view); // EVENT: FOCUS
+					emy.sendEvent("focus", view); // EVENT: FOCUS
 
-					if (fromView) setTimeout(slideViews, 0, fromView, view, backwards);
-					else updateView(view, fromView);
-
+					if (fromView) {
+						setTimeout(slideViews, 0, fromView, view, backwards);
+					} else {
+						updateView(view, fromView);
+					}
 				}
 			}
 		},
@@ -264,13 +266,15 @@
 					element receives a `beforeinsert` event with `{ fragment: frag }` parameters
 					and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
 					*/
-						sendEvent("beforeinsert", document.body, {
+						emy.sendEvent("beforeinsert", document.body, {
 							fragment: frag
 						})
 						if (replace) {
-							replaceElementWithFrag(replace, frag);
+							emy.replaceElementWithFrag(replace, frag);
 							emy.busy = false;
-						} else emy.insertViews(frag);
+						} else {
+							emy.insertViews(frag);
+						}
 					} else {
 						emy.busy = false;
 						if (emy.ajaxErrHandler) {
@@ -290,6 +294,28 @@
 				cb(); // We didn't get the "lock", we may need to unselect something
 			}
 		},
+
+		/*
+	method: emy.replaceElementWithFrag(replace, frag)
+	Remove the element to replace from the DOM, and adds the fragment
+	Only used by Emy to replace an already existing view (same ID) when loading an external view/file
+	*/
+	replaceElementWithFrag : function(replace, frag) {
+		var parent = replace.parentNode;
+		var parentTarget = parent.parentNode;
+		parentTarget.removeChild(parent);
+
+		var docNode;
+		while (frag.firstChild) {
+			docNode = parentTarget.appendChild(frag.firstChild);
+			emy.sendEvent("afterinsert", document.body, {
+				insertedNode: docNode
+			});
+		}
+		emy.sendEvent("afterinsertend", document.body, {
+			fragment: frag
+		});
+	},
 
 		/*
 	method: emy.ajax(url, args, method, cb)
@@ -378,7 +404,7 @@
 					} else
 						docNode = document.body.appendChild(child);
 
-					sendEvent("afterinsert", document.body, {
+					emy.sendEvent("afterinsert", document.body, {
 						insertedNode: docNode
 					});
 					fitHeight();
@@ -390,7 +416,7 @@
 					--i;
 				}
 			}
-			sendEvent("afterinsertend", document.body, {
+			emy.sendEvent("afterinsertend", document.body, {
 				fragment: frag
 			})
 
@@ -509,6 +535,26 @@
 		*/
 		log: function() {
 			if ((window.console != undefined) && emy.logging==true) console.log.apply(console, arguments);
+		},
+
+		findParent : function(node, localName) {
+			while (node && (node.nodeType != 1 || node.localName.toLowerCase() != localName))
+			node = node.parentNode;
+			return node;
+		},
+
+		sendEvent : function(type, node, props) {
+			if (node) {
+				var event = document.createEvent("UIEvent");
+				event.initEvent(type, false, false); // no bubble, no cancel
+				if (props) {
+					for (i in props) {
+						event[i] = props[i];
+					}
+				}
+				node.dispatchEvent(event);
+			}
+			emy.log('event sent: ' + type);
 		}
 	};
 
@@ -571,7 +617,8 @@ anchor-based load will win because it is done second.
 			navStackStartIndex = history.length;
 
 			var view = emy.getSelectedView();
-			var locView = getViewFromLocation();
+			var locViewId = location.hash.substr(hashPrefix.length);
+			var locView = (locViewId)?emy.$('#' + locViewId):null;
 
 			if (view) {
 				emy.originalView = view;
@@ -623,7 +670,7 @@ anchor-based load will win because it is done second.
 	addEventListener("click", function(event) { /* an iOS6 bug stops the timer when a new tab fires an alert - this fixes the issue */
 		if (!emy.busy && !("onhashchange" in window)) checkTimer = setInterval(checkLocation, 300);
 
-		var link = findParent(event.target, "a");
+		var link = emy.findParent(event.target, "a");
 		if (link) {
 			function unselect() {
 				link.removeAttribute("selected");
@@ -653,7 +700,7 @@ anchor-based load will win because it is done second.
 		}
 
 
-		var div = findParent(event.target, "div");
+		var div = emy.findParent(event.target, "div");
 		if (div && emy.hasClass(div, "toggle")) {
 			var toggleVal = div.getAttribute("toggled");
 			(toggleVal != null) ? div.removeAttribute('toggled') : div.setAttribute("toggled", "");
@@ -669,9 +716,9 @@ anchor-based load will win because it is done second.
 			event.preventDefault();
 		}
 
-		var button = findParent(event.srcElement, "button");
+		var button = emy.findParent(event.srcElement, "button");
 		if (button && button.getAttribute("type") == "cancel") {
-			var view = findParent(event.srcElement, "section");
+			var view = emy.findParent(event.srcElement, "section");
 			if(emy.hasClass(view,'dialog'))
 				cancelDialog(view);
 		}
@@ -705,32 +752,11 @@ All forms without target="_self" will use emy's Ajax from submission.
 		});
 	}
 
-	function sendEvent(type, node, props) {
-		if (node) {
-			var event = document.createEvent("UIEvent");
-			event.initEvent(type, false, false); // no bubble, no cancel
-			if (props) {
-				for (i in props) {
-					event[i] = props[i];
-				}
-			}
-			node.dispatchEvent(event);
-		}
-		emy.log('event sent: ' + type);
-	}
-
-	function getViewFromLocation() {
-		var view = location.hash.substr(hashPrefix.length);
-		return (view) ? emy.$('#' + view) : null;
-	}
-
 	function resizeHandler() {
 		fitHeight();
 	}
 
 	function checkLocation() {
-		emy.log('checkLocation');
-		emy.log(navStack);
 		if (location.hash != currentHash) {
 			var viewId = location.hash.substr(hashPrefix.length);
 			if ((viewId == "") && originalView) // Workaround for WebKit Bug #63777
@@ -832,10 +858,10 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 		scrollTo(0, 1);
 		clearInterval(checkTimer);
 
-		sendEvent("beforetransition", fromView, {
+		emy.sendEvent("beforetransition", fromView, {
 			out: true
 		});
-		sendEvent("beforetransition", toView, {
+		emy.sendEvent("beforetransition", toView, {
 			out: false
 		});
 
@@ -858,14 +884,14 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 			if (fromView.getAttribute('data-onexit')) eval(fromView.getAttribute('data-onexit'));
 			if (toView.getAttribute('data-onshow')) eval(toView.getAttribute('data-onshow'));
 
-			sendEvent("aftertransition", fromView, {
+			emy.sendEvent("aftertransition", fromView, {
 				out: true
 			});
-			sendEvent("aftertransition", toView, {
+			emy.sendEvent("aftertransition", toView, {
 				out: false
 			});
 
-			if (backwards) sendEvent("unload", fromView); // EVENT: UNLOAD
+			if (backwards) emy.sendEvent("unload", fromView); // EVENT: UNLOAD
 		}
 	}
 
@@ -917,13 +943,13 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 
 	function submitForm(form) {
 		emy.addClass(form, "progress");
-		sendEvent("beforeformsubmit", document.body, {
+		emy.sendEvent("beforeformsubmit", document.body, {
 			form: form
 		})
 		emy.showViewByHref(form.getAttribute('action'), encodeForm(form), form.hasAttribute('method') ? form.getAttribute('method') : 'GET', null, function() {
 			emy.changeClass(form, 'progress', '');
 			cancelDialog(form);
-			sendEvent("afterformsubmit", document.body, {
+			emy.sendEvent("afterformsubmit", document.body, {
 				form: form
 			})
 		});
@@ -964,28 +990,6 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 		return args;
 	}
 
-	function findParent(node, localName) {
-		while (node && (node.nodeType != 1 || node.localName.toLowerCase() != localName))
-		node = node.parentNode;
-		return node;
-	}
-
-	function replaceElementWithFrag(replace, frag) {
-		var parent = replace.parentNode;
-		var parentTarget = parent.parentNode;
-		parentTarget.removeChild(parent);
-
-		var docNode;
-		while (frag.firstChild) {
-			docNode = parentTarget.appendChild(frag.firstChild);
-			sendEvent("afterinsert", document.body, {
-				insertedNode: docNode
-			});
-		}
-		sendEvent("afterinsertend", document.body, {
-			fragment: frag
-		})
-	}
 
 	function preloadImages() {
 		var preloader = document.createElement("div");
