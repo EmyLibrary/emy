@@ -133,7 +133,7 @@
 
 				if (currentDialog) {
 					currentDialog.removeAttribute("selected");
-					emy.sendEvent("blur", currentDialog); // EVENT: BLUR
+					emy.sendEvent("emy-blur", currentDialog); // EVENT: BLUR
 					currentDialog = null;
 				}
 
@@ -143,7 +143,7 @@
 			when hidden. Currently they don't receive any `load` or `unload` events.
 			*/
 				if (emy.hasClass(view, "dialog")) {
-					emy.sendEvent("focus", view); // EVENT: FOCUS
+					emy.sendEvent("emy-focus", view); // EVENT: FOCUS
 					showDialog(view);
 				}
 				/*
@@ -153,11 +153,11 @@
 			*/
 				else {
 					//			  emy.$('header.toolbar').style.display='';
-					emy.sendEvent("load", view); // EVENT: LOAD
+					emy.sendEvent("emy-load", view); // EVENT: LOAD
 					var fromView = currentView;
-					emy.sendEvent("blur", currentView); // EVENT: BLUR
+					emy.sendEvent("emy-blur", currentView); // EVENT: BLUR
 					currentView = view;
-					emy.sendEvent("focus", view); // EVENT: FOCUS
+					emy.sendEvent("emy-focus", view); // EVENT: FOCUS
 
 					if (fromView) {
 						setTimeout(slideViews, 0, fromView, view, backwards);
@@ -266,7 +266,7 @@
 					element receives a `beforeinsert` event with `{ fragment: frag }` parameters
 					and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
 					*/
-						emy.sendEvent("beforeinsert", document.body, {
+						emy.sendEvent("emy-beforeinsert", document.body, {
 							fragment: frag
 						})
 						if (replace) {
@@ -308,11 +308,11 @@
 		var docNode;
 		while (frag.firstChild) {
 			docNode = parentTarget.appendChild(frag.firstChild);
-			emy.sendEvent("afterinsert", document.body, {
+			emy.sendEvent("emy-afterinsert", document.body, {
 				insertedNode: docNode
 			});
 		}
-		emy.sendEvent("afterinsertend", document.body, {
+		emy.sendEvent("emy-afterinsertend", document.body, {
 			fragment: frag
 		});
 	},
@@ -404,7 +404,7 @@
 					} else
 						docNode = document.body.appendChild(child);
 
-					emy.sendEvent("afterinsert", document.body, {
+					emy.sendEvent("emy-afterinsert", document.body, {
 						insertedNode: docNode
 					});
 					fitHeight();
@@ -416,7 +416,7 @@
 					--i;
 				}
 			}
-			emy.sendEvent("afterinsertend", document.body, {
+			emy.sendEvent("emy-afterinsertend", document.body, {
 				fragment: frag
 			})
 
@@ -859,10 +859,10 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 		scrollTo(0, 1);
 		clearInterval(checkTimer);
 
-		emy.sendEvent("beforetransition", fromView, {
+		emy.sendEvent("emy-beforetransition", fromView, {
 			out: true
 		});
-		emy.sendEvent("beforetransition", toView, {
+		emy.sendEvent("emy-beforetransition", toView, {
 			out: false
 		});
 
@@ -885,14 +885,14 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 			if (fromView.getAttribute('data-onexit')) eval(fromView.getAttribute('data-onexit'));
 			if (toView.getAttribute('data-onshow')) eval(toView.getAttribute('data-onshow'));
 
-			emy.sendEvent("aftertransition", fromView, {
+			emy.sendEvent("emy-aftertransition", fromView, {
 				out: true
 			});
-			emy.sendEvent("aftertransition", toView, {
+			emy.sendEvent("emy-aftertransition", toView, {
 				out: false
 			});
 
-			if (backwards) emy.sendEvent("unload", fromView); // EVENT: UNLOAD
+			if (backwards) emy.sendEvent("emy-unload", fromView); // EVENT: UNLOAD
 		}
 	}
 
@@ -944,13 +944,13 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 
 	function submitForm(form) {
 		emy.addClass(form, "progress");
-		emy.sendEvent("beforeformsubmit", document.body, {
+		emy.sendEvent("emy-beforeformsubmit", document.body, {
 			form: form
 		})
 		emy.showViewByHref(form.getAttribute('action'), encodeForm(form), form.hasAttribute('method') ? form.getAttribute('method') : 'GET', null, function() {
 			emy.changeClass(form, 'progress', '');
 			cancelDialog(form);
-			emy.sendEvent("afterformsubmit", document.body, {
+			emy.sendEvent("emy-afterformsubmit", document.body, {
 				form: form
 			})
 		});
