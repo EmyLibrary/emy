@@ -638,7 +638,8 @@ anchor-based load will win because it is done second.
 			setTimeout(function() {
 				preloadImages();
 				checkLocation();
-				fitHeight()
+				fitHeight();
+				emy.sendEvent('emy-ready', document);
 			}, 1);
 		}
 	}
