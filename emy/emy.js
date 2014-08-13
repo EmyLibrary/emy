@@ -388,11 +388,15 @@
 	go parameter can be set to false if you don't want Emy to navigate to this newly inserted screen
 	*/
 		insertViews: function(frag, go) {
+			if(typeof frag==='string') {
+				var tempfrag = frag;
+				frag = document.createElement('div');
+				frag.innerHTML = tempfrag;
+			}
 			var nodes = frag.childNodes, targetView;
 			// set go to false if you dont want to navigate to the inserted view
 			go = (go==false)?false:true;
-			for (var i = 0; i < nodes.length; ++i) {
-				var child = nodes[i];
+			function createView(child) {
 				if (child.nodeType == 1) {
 					if (!child.id) child.id = "__" + (++newViewCount) + "__";
 
@@ -414,6 +418,13 @@
 					// BUG: selected="true" results in a visually incorrect transition
 					if (child.getAttribute("selected") == "true" || !targetView) targetView = child;
 					--i;
+				}
+			}
+			if(frag.childNodes.length==1) {
+				createView(frag);
+			} else {
+				for (var i = 0; i < nodes.length; ++i) {
+					createView(nodes[i]);
 				}
 			}
 			emy.sendEvent("emy-afterinsertend", document.body, {
