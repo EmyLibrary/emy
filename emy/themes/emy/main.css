@@ -277,7 +277,8 @@ section fieldset > .row > p {
 }
 
 section fieldset > .row > label {
-	padding:				.8em .7em;
+	padding:			.8em .2em .8em .7em;
+	min-width:			9em;
 	max-width:			30%;
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
@@ -293,7 +294,7 @@ section fieldset > .row > select {
 	width:					100%;
 	margin: 				0;
 	height: 					inherit;
-	font-size:				.9em;
+	font-size:				1em;
 	color:						#355163;
 	background:		transparent;
 	-webkit-appearance: none;
