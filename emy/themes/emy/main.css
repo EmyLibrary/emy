@@ -277,8 +277,8 @@ section fieldset > .row > p {
 }
 
 section fieldset > .row > label {
-	padding:			.8em .2em .8em .7em;
-	min-width:			9em;
+	padding:			.9em .2em .9em .7em;
+	min-width:			8em;
 	max-width:			30%;
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
@@ -303,7 +303,7 @@ section fieldset > .row > select {
 }
 section fieldset > .row > textarea,
 section fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
-    padding: 			.9em .8em 1em 8em;
+    padding: 			.9em .8em .9em 8em;
     border:				0;
     resize: 				none;
     -webkit-border-radius: 	0;
