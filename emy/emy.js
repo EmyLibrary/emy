@@ -374,8 +374,7 @@
 				} else s[s.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value);
 			}
 			// Return the resulting serialization
-			return s.join("&")
-				.replace(/%20/g, "+");
+			return s.join("&").replace(/%20/g, "+");
 		},
 
 		/*
