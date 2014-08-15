@@ -20,7 +20,6 @@
 	var hashPrefix = "#_";
 	var navStackStartIndex = 0; // Browser navigation stack index onload
 	var navStack = []; // Navigation stack
-	var newViewCount = 0;
 	var checkTimer;
 	var screenHeight = 0;
 
@@ -397,7 +396,7 @@
 			go = (go==false)?false:true;
 			function createView(child) {
 				if (child.nodeType == 1) {
-					if (!child.id) child.id = "__" + (++newViewCount) + "__";
+					if (!child.id) child.id = "__" + (new Date().getTime()) + "__";
 
 					var clone = emy.$('#' + child.id);
 					var docNode;
@@ -822,7 +821,7 @@ All forms without target="_self" will use emy's Ajax from submission.
 	}
 
 	function updateView(view, fromView) {
-		if (!view.id) view.id = "__" + (++newViewCount) + "__";
+		if (!view.id) view.id = "__" + (new Date().getTime()) + "__";
 
 		currentHash = hashPrefix + view.id;
 		if (!fromView) { // If fromView is null, this is the initial load and we want to replace a hash of "" with "#_home" or whatever the initial view id is.
