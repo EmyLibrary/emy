@@ -386,16 +386,32 @@
 	go parameter can be set to false if you don't want Emy to navigate to this newly inserted screen
 	*/
 		insertViews: function(frag, go) {
+
+			var newfrag;
 			if(typeof frag==='string') {
-				var tempfrag = frag;
-				frag = document.createElement('div');
-				frag.innerHTML = tempfrag;
-			}
-			var nodes = frag.childNodes, targetView;
+				// if the frag parameter is a HTML string
+				// it is added to a DIV element to loop on childNodes
+				newfrag = document.createElement('div');
+				newfrag.innerHTML = frag;
+			} else if(frag.nodeName.toLowerCase()=='section' && frag.getAttribute('data-title')) {
+				// if the frag parameter is a section view element
+				// it is added to a DIV element for code consistency
+				newfrag = document.createElement('div');
+				newfrag.appendChild(frag);
+			} else
+				newfrag = frag;
+
+			var nodes = newfrag.childNodes, targetView;
 			// set go to false if you dont want to navigate to the inserted view
 			go = (go==false)?false:true;
-			function createView(child) {
-				if (child.nodeType == 1) {
+
+			emy.sendEvent("emy-beforeinsert", document.body, {
+				fragment: newfrag
+			});
+
+			for (var i = 0, inb = nodes.length; i < inb; i++) {
+				var child = nodes[i];
+				if (child && child.nodeName.toLowerCase()=='section') {
 					if (!child.id) child.id = "__" + (new Date().getTime()) + "__";
 
 					var clone = emy.$('#' + child.id);
@@ -418,15 +434,9 @@
 					--i;
 				}
 			}
-			if(frag.childNodes.length==1) {
-				createView(frag);
-			} else {
-				for (var i = 0; i < nodes.length; ++i) {
-					createView(nodes[i]);
-				}
-			}
+
 			emy.sendEvent("emy-afterinsertend", document.body, {
-				fragment: frag
+				fragment: newfrag
 			})
 
 			if (targetView && go) {
