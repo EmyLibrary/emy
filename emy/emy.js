@@ -741,6 +741,8 @@ anchor-based load will win because it is done second.
 			var view = emy.findParent(event.srcElement, "section");
 			if(emy.hasClass(view,'dialog'))
 				cancelDialog(view);
+		} else if(button && button.getAttribute("type") != "submit") {
+			event.preventDefault();
 		}
 	}, true);
 
