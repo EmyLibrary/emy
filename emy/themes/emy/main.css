@@ -302,16 +302,16 @@ section fieldset > .row > select {
 	appearance:					none;
 }
 section fieldset > .row > textarea,
-section fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
+section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
     padding: 			.9em .8em .9em 8em;
     border:				0;
-    resize: 				none;
-    -webkit-border-radius: 	0;
-    -moz-border-radius: 			0;
-    border-radius: 						0;
+    resize: 					none;
+    -webkit-border-radius:		0;
+    -moz-border-radius: 		0;
+    border-radius: 				0;
 }
 section fieldset > .row > textarea {
-  min-height:   6em;
+  min-height:   	6em;
   vertical-align: 	top;
 }
 section fieldset > .row > select {
@@ -327,8 +327,8 @@ section fieldset > .row > select {
 section fieldset > .row > select::-ms-expand {
     display: none;
 } 
-section fieldset > .row > input[type|=radio], 
-section fieldset > .row > input[type|=checkbox] {
+section fieldset > .row > input[type=radio], 
+section fieldset > .row > input[type=checkbox] {
 	float:				right;
 	padding:		0;
 	margin:		.5em 10px 0 0;
@@ -341,7 +341,7 @@ section fieldset > .row > input[type|=checkbox] {
 	-moz-border-radius: 			1em;
 	border-radius: 						1em;
 }
-section fieldset > .row > input[type|=checkbox] {
+section fieldset > .row > input[type=checkbox] {
 	-webkit-border-radius: 	.5em;
 	-moz-border-radius: 		    .5em;
 	border-radius:					    .5em;
@@ -397,13 +397,13 @@ section.dialog fieldset > div.row:first-child {
 	border: 	0;
 }
 section.dialog fieldset > div.row > label,
-section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
     color:			#fff;
 }
 section.dialog fieldset > div.row > label {
 
 }
-section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
 	padding:			.5em 0 .5em 8.5em;
 }
 

@@ -231,7 +231,7 @@ section fieldset > .row > select {
     appearance:					none;
 }
 section fieldset > .row > textarea,
-section fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
+section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
 	margin:       	0;
 	color:          	#bebebe;
 	border:			0;
@@ -253,8 +253,8 @@ section fieldset > .row > select {
 section fieldset > .row > select::-ms-expand {
     display: none;
 } 
-section fieldset > .row > input[type|=radio], 
-section fieldset > .row > input[type|=checkbox] {
+section fieldset > .row > input[type=radio], 
+section fieldset > .row > input[type=checkbox] {
 	position:    	absolute;
 	top:              	0;
 	right:           	0;
@@ -269,7 +269,7 @@ section fieldset > .row > input[type|=checkbox] {
 	-moz-border-radius: 		    1em;
 	border-radius: 					    1em;
 }
-section fieldset > .row > input[type|=checkbox] {
+section fieldset > .row > input[type=checkbox] {
 	-webkit-border-radius: 	.5em;
 	-moz-border-radius: 		    .5em;
 	border-radius:					    .5em;
@@ -325,10 +325,10 @@ section.dialog fieldset > div.row {
 section.dialog fieldset > div.row > label {
     font-size:		  .9em;
 }
-section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
     padding:        .5em;
 }
-section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
 	padding:			.5em 0 .5em 8.5em;
 }
 

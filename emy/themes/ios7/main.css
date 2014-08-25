@@ -306,7 +306,7 @@ section fieldset > .row > input {
     border-radius: 						0;
 }
 section fieldset > .row > textarea,
-section fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
+section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
     padding: 			.9em .8em 1em 8em;
 }
 section fieldset > .row > textarea {
@@ -402,7 +402,7 @@ section.dialog fieldset > div.row:first-child {
 	border: 	0;
 }
 section.dialog fieldset > div.row > label,
-section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
     color:			#fff;
 	color:			rgba(255,255,255,.8);
 }
@@ -410,7 +410,7 @@ section.dialog fieldset > div.row > label {
 	padding:			.6em .7em;
 	z-index:			2;
 }
-section.dialog fieldset > div.row > label + input:not([type|=radio]):not([type|=checkbox]) {
+section.dialog fieldset > div.row > label + input:not([type=radio]):not([type=checkbox]) {
 	padding:			.5em 0 .5em 8.5em;
 	background:			rgba(0,0,0,.4);
 	-webkit-border-radius:		.3em;

@@ -284,7 +284,7 @@ section fieldset > .row > select {
 	appearance:					none;
 }
 section fieldset > .row > textarea,
-section fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
+section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
     padding: 			.9em .8em 1em 8em;
     border:				0;
     resize: 				none;
@@ -307,8 +307,8 @@ section fieldset > .row > select {
 	clear:			    both;
 }
 section fieldset > .row > select,
-section fieldset > .row > input[type|=radio], 
-section fieldset > .row > input[type|=checkbox] {
+section fieldset > .row > input[type=radio], 
+section fieldset > .row > input[type=checkbox] {
     border:					.2em solid #c8c8c8;
 	background:		#e2e2e2;
 	background-image:		-webkit-gradient(linear, left top, bottom left, from(#fafafa), to(#e2e2e2));
@@ -323,8 +323,8 @@ section fieldset > .row > input[type|=checkbox] {
 section fieldset > .row > select::-ms-expand {
     display: none;
 }
-section fieldset > .row > input[type|=radio], 
-section fieldset > .row > input[type|=checkbox] {
+section fieldset > .row > input[type=radio], 
+section fieldset > .row > input[type=checkbox] {
 	position:		relative;
 	float:				right;
 	padding:		0;
@@ -332,11 +332,11 @@ section fieldset > .row > input[type|=checkbox] {
 	height:			2.1em;
 	width:			2.1em;
 }
-section fieldset > .row > input[type|=radio] {
+section fieldset > .row > input[type=radio] {
     -webkit-border-radius:		3em;
     border-radius:						3em;
 }
-section fieldset > .row > input[type|=checkbox]:checked:after {
+section fieldset > .row > input[type=checkbox]:checked:after {
 	content:		'';
 	position:		absolute;
 	top:				.1em;
@@ -348,7 +348,7 @@ section fieldset > .row > input[type|=checkbox]:checked:after {
 	-webkit-transform:	rotateZ(45deg);
 	transform:	rotateZ(45deg);
 }
-section fieldset > .row > input[type|=radio]:checked:after {
+section fieldset > .row > input[type=radio]:checked:after {
 	content:		'';
 	position:		absolute;
 	top:				.45em;
@@ -362,8 +362,8 @@ section fieldset > .row > input[type|=radio]:checked:after {
     -webkit-border-radius:		1em;
     border-radius:						1em;
 }
-section fieldset > .row > input[type|=radio]:checked,
-section fieldset > .row > input[type|=checkbox]:checked {
+section fieldset > .row > input[type=radio]:checked,
+section fieldset > .row > input[type=checkbox]:checked {
 	background-image:		-webkit-gradient(linear, left top, left bottom, from(#26c6fd), to(#0c7fbb));
     background-image:		-webkit-linear-gradient(270deg, #26c6fd 0%, #0c7fbb 100%);
     background-image:		linear-gradient(180deg, #26c6fd 0%, #0c7fbb 100%);
@@ -432,13 +432,13 @@ section.dialog fieldset > div.row:first-child {
 	border: 	0;
 }
 section.dialog fieldset > div.row > label,
-section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
     color:			#fff;
 }
 section.dialog fieldset > div.row > label {
 
 }
-section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
 	padding:			.5em 0 .5em 8.5em;
 }
 
