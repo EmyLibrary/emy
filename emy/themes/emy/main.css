@@ -349,6 +349,17 @@ section fieldset > .row > input[type=checkbox] {
 	-moz-appearance: 				checkbox;
 	appearance: 						    checkbox;
 }
+section fieldset > .row > input[type=range] {
+	float:			right;
+	width:			48%;
+	height:			auto;
+	margin-right:	2%;
+	padding-left: 	0px!important;
+	padding-right: 	0px!important;
+	-webkit-appearance: 	slider-horizontal;
+	-moz-appearance: 		slider-horizontal;
+	appearance: 			slider-horizontal;
+}
 
 /******************************** DIALOG *******************************************************/
 section.dialog {
