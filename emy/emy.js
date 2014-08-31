@@ -635,16 +635,25 @@ anchor-based load will win because it is done second.
 			
 			navStackStartIndex = history.length;
 
-			var view = emy.getSelectedView();
+			var defaultView = emy.getSelectedView();
+
+			// get requested view ID as a hash value in the URL
 			var locViewId = location.hash.substr(hashPrefix.length);
 			var locView = (locViewId)?emy.$('#' + locViewId):null;
 
-			if (view) {
-				emy.originalView = view;
-				emy.showView(view);
+			if (defaultView) {
+				// get the default view node, aka got a "selected" attribute
+				emy.originalView = defaultView;
+				emy.showView(defaultView);
+			} else {
+				// no default view set, so we take the first view
+				var views = emy.getAllViews();
+				emy.originalView = (views.length>0)?views[0]:false;
 			}
 
-			if (locView && (locView != view)) emy.showView(locView);
+			// navigate to the requested view if different than the default one
+			if (locView && (locView != defaultView))
+				emy.showView(locView);
 
 			//set resize handler onorientationchange if available, otherwise use onresize
 			if (typeof window.onorientationchange == "object") window.onorientationchange = resizeHandler;
