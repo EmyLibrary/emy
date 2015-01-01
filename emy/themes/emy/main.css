@@ -277,6 +277,8 @@ section fieldset > .row > p {
 }
 
 section fieldset > .row > label {
+	top:				0;
+	left:				0;
 	padding:			.9em .2em .9em .7em;
 	min-width:			8em;
 	max-width:			30%;
@@ -351,7 +353,7 @@ section fieldset > .row > input[type=checkbox] {
 }
 section fieldset > .row > input[type=range] {
 	float:			right;
-	width:			48%;
+	width:			68%;
 	height:			auto;
 	margin-right:	2%;
 	padding-left: 	0px!important;
@@ -359,6 +361,9 @@ section fieldset > .row > input[type=range] {
 	-webkit-appearance: 	slider-horizontal;
 	-moz-appearance: 		slider-horizontal;
 	appearance: 			slider-horizontal;
+}
+section fieldset > .row > input[type=range] + label {
+	width:		29%;
 }
 
 /******************************** DIALOG *******************************************************/
