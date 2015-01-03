@@ -249,44 +249,34 @@
 	the incoming HTML to the `body`), and `cb` is a user-supplied callback function.
 	*/
 		showViewByHref: function(url, args, method, replace, cb) {
-			// I don't think we need onerror, because readyState will still go to 4 in that case
 
-			function spbhCB(xhr) {
-				if (xhr.readyState == 4) {
-					if ((xhr.status == 200 || xhr.status == 0) && !xhr.aborted) {
-						// Add 'if (xhr.responseText)' to make sure we have something???
-						// Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
-						var frag = document.createElement("div");
-						frag.innerHTML = xhr.responseText;
-						// EVENT beforeInsert->body
-						/*
-					events:
-					When new views are inserted into the DOM after an AJAX load, the `body`
-					element receives a `beforeinsert` event with `{ fragment: frag }` parameters
-					and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
-					*/
-						emy.sendEvent("emy-beforeinsert", document.body, {
-							fragment: frag
-						})
-						if (replace) {
-							emy.replaceElementWithFrag(replace, frag);
-							emy.busy = false;
-						} else {
-							emy.insertViews(frag);
-						}
-					} else {
-						emy.busy = false;
-						if (emy.ajaxErrHandler) {
-							emy.ajaxErrHandler("Error contacting server, please try again later");
-						}
-					}
-					if (cb) {
-						setTimeout(cb, 1000, true);
-					}
-				}
+            function spbhCB(ajaxResult) {
+                var frag = document.createElement("div");
+                frag.innerHTML = ajaxResult;
+                // EVENT beforeInsert->body
+                /*
+                events:
+                When new views are inserted into the DOM after an AJAX load, the `body`
+                element receives a `beforeinsert` event with `{ fragment: frag }` parameters
+                and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
+                */
+                emy.sendEvent("emy-beforeinsert", document.body, {
+                    fragment: frag
+                })
 
+                if (replace) {
+                    emy.replaceElementWithFrag(replace, frag);
+                    emy.busy = false;
+                } else {
+                    emy.insertViews(frag);
+                }
+
+                if (cb) {
+                    setTimeout(cb, 1000, true);
+                }
 			};
-			if (!emy.busy) {
+
+            if (!emy.busy) {
 				emy.busy = true;
 				emy.ajax(url, args, method, spbhCB);
 			} else {
@@ -317,21 +307,29 @@
 	},
 
 		/*
-	method: emy.ajax(url, args, method, cb)
+	method: emy.ajax(url, parameters, method, callback, errorCallback)
 	Handles ajax requests and also fires a `setTimeout()` call
 	to abort the request if it takes longer than 30 seconds. See `showViewByHref()`
 	above for a description of the various arguments (`url` is the same as `href`).
 	*/
-		ajax: function(url, args, method, cb) {
+		ajax: function(url, args, method, callback, errorCallback) {
 			var xhr = new XMLHttpRequest();
 			method = method ? method.toUpperCase() : "GET";
 			if (args && method == "GET") {
 				url = url + "?" + emy.param(args);
 			}
 			xhr.open(method, url, true);
-			if (cb) {
+			if (callback) {
 				xhr.onreadystatechange = function() {
-					cb(xhr);
+                    emy.log(xhr);
+                    if(!xhr.aborted) {
+                        if(xhr.readyState==4 && xhr.status==200 && xhr.responseText) {
+                            xhr.aborted = true;
+                            if(callback) callback(xhr.responseText);
+                        } else if(xhr.status==0 && !xhr.aborted) {
+                            ajaxTimeout();
+                        }
+                    }
 				};
 			}
 			var data = null;
@@ -348,12 +346,11 @@
 
 			function ajaxTimeout() {
 				try {
-					xhr.abort();
-					xhr.aborted = true;
-				} catch (err) {
-					emy.log(err);
-				}
-			}
+                    xhr.abord();
+                } catch (err) { }
+                if(errorCallback && !xhr.aborted) errorCallback(xhr);
+                xhr.aborted = true;
+            }
 		},
 
 		/*
