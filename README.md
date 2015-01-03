@@ -1,7 +1,7 @@
 Emy - Efficient Mobile web librarY
 ==================================
 
-EMY is an Efficient Mobile web librarY to create mobile web applications using HTML5, CSS3 & Javascript. Our goal is not to recreate what JQuery Mobile or Sencha are doing, but to provide a simplier lightweight [Keep It Simple Stupid](https://en.wikipedia.org/wiki/KISS_principle) alternative.
+EMY is an Efficient Mobile web librarY to create mobile web applications using HTML5, CSS3 & Javascript. Our goal is not to recreate what JQuery Mobile or Sencha are doing, but to provide a simplier & lightweight [KISS](https://en.wikipedia.org/wiki/KISS_principle) alternative.
 
 ###Getting Started
 
