@@ -25,6 +25,7 @@ Emy is a single-page application library, which means all "views" are part of th
 
 </body>
 ```
+Feel free to [test this code live on Codio](http://bit.ly/1f6FaZR).
 
 Of course, external/additionnal views can be added after onload, by linking to an external html document.
 
@@ -50,7 +51,6 @@ index.html
 ```
 second.html
 
-Feel free to [test this code live on Codio](http://bit.ly/1f6FaZR).
 For further reading, check out this full [getting started tutorial](http://www.emy-library.org/documentation.html) on our website.
 
 ### Demos
