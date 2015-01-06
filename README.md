@@ -7,7 +7,7 @@ EMY is an Efficient Mobile web librarY to create mobile web applications using H
 
 Emy is a single-page application library, which means all "views" are part of the HTML onload. Then its anchor-based navigation mechanism deals with sliding between views, keeping support & sync with the browser/device navigation stack (aka browser's back button). 
 
-```
+```html
 <body>
 
     <header class="toolbar">
@@ -29,7 +29,7 @@ Feel free to [test this code live on Codio](http://bit.ly/1f6FaZR).
 
 Of course, external/additionnal views can be added after onload, by linking to an external html document.
 
-```
+```html
 <body>
 
     <header class="toolbar">
@@ -44,7 +44,7 @@ Of course, external/additionnal views can be added after onload, by linking to a
 </body>
 ```
 index.html
-```
+```html
 <section id="second" data-title="Second View" class="panel">
   My second view.
 </section>
