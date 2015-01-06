@@ -473,18 +473,30 @@
 
 		/*
 	emy.isNativeUrl(href)
-	Determines whether the supplied URL string launches a native iPhone app (maps, YouTube, phone, email, etc). If so, emy does nothing (doesn't attempt to load a view or slide to it) and allows the phone to handle it the click natively.
+	Determines whether the supplied URL string launches a native app (maps, YouTube, phone, email, etc). 
+    If so, emy does not attempt to load or slide to a view and do let the phone handling the click natively.
 	*/
 		isNativeUrl: function(url) {
 			var urlPatterns = [
-			new RegExp("^http:\/\/maps.google.com\/maps\?"),
-			new RegExp("^mailto:"),
-			new RegExp("^tel:"),
-			new RegExp("^http:\/\/www.youtube.com\/watch\\?v="),
-			new RegExp("^http:\/\/www.youtube.com\/v\/"),
-			new RegExp("^javascript:"),
-			new RegExp("^sms:"),
-			new RegExp("^callto:")];
+                new RegExp("^javascript:"),
+                new RegExp("^mailto:"),
+                new RegExp("^tel:"),
+                new RegExp("^sms:"),
+                new RegExp("^callto:"),
+                new RegExp("^skype:"),
+                new RegExp("^video:"),
+                new RegExp("^music:"),
+                new RegExp("^maps:"),
+                new RegExp("^feed:"),
+                new RegExp("^(http|https):\/\/itunes.apple.com\/"),
+                new RegExp("^(http|https):\/\/youtube.com\/watch\\?v="),
+                new RegExp("^(http|https):\/\/youtube.com\/v\/"),
+                new RegExp("^http:\/\/youtu.be\/"),
+                new RegExp("^(http|https):\/\/maps.google.com\/?"),
+                new RegExp("^(http|https):\/\/www.google.com\/maps\/?"),
+                new RegExp("^(http|https):\/\/facebook.com\/"),
+                new RegExp("^(http|https):\/\/twitter.com\/")
+            ];
 			var out = false;
 			for (var i = 0; i < urlPatterns.length; i++) {
 				if (url.match(urlPatterns[i])) out = true;
