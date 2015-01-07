@@ -28,8 +28,9 @@
         <li><a href="#bubble-list">Bubble in list</a></li>
         <li><a href="#caption-list">Caption in list</a></li>
         <li><a href="#icon-board">Icon board</a></li>
+        <li><a href="#icon-board-adaptive">Icon board 25%</a></li>
         <li><a href="#groupicon-list">Icon in list</a></li>
-        <li><a href="#halfsize-button">Half size button</a></li>
+        <li><a href="#grid">Grid</a></li>
       </ul>
     </section>
 
@@ -54,7 +55,7 @@
     </ul>
   </section>
 
-  <section id="icon-board" data-title="Icon Board" class="board">
+  <section id="icon-board" data-title="Icon Board" class="icon-board">
     <ul>
       <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
       <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
@@ -62,6 +63,17 @@
       <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
       <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
       <li><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+    </ul>
+  </section>
+
+    <section id="icon-board-adaptive" data-title="Icon Board Adaptive" class="icon-board">
+    <ul>
+      <li class="w25"><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+      <li class="w25"><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+      <li class="w25"><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+      <li class="w25"><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+      <li class="w25"><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
+      <li class="w25"><a href="#panel"><img src="images/icon.png" width="96" height="96"><span>List item</span></a></li>
     </ul>
   </section>
 
@@ -78,12 +90,23 @@
     </ul>
   </section>
 
-  <section id="halfsize-button" data-title="Half-size button" class="panel">
-	<a href="#halfsize-button" class="mainButton half">Button</a>
-	<a href="#halfsize-button" class="mainButton half">Button</a>
-	<a href="#halfsize-button" class="mainButton">Button</a>
-  </section>
-
+    <section id="grid" data-title="Grid" class="panel">
+        <div class="emy-grid">
+            <div class="w50"><a href="#panel" class="mainButton">50%</a></div>
+            <div class="w50"><a href="#panel" class="mainButton">50%</a></div>
+        </div>
+        <div class="emy-grid">
+            <div class="w33"><a href="#panel" class="mainButton">33%</a></div>
+            <div class="w33"><a href="#panel" class="mainButton redButton">33%</a></div>
+            <div class="w33"><a href="#panel" class="mainButton greenButton">33%</a></div>
+        </div>
+        <div class="emy-grid">
+            <div class="w20"><a href="#panel" class="mainButton">20%</a></div>
+            <div class="w40"><a href="#panel" class="mainButton">40%</a></div>
+            <div class="w40"><a href="#panel" class="mainButton">40%</a></div>
+        </div>
+    </section>
+    
   <section id="panel" data-title="Panel" class="panel">
     <h2>Empty panel</h2>
   </section>
