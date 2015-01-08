@@ -215,8 +215,8 @@ section fieldset > .row > p {
 	text-align:			left;
 }
 section fieldset > .row > label {
-	display:          		block;
-	position:        		static;
+    top:                   0;
+    left:                   0;
 	width:			        100%;
 	color:              		#999;
 	margin:				0;
@@ -233,7 +233,7 @@ section fieldset > .row > input,
 section fieldset > .row > textarea,
 section fieldset > .row > select {
     width:				  	100%;
-    margin: 				0;
+    margin: 				2em 0 0 0;
     height: 			  		inherit;
     font-size:				1em;
     color:          			#000;
@@ -257,7 +257,6 @@ section fieldset > .row > select:focus {
 
 section fieldset > .row > textarea,
 section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
-	margin:       	0;
 	resize: 		    none;
 }
 section fieldset > .row > textarea {
@@ -305,6 +304,16 @@ section fieldset > .row > input[type=checkbox]:checked::after {
 	-moz-transform:		rotate(45deg);
 	transform:					rotate(45deg);
 }
+section fieldset > .row > input[type=radio] + label, 
+section fieldset > .row > input[type=checkbox] + label,
+section fieldset > .row > input[type=range] + label,
+section fieldset > .row > .toggle + label {
+    width:              100%;
+    max-width:          100%;
+    padding-top:        .8em;
+    padding-bottom:     .8em;
+}
+
 
 /******************************** DIALOG *******************************************************/
 section.dialog {

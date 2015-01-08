@@ -353,9 +353,16 @@ section fieldset > .row > input[type=range] {
     -moz-appearance:    slider-horizontal;
     appearance:         slider-horizontal;
 }
-section fieldset > .row > input[type=range] + label {
-    width:              29%;
+section fieldset > .row > input[type=radio] + label, 
+section fieldset > .row > input[type=checkbox] + label,
+section fieldset > .row > input[type=range] + label,
+section fieldset > .row > .toggle + label {
+    width:              100%;
+    max-width:          100%;
+    padding-top:        .8em;
+    padding-bottom:     .8em;
 }
+
 
 /******************************** DIALOG *******************************************************/
 section.dialog {

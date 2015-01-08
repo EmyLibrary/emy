@@ -39,7 +39,6 @@
 	  <h2>Please select a theme from the list below</h2>
 	  <fieldset>
 	    <div class="row">
-	      <label for="ts">Theme</label>
 	      <select size="1" name="ts" id="ts" onchange="emy.plugin.themeSwitcher.setTheme(ts.value)">
 	        <option value="emy" selected="selected">Emy Theme (by default)</option>
 	        <option value="ios">iOS Theme</option>
@@ -48,6 +47,7 @@
 	        <option value="bb10">Blackberry 10 Theme</option>
 	        <option value="windowsphone">WindowsPhone Theme</option>
 	      </select>
+	      <label for="ts">Theme</label>
 	      <script>if(window.localStorage && localStorage.getItem('emy-theme')) { emy.$('#ts').value=localStorage.getItem('emy-theme'); }</script>
 	    </div>
 	  </fieldset>

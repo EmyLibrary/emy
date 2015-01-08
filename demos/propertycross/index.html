@@ -47,11 +47,10 @@
 			</fieldset>
 			<fieldset>
 				<div class="row">
-					<label for="search_term">Location</label>
 					<input type="search" name="search_term" id="search_term" value="Chelsea">
+					<label for="search_term">Location</label>
 				</div>
 				<div class="row">
-					<label for="search_countries">Country</label>
 					<select name="search_countries" id="search_countries" size="1" onChange="myApp.changeCountry(emy.$('#search_countries').value)">
 						<option value="au">Australia</option>
 						<option value="br">Brazil</option>
@@ -62,6 +61,7 @@
 						<option value="it">Italia</option>
 						<option value="uk" selected="selected">United Kingdom</option>
 					</select>
+					<label for="search_countries">Country</label>
 				</div>
 				<div class="row padding">
 					<button type="submit" class="mainButton">Search</button>

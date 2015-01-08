@@ -204,11 +204,12 @@ section fieldset > .row > p {
 	text-align:		left;
 }
 section fieldset > .row > label {
-	display:          	block;
-	position:        	static;
+    top:            0;
+    left:           0;
 	width:			  	100%;
 	margin:			0;
-	padding:        	.7em 0 .4em .7em;
+	padding:        	.4em .7em 0 .7em;
+    font-size:          1.1em;
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
 }
@@ -223,7 +224,8 @@ section fieldset > .row > select {
     width:					100%;
     margin: 				0;
     height:					inherit;
-    font-size:				1em;
+    font-size:				.9em;
+    margin-top:             2.2em;
     padding:				.6em .8em;
     background:		transparent;
     -webkit-appearance: none;
@@ -232,7 +234,6 @@ section fieldset > .row > select {
 }
 section fieldset > .row > textarea,
 section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
-	margin:       	0;
 	color:          	#bebebe;
 	border:			0;
 	resize: 		    none;
@@ -276,6 +277,12 @@ section fieldset > .row > input[type=checkbox] {
 	-webkit-appearance: 		checkbox;
 	-moz-appearance: 				checkbox;
 	appearance: 						    checkbox;
+}
+section fieldset > .row > input[type=radio] + label, 
+section fieldset > .row > input[type=checkbox] + label,
+section fieldset > .row > .toggle + label {
+    padding-top:        .6em;
+    padding-bottom:     .6em;
 }
 
 /******************************** DIALOG *******************************************************/
@@ -326,7 +333,7 @@ section.dialog fieldset > div.row > label {
     font-size:		  .9em;
 }
 section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
-    padding:        .5em;
+    padding:        .7em;
 }
 section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
 	padding:			.5em 0 .5em 8.5em;

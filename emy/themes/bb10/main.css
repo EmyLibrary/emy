@@ -260,6 +260,8 @@ section fieldset > .row > p {
 }
 
 section fieldset > .row > label {
+    top:            0;
+    left:           0;
 	padding:				.8em .7em;
 	max-width:			30%;
 	white-space:		nowrap;
@@ -367,6 +369,12 @@ section fieldset > .row > input[type=checkbox]:checked {
 	background-image:		-webkit-gradient(linear, left top, left bottom, from(#26c6fd), to(#0c7fbb));
     background-image:		-webkit-linear-gradient(270deg, #26c6fd 0%, #0c7fbb 100%);
     background-image:		linear-gradient(180deg, #26c6fd 0%, #0c7fbb 100%);
+}
+section fieldset > .row > input[type=radio] + label, 
+section fieldset > .row > input[type=checkbox] + label,
+section fieldset > .row > .toggle + label {
+    padding-top:        .8em;
+    padding-bottom:     .8em;
 }
 
 /******************************** DIALOG *******************************************************/

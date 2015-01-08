@@ -270,7 +270,10 @@ section fieldset > .row > p {
 }
 
 section fieldset > .row > label {
-	padding:				.9em .7em;
+    top:                0;
+    left:               0;
+    padding:			.9em .2em .9em .7em;
+	width:			    8em;
 	max-width:			30%;
 	font-size:				1em;
 	white-space:		nowrap;
@@ -350,6 +353,15 @@ section fieldset > .row > input[type=radio]:checked,
 section fieldset > .row > input[type=checkbox]:checked {
 	opacity:		1;
 }
+section fieldset > .row > input[type=radio] + label, 
+section fieldset > .row > input[type=checkbox] + label,
+section fieldset > .row > input[type=range] + label,
+section fieldset > .row > .toggle + label {
+    width:              100%;
+    max-width:          100%;
+    padding-top:        .8em;
+    padding-bottom:     .8em;
+}
 
 /******************************** DIALOG *******************************************************/
 section.dialog {
@@ -400,15 +412,6 @@ section.dialog fieldset > div.row {
 }
 section.dialog fieldset > div.row:first-child {
 	border: 	0;
-}
-section.dialog fieldset > div.row > label,
-section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
-    color:			#fff;
-	color:			rgba(255,255,255,.8);
-}
-section.dialog fieldset > div.row > label {
-	padding:			.6em .7em;
-	z-index:			2;
 }
 section.dialog fieldset > div.row > label + input:not([type=radio]):not([type=checkbox]) {
 	padding:			.5em 0 .5em 8.5em;
