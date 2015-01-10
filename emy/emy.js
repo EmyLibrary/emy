@@ -285,32 +285,6 @@
 		},
 
 		/*
-	method: emy.replaceView(replace, frag)
-	Remove the element to replace from the DOM, and adds the fragment
-	Only used by Emy to replace an already existing view (same ID) when loading an external view/file
-	*/
-	replaceView : function(replace, frag) {
-		var parent = replace.parentNode;
-		var parentTarget = parent.parentNode;
-		parentTarget.removeChild(parent);
-
-		emy.sendEvent("emy-beforereplace", document.body, {
-			fragment: frag
-		});
-        
-		var docNode;
-		while (frag.firstChild) {
-			docNode = parentTarget.appendChild(frag.firstChild);
-			emy.sendEvent("emy-afterreplace", document.body, {
-				insertedNode: docNode
-			});
-		}
-		emy.sendEvent("emy-replaceend", document.body, {
-			fragment: frag
-		});
-	},
-
-		/*
 	method: emy.ajax(url, parameters, method, callback, errorCallback)
 	Handles ajax requests and also fires a `setTimeout()` call
 	to abort the request if it takes longer than 30 seconds. See `showViewByHref()`
