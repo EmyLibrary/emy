@@ -316,7 +316,7 @@
 			var xhr = new XMLHttpRequest();
 			method = method ? method.toUpperCase() : "GET";
 			if (args && method == "GET") {
-				url = url + "?" + emy.param(args);
+				url = url + "?" + ajax-param(args);
 			}
 			xhr.open(method, url, true);
 			if (callback) {
@@ -351,26 +351,6 @@
                 if(errorCallback && !xhr.aborted) errorCallback(xhr);
                 xhr.aborted = true;
             }
-		},
-
-		/*
-	method: emy.param(o)
-	Stripped-down, simplified object-only version of a jQuery function that
-	converts an object of keys/values into a URL-encoded querystring.
-	*/
-		param: function(o) {
-			var s = [];
-			// Serialize the key/values
-			for (var key in o) {
-				var value = o[key];
-				if (typeof(value) == "object" && typeof(value.length) == "number") {
-					for (var i = 0; i < value.length; i++) {
-						s[s.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value[i]);
-					}
-				} else s[s.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value);
-			}
-			// Return the resulting serialization
-			return s.join("&").replace(/%20/g, "+");
 		},
 
 		/*
@@ -995,6 +975,25 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 		});
 	}
 
+    /*
+	Stripped-down, simplified object-only version of a jQuery function that
+	converts an object of keys/values into a URL-encoded querystring.
+	*/
+	function ajax-param(o) {
+			var s = [];
+			// Serialize the key/values
+			for (var key in o) {
+				var value = o[key];
+				if (typeof(value) == "object" && typeof(value.length) == "number") {
+					for (var i = 0; i < value.length; i++) {
+						s[s.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value[i]);
+					}
+				} else s[s.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value);
+			}
+			// Return the resulting serialization
+			return s.join("&").replace(/%20/g, "+");
+		},
+    
 	function encodeForm(form) {
 		function encode(inputs) {
 			for (var i = 0; i < inputs.length; ++i) {
