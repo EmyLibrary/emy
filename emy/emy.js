@@ -962,7 +962,7 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 			// Serialize the key/values
 			for (var key in o) {
 				var value = o[key];
-				if (typeof(value) == "object" && typeof(value.length) == "number") {
+				if (value != null && typeof(value) == "object" && typeof(value.length) == "number") {
 					for (var i = 0; i < value.length; i++) {
 						s[s.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value[i]);
 					}
