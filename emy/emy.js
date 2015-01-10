@@ -265,7 +265,7 @@
                 })
 
                 if (replace) {
-                    emy.replaceView(replace, frag);
+                    replaceElementWithFrag(replace, frag);
                     emy.busy = false;
                 } else {
                     emy.insertViews(frag);
@@ -1033,6 +1033,26 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 		return args;
 	}
 
+	function replaceElementWithFrag(replace, frag) {
+		var parent = replace.parentNode;
+		var parentTarget = parent.parentNode;
+		parentTarget.removeChild(parent);
+
+		sendEvent("beforereplace", document.body, {
+			fragment: frag
+		});
+        
+        var docNode;
+		while (frag.firstChild) {
+			docNode = parentTarget.appendChild(frag.firstChild);
+			sendEvent("afterreplace", document.body, {
+				insertedNode: docNode
+			});
+		}
+		sendEvent("afterreplaceend", document.body, {
+			fragment: frag
+		});
+	}
 
 	function preloadImages() {
 		var preloader = document.createElement("div");
