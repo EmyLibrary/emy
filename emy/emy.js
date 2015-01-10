@@ -996,7 +996,7 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 			}
 			// Return the resulting serialization
 			return s.join("&").replace(/%20/g, "+");
-		},
+    }
     
 	function encodeForm(form) {
 		function encode(inputs) {
