@@ -320,7 +320,7 @@
 			var xhr = new XMLHttpRequest();
 			method = method ? method.toUpperCase() : "GET";
 			if (args && method == "GET") {
-				url = url + "?" + ajax-param(args);
+				url = url + "?" + ajaxParam(args);
 			}
 			xhr.open(method, url, true);
 			if (callback) {
@@ -983,7 +983,7 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 	Stripped-down, simplified object-only version of a jQuery function that
 	converts an object of keys/values into a URL-encoded querystring.
 	*/
-	function ajax-param(o) {
+	function ajaxParam(o) {
 			var s = [];
 			// Serialize the key/values
 			for (var key in o) {
