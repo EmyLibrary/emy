@@ -44,44 +44,44 @@ elseif(isset($_POST['var1']) && isset($_POST['var2']))
 		<h2>Result</h2>
 		<fieldset>
 			<div class="row">
-				<label>Plain text</label>
 				<span><?php echo $_GET['plaintext'] ?></span>
+				<label>Plain text</label>
 			</div>
 			<div class="row">
-        <label>Email</label>
-        <span><?php echo $_GET['email'] ?></span>
+                <span><?php echo $_GET['email'] ?></span>
+                <label>Email</label>
 			</div>
 			<div class="row">
-        <label>Website</label>
-        <span><?php echo $_GET['website'] ?></span>
+                <span><?php echo $_GET['website'] ?></span>
+                <label>Website</label>
 			</div>
 			<div class="row">
-        <label>Search</label>
-        <span><?php echo $_GET['search'] ?></span>
+                <span><?php echo $_GET['search'] ?></span>
+                <label>Search</label>
 			</div>
 			<div class="row">
-        <label>Phone</label>
-        <span><?php echo $_GET['phone'] ?></span>
+                <span><?php echo $_GET['phone'] ?></span>
+                <label>Phone</label>
 			</div>
 			<div class="row">
-        <label>Numbers</label>
-        <span><?php echo $_GET['number'] ?></span>
+                <span><?php echo $_GET['number'] ?></span>
+                <label>Numbers</label>
 			</div>
 			<div class="row">
-        <label>List</label>
-        <span><?php echo $_GET['list1'] ?></span>
+                <span><?php echo $_GET['list1'] ?></span>
+                <label>List</label>
 			</div>
 			<div class="row">
-        <label>Textarea</label>
-        <span><?php echo $_GET['textarea'] ?></span>
+                <span><?php echo $_GET['textarea'] ?></span>
+                <label>Textarea</label>
 			</div>
 			<div class="row">
-        <label>Radio</label>
-        <span><?php echo $_GET['radio'] ?></span>
+                <span><?php echo $_GET['radio'] ?></span>
+                <label>Radio</label>
 			</div>
 			<div class="row">
-        <label>Checkbox</label>
-        <span><?php echo ($_GET['checkbox']=='1')?'checked':'not checked' ?></span>
+                <span><?php echo ($_GET['checkbox']=='1')?'checked':'not checked' ?></span>
+                <label>Checkbox</label>
 			</div>
 		</fieldset>
 	</section>
