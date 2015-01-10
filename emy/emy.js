@@ -265,7 +265,7 @@
                 })
 
                 if (replace) {
-                    emy.replaceElementWithFrag(replace, frag);
+                    emy.replaceView(replace, frag);
                     emy.busy = false;
                 } else {
                     emy.insertViews(frag);
@@ -285,23 +285,27 @@
 		},
 
 		/*
-	method: emy.replaceElementWithFrag(replace, frag)
+	method: emy.replaceView(replace, frag)
 	Remove the element to replace from the DOM, and adds the fragment
 	Only used by Emy to replace an already existing view (same ID) when loading an external view/file
 	*/
-	replaceElementWithFrag : function(replace, frag) {
+	replaceView : function(replace, frag) {
 		var parent = replace.parentNode;
 		var parentTarget = parent.parentNode;
 		parentTarget.removeChild(parent);
 
+		emy.sendEvent("emy-beforereplace", document.body, {
+			fragment: frag
+		});
+        
 		var docNode;
 		while (frag.firstChild) {
 			docNode = parentTarget.appendChild(frag.firstChild);
-			emy.sendEvent("emy-afterinsert", document.body, {
+			emy.sendEvent("emy-afterreplace", document.body, {
 				insertedNode: docNode
 			});
 		}
-		emy.sendEvent("emy-afterinsertend", document.body, {
+		emy.sendEvent("emy-replaceend", document.body, {
 			fragment: frag
 		});
 	},
