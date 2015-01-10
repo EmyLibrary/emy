@@ -248,18 +248,18 @@ section fieldset {
     border:	0;
     margin-bottom:	.5em;
 }
-section fieldset > .row {
+section .row {
 	min-height:				2.8em;
 	font-size:						1em;
 	border-bottom:		.1em solid #ddd;
 }
-section fieldset > .row > p {
+section .row > p {
 	height:				auto;
 	padding:			.7em;
 	text-align:		left;
 }
 
-section fieldset > .row > label {
+section .row > label {
     top:            0;
     left:           0;
 	padding:				.8em .7em;
@@ -267,14 +267,14 @@ section fieldset > .row > label {
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
 }
-section fieldset > .row > span {
+section .row > span {
     padding: 			.7em .6em 0 30%;
     margin: 			  0;
 }
 
-section fieldset > .row > input,
-section fieldset > .row > textarea,
-section fieldset > .row > select {
+section .row > input,
+section .row > textarea,
+section .row > select {
 	width:					100%;
 	margin: 				0;
 	height: 					inherit;
@@ -285,8 +285,8 @@ section fieldset > .row > select {
 	-moz-appearance:		none;
 	appearance:					none;
 }
-section fieldset > .row > textarea,
-section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
+section .row > textarea,
+section .row > input:not([type=radio]):not([type=checkbox]) {
     padding: 			.9em .8em 1em 8em;
     border:				0;
     resize: 				none;
@@ -294,11 +294,11 @@ section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
     -moz-border-radius: 			0;
     border-radius: 						0;
 }
-section fieldset > .row > textarea {
+section .row > textarea {
 	min-height:   	7em;
 	padding:			2.6em .8em 1em .8em;
 }
-section fieldset > .row > select {
+section .row > select {
 	float:			    right;
 	width:			auto;
 	color:				#000;
@@ -308,9 +308,9 @@ section fieldset > .row > select {
 	border:			0;
 	clear:			    both;
 }
-section fieldset > .row > select,
-section fieldset > .row > input[type=radio], 
-section fieldset > .row > input[type=checkbox] {
+section .row > select,
+section .row > input[type=radio], 
+section .row > input[type=checkbox] {
     border:					.2em solid #c8c8c8;
 	background:		#e2e2e2;
 	background-image:		-webkit-gradient(linear, left top, bottom left, from(#fafafa), to(#e2e2e2));
@@ -322,11 +322,11 @@ section fieldset > .row > input[type=checkbox] {
 	-moz-appearance:				menuitem; /* since none does not work */
 	appearance: 							none;
 }
-section fieldset > .row > select::-ms-expand {
+section .row > select::-ms-expand {
     display: none;
 }
-section fieldset > .row > input[type=radio], 
-section fieldset > .row > input[type=checkbox] {
+section .row > input[type=radio], 
+section .row > input[type=checkbox] {
 	position:		relative;
 	float:				right;
 	padding:		0;
@@ -334,11 +334,11 @@ section fieldset > .row > input[type=checkbox] {
 	height:			2.1em;
 	width:			2.1em;
 }
-section fieldset > .row > input[type=radio] {
+section .row > input[type=radio] {
     -webkit-border-radius:		3em;
     border-radius:						3em;
 }
-section fieldset > .row > input[type=checkbox]:checked:after {
+section .row > input[type=checkbox]:checked:after {
 	content:		'';
 	position:		absolute;
 	top:				.1em;
@@ -350,7 +350,7 @@ section fieldset > .row > input[type=checkbox]:checked:after {
 	-webkit-transform:	rotateZ(45deg);
 	transform:	rotateZ(45deg);
 }
-section fieldset > .row > input[type=radio]:checked:after {
+section .row > input[type=radio]:checked:after {
 	content:		'';
 	position:		absolute;
 	top:				.45em;
@@ -364,15 +364,15 @@ section fieldset > .row > input[type=radio]:checked:after {
     -webkit-border-radius:		1em;
     border-radius:						1em;
 }
-section fieldset > .row > input[type=radio]:checked,
-section fieldset > .row > input[type=checkbox]:checked {
+section .row > input[type=radio]:checked,
+section .row > input[type=checkbox]:checked {
 	background-image:		-webkit-gradient(linear, left top, left bottom, from(#26c6fd), to(#0c7fbb));
     background-image:		-webkit-linear-gradient(270deg, #26c6fd 0%, #0c7fbb 100%);
     background-image:		linear-gradient(180deg, #26c6fd 0%, #0c7fbb 100%);
 }
-section fieldset > .row > input[type=radio] + label, 
-section fieldset > .row > input[type=checkbox] + label,
-section fieldset > .row > .toggle + label {
+section .row > input[type=radio] + label, 
+section .row > input[type=checkbox] + label,
+section .row > .toggle + label {
     padding-top:        .8em;
     padding-bottom:     .8em;
 }

@@ -151,13 +151,13 @@ body .panel > h2 {
 body .panel > ul,
 body .panel > fieldset,
 body .panel > ul > li,
-fieldset > .row  {
+.row  {
   position: 		relative;
 }
 
-fieldset > .row > label,
-fieldset > .row > span,
-fieldset > .row > .toggle {
+.row > label,
+.row > span,
+.row > .toggle {
   position:         absolute;
   overflow:	     hidden;
 }

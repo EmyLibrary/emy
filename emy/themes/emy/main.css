@@ -262,18 +262,18 @@ section fieldset {
     border:	            0;
     margin-bottom:      .5em;
 }
-section fieldset > .row {
+section .row {
     min-height:         2.8em;
     font-size:          1em;
     border-bottom:      .1em solid #ddd;
 }
-section fieldset > .row > p {
+section .row > p {
     padding:            .7em;
     height:             auto;
     text-align:         left;
 }
 
-section fieldset > .row > label {
+section .row > label {
     top:                0;
     left:               0;
     padding:            .9em .2em .9em .7em;
@@ -282,14 +282,14 @@ section fieldset > .row > label {
     white-space:        nowrap;
     text-overflow:      ellipsis;
 }
-section fieldset > .row > span {
+section .row > span {
     padding:            .7em .6em 0 30%;
     margin:             0;
 }
 
-section fieldset > .row > input,
-section fieldset > .row > textarea,
-section fieldset > .row > select {
+section .row > input,
+section .row > textarea,
+section .row > select {
     margin:             0;
     width:              100%;
     height:             inherit;
@@ -300,18 +300,18 @@ section fieldset > .row > select {
     -moz-appearance:    none;
     appearance:         none;
 }
-section fieldset > .row > textarea,
-section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
+section .row > textarea,
+section .row > input:not([type=radio]):not([type=checkbox]) {
     padding:            .9em .8em .9em 8em;
     border:             0;
     resize:             none;
     border-radius:      0;
 }
-section fieldset > .row > textarea {
+section .row > textarea {
     min-height:         6em;
     vertical-align:     top;
 }
-section fieldset > .row > select {
+section .row > select {
     float:              right;
     padding:            1em;
     width:              auto;
@@ -321,11 +321,11 @@ section fieldset > .row > select {
     clear:              both;
     -moz-appearance:    menuitem; /* since 'none' does not work in Firefox */
 }
-section fieldset > .row > select::-ms-expand {
+section .row > select::-ms-expand {
     display:            none;
 } 
-section fieldset > .row > input[type=radio], 
-section fieldset > .row > input[type=checkbox] {
+section .row > input[type=radio], 
+section .row > input[type=checkbox] {
     float:              right;
     padding:            0;
     margin:             .5em 10px 0 0;
@@ -336,13 +336,13 @@ section fieldset > .row > input[type=checkbox] {
     -moz-appearance:    radio;
     appearance:         radio;
 }
-section fieldset > .row > input[type=checkbox] {
+section .row > input[type=checkbox] {
     border-radius:      .5em;
     -webkit-appearance: checkbox;
     -moz-appearance:    checkbox;
     appearance:         checkbox;
 }
-section fieldset > .row > input[type=range] {
+section .row > input[type=range] {
     float:              right;
     margin-right:       2%;
     padding-left:       0px!important;
@@ -353,10 +353,10 @@ section fieldset > .row > input[type=range] {
     -moz-appearance:    slider-horizontal;
     appearance:         slider-horizontal;
 }
-section fieldset > .row > input[type=radio] + label, 
-section fieldset > .row > input[type=checkbox] + label,
-section fieldset > .row > input[type=range] + label,
-section fieldset > .row > .toggle + label {
+section .row > input[type=radio] + label, 
+section .row > input[type=checkbox] + label,
+section .row > input[type=range] + label,
+section .row > .toggle + label {
     width:              100%;
     max-width:          100%;
     padding-top:        .8em;

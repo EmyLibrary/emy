@@ -257,19 +257,19 @@ section fieldset {
     border:	0;
     margin-bottom:	.5em;
 }
-section fieldset > .row {
+section .row {
 	min-height:				2.8em;
 	font-size:						1em;
 	border-bottom:		.1em solid #ddd;
 	overflow:						hidden;
 }
-section fieldset > .row > p {
+section .row > p {
 	height:				auto;
 	padding:			.7em;
 	text-align:		left;
 }
 
-section fieldset > .row > label {
+section .row > label {
     top:                0;
     left:               0;
     padding:			.9em .2em .9em .7em;
@@ -281,14 +281,14 @@ section fieldset > .row > label {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -ms-touch-action: 		pan-y;
 }
-section fieldset > .row > span {
+section .row > span {
     padding: 			.7em .6em 0 30%;
     margin: 			  0;
 }
 
-section fieldset > .row > input,
-section fieldset > .row > textarea,
-section fieldset > .row > select {
+section .row > input,
+section .row > textarea,
+section .row > select {
 	width:					100%;
 	margin: 				0;
 	height: 					inherit;
@@ -300,24 +300,24 @@ section fieldset > .row > select {
 	-moz-appearance:		none;
 	appearance:					none;
 }
-section fieldset > .row > textarea,
-section fieldset > .row > input {
+section .row > textarea,
+section .row > input {
     border:				0;
     resize: 				none;
     -webkit-border-radius: 	0;
     -moz-border-radius: 			0;
     border-radius: 						0;
 }
-section fieldset > .row > textarea,
-section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
+section .row > textarea,
+section .row > input:not([type=radio]):not([type=checkbox]) {
     padding: 			.9em .8em 1em 8em;
 }
-section fieldset > .row > textarea {
+section .row > textarea {
   min-height:   	7em;
     padding: 			2.5em .8em 1em .8em;
     vertical-align:	bottom;	/* bugfix to remove bottom margin */
 }
-section fieldset > .row > select {
+section .row > select {
 	float:			    right;
 	width:			auto;
 	color:			    #2087fc;
@@ -326,11 +326,11 @@ section fieldset > .row > select {
 	clear:			    both;
 	-moz-appearance:		menuitem; /* since none does not work */
 }
-section fieldset > .row > select::-ms-expand {
+section .row > select::-ms-expand {
     display: none;
 } 
-section fieldset > .row > input[type=radio], 
-section fieldset > .row > input[type=checkbox] {
+section .row > input[type=radio], 
+section .row > input[type=checkbox] {
 	float:			right;
 	padding:		0;
 	margin:			0;
@@ -349,14 +349,14 @@ section fieldset > .row > input[type=checkbox] {
 	-moz-transition:			opacity 200ms ease-in-out;
 	transition:					opacity 200ms ease-in-out;
 }
-section fieldset > .row > input[type=radio]:checked, 
-section fieldset > .row > input[type=checkbox]:checked {
+section .row > input[type=radio]:checked, 
+section .row > input[type=checkbox]:checked {
 	opacity:		1;
 }
-section fieldset > .row > input[type=radio] + label, 
-section fieldset > .row > input[type=checkbox] + label,
-section fieldset > .row > input[type=range] + label,
-section fieldset > .row > .toggle + label {
+section .row > input[type=radio] + label, 
+section .row > input[type=checkbox] + label,
+section .row > input[type=range] + label,
+section .row > .toggle + label {
     width:              100%;
     max-width:          100%;
     padding-top:        .8em;
