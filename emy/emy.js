@@ -96,6 +96,12 @@
 	*/
 	ready : false,
 
+    /* version
+	useful for plugins, support & debug
+	*/
+	v : function() {
+        return 1.1;
+    },
 	/*
 	emy.init
 	Loads private function init(), automatically loaded by onload event, but you can manually load it
