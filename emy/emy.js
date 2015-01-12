@@ -256,15 +256,6 @@
                 var frag = document.createElement("div");
                 frag.innerHTML = ajaxResult;
                 // EVENT beforeInsert->body
-                /*
-                events:
-                When new views are inserted into the DOM after an AJAX load, the `body`
-                element receives a `beforeinsert` event with `{ fragment: frag }` parameters
-                and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
-                */
-                emy.sendEvent("emy-beforeinsert", document.body, {
-                    fragment: frag
-                })
 
                 if (replace) {
                     replaceElementWithFrag(replace, frag);
