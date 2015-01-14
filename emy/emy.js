@@ -55,16 +55,6 @@
 	*/
 	transitionMode: 'css',
 
-		/*
-	emy.ajaxErrHandler
-	initialized at: onload.
-	If defined, this user-set function will be called when an AJAX call returns
-	with an HTTP status other than `200` (currently all HTTP statuses other than
-	`200`, even including 200-level statuses like `201 Created`, are seen as
-	errors.  A status of `0` is treated as success for file:// URLs).
-	*/
-	ajaxErrHandler: null,
-
 	/*
 	emy.httpHeaders
 	initialized at: onload.
@@ -266,7 +256,7 @@
 
                 if (cb) {
                     setTimeout(cb, 1000, true);
-                }
+                }   
 			};
 
             if (!emy.busy) {
