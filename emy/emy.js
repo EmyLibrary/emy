@@ -688,23 +688,6 @@ anchor-based load will win because it is done second.
 			event.preventDefault();
 		}
 
-
-		var div = emy.findParent(event.target, "div");
-		if (div && emy.hasClass(div, "toggle")) {
-			var toggleVal = div.getAttribute("toggled");
-			(toggleVal != null) ? div.removeAttribute('toggled') : div.setAttribute("toggled", "");
-			// if an input element is inside the toggle, its value will be set to true/false.
-			var nodes = div.childNodes;
-			for (var i = 0; i < nodes.length; ++i) {
-				if (nodes[i].nodeType == 1) {
-					if (nodes[i].getAttribute('type') != null) {
-						nodes[i].value = (toggleVal == null);
-					}
-				}
-			}
-			event.preventDefault();
-		}
-
 		var button = emy.findParent(event.srcElement, "button");
 		if (button && button.getAttribute("type") == "cancel") {
 			var view = emy.findParent(event.srcElement, "section");
