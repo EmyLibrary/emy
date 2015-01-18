@@ -279,7 +279,9 @@ section .row > label {
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -ms-touch-action: 		pan-y;
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
 }
 section .row > span {
     padding: 			.7em .6em 0 30%;
@@ -463,7 +465,7 @@ section.panel footer {
 
 /******************************** TOGGLE *******************************************************/
 
-fieldset > .row > .toggle {
+.row > .toggle {
 	position:			relative;
 	float:				right;
     width: 				4em;
@@ -471,51 +473,53 @@ fieldset > .row > .toggle {
     margin:             .3em;
     font-size: 			1.2em;
     line-height:		1.5em;
-    overflow:			initial;
+    overflow:			hidden;
     background:   		#fff;
     background-image:			-webkit-linear-gradient(270deg, #fff 0%, #fff 100%); /* Blackberry border-radius bugfix */
     box-shadow:					inset 0 0 0 .15em #e5e5e5;
-    -webkit-border-radius: 		1em;
-    -moz-border-radius: 		1em;
     border-radius: 				1em;
     -webkit-tap-highlight-color: 	rgba(0,0,0,0);
     -ms-touch-action: 				pan-y;
-    -webkit-backface-visibility: 	hidden;
-    -webkit-transform:    	translateZ(0);
-    -moz-transform:         translateZ(0);
-    transform:              translateZ(0);
-    -webkit-transition:	  	box-shadow 200ms ease-in-out, background 200ms ease-in-out;
-    -moz-transition:		box-shadow 200ms ease-in-out, background 200ms ease-in-out;
-    transition:			    box-shadow 200ms ease-in-out, background 200ms ease-in-out;
 }
-fieldset > .row > .toggle[toggled] {
-	background:				#4cd864;
-    background-image:		-webkit-linear-gradient(270deg, #4cd864 0%, #4cd864 100%); /* Blackberry border-radius bugfix */
-    box-shadow:				inset 0 0 0 0 #e5e5e5;
-}
-fieldset > .row > .toggle > .thumb {
-    position:      			absolute;
-    width: 					1.5em;
-    height:     		    1.5em;
-    margin:					.2em 0 0 .2em;
-    border:					0;
-    background-color:   	#fff;
-    background-image:		-webkit-linear-gradient(270deg, #fff 0%, #fff 100%); /* Blackberry border-radius bugfix */
-    -webkit-border-radius: 	1em;
-    -moz-border-radius: 	1em;
+.row > .toggle > .thumb {
+    position:               absolute;
+    top: 				    0;
+    left:                   0;
+    margin:                 .1em;
+    width:                  1.6em;
+    height:                 1.6em;
+    border:				    0;
+    background-color:       #fff;
+    background-image:       -webkit-linear-gradient(270deg, #fff 0%, #fff 100%); /* Blackberry border-radius bugfix */
+    box-shadow:             inset 0 0 0 0 #e5e5e5;
+    z-index:                1;
     border-radius: 			1em;
-    box-shadow:				0 .2em .25em 0 rgba(0,0,0,.4);
     -webkit-transition:	  	-webkit-transform 200ms ease-in-out;
-    -moz-transition:		-moz-transform 200ms ease-in-out;
     transition:				transform 200ms ease-in-out;
-    -webkit-transform:    	translateX(0);
-    -moz-transform:         translateX(0);
-    transform:              translateX(0);
+    -webkit-transform:    	translateX(0em);
+    -ms-transform:          translateX(0em);
+    transform:              translateX(0em);
     -webkit-backface-visibility: hidden;
 }
-fieldset > .row > .toggle[toggled] > .thumb {
+.row > .toggle > input {
+    position:           absolute;
+    left:               0;
+    top:                0;
+    width:              100%;
+    height:             100%;
+    z-index:            1;
+    background-color:   #eee;
+    -webkit-transition:	background 200ms ease-in-out;
+    transition:			background 200ms ease-in-out;
+    -webkit-appearance: none;
+    appearance:         none;
+}
+.row > .toggle input:checked {
+    background-color:       #4cd864;
+}
+.row > .toggle input:checked + .thumb {
     -webkit-transform:    	translateX(2.25em);
-    -moz-transform:         translateX(2.25em);
+    -ms-transform:          translateX(2.25em);
     transform:              translateX(2.25em);
 }
 

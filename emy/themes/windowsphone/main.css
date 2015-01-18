@@ -223,6 +223,10 @@ section .row > label {
 	padding:        		.7em 0 .4em .7em;
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
 }
 section .row > span {
     padding: 				.7em .6em 0 30%;
@@ -414,62 +418,52 @@ section.panel footer {
 
 /******************************** TOGGLE *******************************************************/
 
+
 .toggle {
-	top:					0;
-	right:					0;
-	width:				6em;
-	height:				1.6em;
-	margin:            .4em;
-	font-size: 		1.2em;
-	line-height:		1.5em;
-	background-color:   	#2a2a2a;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-	-ms-touch-action: 		pan-y;
-	-ms-user-select: 			none;
-	user-select: 					none;
+    top:				.4em;
+    right:				.4em;
+    width:				4em;
+    height:				2em;
+}
+.toggle > input {
+    position:           absolute;
+	z-index:			1;
+    top:                .25em;
+    left:               0;
+    width:              inherit;
+    height:             1.5em;
+    z-index:            1;
+	font-size:			1em;
+    background:         transparent;
+	border:				.2em solid #fff;
+	border-radius:		0;
+	-webkit-transition:	background 200ms ease-in-out;
+    transition:			background 200ms ease-in-out;
+    -webkit-appearance: none;
+    appearance:         none;
 }
 .toggle > .thumb {
-    position:      	absolute;
-    width: 			    3em;
+    position:      			absolute;
+	z-index:			    2;
+    width: 				    .7em;
     height:         		inherit;
-    color:            		#bdbebd;
-    text-align: 		center;
-    background-color:   	#575757;
-    -webkit-transition:	  	all 200ms ease-in-out;
-    -moz-transition:			all 200ms ease-in-out;
-    transition:			            all 200ms ease-in-out;
+    background-color:   	#fff;
+    -webkit-transition:	  	-webkit-transform 200ms ease-in-out;
+    transition:			    transform 200ms ease-in-out;
     -webkit-transform:    	translateX(0);
-    -moz-transform:         	translateX(0);
-    transform:                     	translateX(0);
+    -ms-transform:          translateX(0);
+    transform:              translateX(0);
 }
-.toggle[toggled] > .thumb {
-    -webkit-transform:    translateX(3em);
-    -moz-transform:         translateX(3em);
-    transform:                     translateX(3em);
-    background-color:    #f00;
+.row > .toggle input:checked {
+    background-color:       #777;
+}
+.row > .toggle input:checked + .thumb {
+    -webkit-transform:  translateX(3.3em);
+    -ms-transform:      translateX(3.3em);
+    transform:          translateX(3.3em);
 }
 
-.toggle > .thumb::before, .toggle > .thumb::after {
-    position:      absolute;
-    left: 				0;
-    top: 				0;
-    width: 			inherit;
-    z-index:		1;
-}
-.toggle > .thumb::before {
-    content:    	'OFF';
-}
-.toggle > .thumb::after {
-    content:    	'ON';
-    color:         	#fff;
-    opacity:    	0;
-}
-.toggle[toggled] > .thumb::before {
-    opacity:  		0;
-}
-.toggle[toggled] > .thumb::after {
-    opacity:  		1;
-}
+
 
 /************************************************************************************************/
 #preloader {

@@ -212,6 +212,10 @@ section .row > label {
     font-size:          1.1em;
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
 }
 section .row > span {
     padding: 			.7em .6em 0 30%;
@@ -393,30 +397,40 @@ section.panel footer {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-ms-touch-action: 		pan-y;
 	-ms-user-select: 	none;
+	-webkit-user-select: 			none;
+	-moz-user-select: 			none;
 	user-select: 			none;
 }
-.toggle > .thumb {
-	position:      	absolute;
-	width: 			    3em;
-	height:         		inherit;
-	color:            		#bdbebd;
-	text-align: 		center;
-	background-color:   	#575757;
-	-webkit-transition:	  	all 200ms ease-in-out;
-	-moz-transition:			all 200ms ease-in-out;
-	transition:			           	all 200ms ease-in-out;
-	-webkit-transform:    	translateX(0);
-	-moz-transform:         	translateX(0);
-	transform:                     	translateX(0);
+.toggle .thumb {
+    position:       absolute;
+    width:          3em;
+    height:         inherit;
+    color:          #bdbebd;
+    text-align:     center;
+    background-color:   	#575757;
+    -webkit-transition:	  	all 200ms ease-in-out;
+    transition:			    all 200ms ease-in-out;
+    -webkit-transform:    	translateX(0);
+    -ms-transform:          translateX(0);
+    transform:              translateX(0);
 }
-.toggle[toggled] > .thumb {
-    -webkit-transform:    translateX(3em);
-    -moz-transform:         translateX(3em);
-    transform:                     translateX(3em);
-    background-color:    #0082b0;
+.toggle > input {
+    position:       absolute;
+    right:          0;
+    top:            0;
+    width:          1px;
+    height:         1px;
+    z-index:        -1;
+}
+.toggle input:checked + .thumb {
+    -webkit-transform:      translateX(3em);
+    -ms-transform:          translateX(3em);
+    transform:              translateX(3em);
+    background-color:       #0082b0;
 }
 
-.toggle > .thumb::before, .toggle > .thumb::after {
+.toggle > .thumb::before, 
+.toggle > .thumb::after {
     position:      absolute;
     left: 				    0;
     top: 				    0;
@@ -431,10 +445,10 @@ section.panel footer {
     color:         	#fff;
     opacity:    	0;
 }
-.toggle[toggled] > .thumb::before {
+.toggle input:checked + .thumb::before {
     opacity:  		0;
 }
-.toggle[toggled] > .thumb::after {
+.toggle input:checked + .thumb::after {
     opacity:  		1;
 }
 

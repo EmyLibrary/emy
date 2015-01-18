@@ -353,6 +353,10 @@ section .row > label {
 	max-width:			30%;
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
 }
 section .row > span {
     padding: 				.7em .6em 0 30%;
@@ -579,75 +583,76 @@ section.panel footer {
 	margin:              	.4em .4em 0 0;
 	border:					.1em solid #888;
 	font-size:				1.2em;
-	font-weight:		bold;
+	font-weight:		    bold;
 	line-height:			1.5em;
-	-webkit-border-radius: 	.3em;
-	-moz-border-radius: 		    .3em;
-	border-radius:					    .3em;
+	border-radius:			.3em;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-ms-touch-action: 		pan-y;
 }
 .panel .toggle {
   margin:                 .35em .35em 0 0;
 }
-.toggle[toggled] {
+.toggleinput:checked {
   border-color: 	#143fae;
 }
 
 .toggle > .thumb {
-	position:       	absolute;
-	width: 			    2em;
-	height:           	inherit;
-	margin:          	-.1em 0 0 -.1em;
-	border: 		    .1em solid #888;
-	z-index:		    2;
+    position:       	absolute;
+    top:				0;
+    left:				0;
+    width: 			    2em;
+    height:           	inherit;
+    margin:          	-.1em 0 0 -.1em;
+    border: 		    .1em solid #888;
+    z-index:		    2;
+    border-radius:      .3em;
+	box-shadow:         0 0 .2em rgba(0,0,0,.5);
 	background-image:	  		-webkit-gradient(linear, left top, right top, from(#d3d3d3), to(#fff));
 	background-image:			-webkit-linear-gradient(270deg, #d3d3d3 0%, #fff 100%);
-	background-image:			-moz-linear-gradient(270deg, #d3d3d3 0%, #fff 100%);
 	background-image:			linear-gradient(180deg, #d3d3d3 0%, #fff 100%);
-	-webkit-border-radius:	    .3em;
-	-moz-border-radius:			.3em;
-	border-radius:						.3em;
-	-webkit-box-shadow:			0 0 .2em rgba(0,0,0,.5);
-	-moz-box-shadow:				0 0 .2em rgba(0,0,0,.5);
-	box-shadow:							0 0 .2em rgba(0,0,0,.5);
 	-webkit-transition:	    -webkit-transform 200ms ease-in-out;
-	-moz-transition:			-moz-transform 200ms ease-in-out;
-	transition:			    		transform 200ms ease-in-out;
+	transition:             transform 200ms ease-in-out;
 	-webkit-transform:    	translateX(0);
-	-moz-transform:         	translateX(0);
-	transform:                     	translateX(0);
+	-ms-transform:          translateX(0);
+	transform:              translateX(0);
 }
-.toggle[toggled] > .thumb {
-	-webkit-transform:    translateX(3em);
-	-moz-transform:         translateX(3em);
-	transform:                     translateX(3em);
+.toggle > input {
+    position:       absolute;
+    right:          0;
+    top:            0;
+    width:          1px;
+    height:         1px;
+    z-index:        -1;
+}
+.toggle input:checked + .thumb {
+    -webkit-transform:  translateX(3em);
+    -ms-transform:      translateX(3em);
+    transform:          translateX(3em);
 }
 
-.toggle > .thumb::before, .toggle > .thumb::after {
-	position:      absolute;
-	left: 				0;
-	top: 				0;
-	width: 			3.2em;
-	text-align: 	center;
+.toggle > .thumb::before,
+.toggle > .thumb::after {
+    position:       absolute;
+    left:           0;
+    top:            0;
+    width:          3.2em;
+    text-align: 	center;
 }
 .thumb::before {
-	content:          'ON';
-	color: 				#fff;
-	margin-left:    -3.2em;
+	content:       attr(data-on);
+	z-index:       1;
+	color:         #fff;
+	margin-left:   -3.2em;
 	background-image:	  	-webkit-gradient(linear, left top, left bottom, from(#0071d1), color-stop(.5, #007fea), color-stop(.5, #2591ed), to(#6eafe6));
 	background-image:		-webkit-linear-gradient(270deg, #0071d1 0%, #007fea 50%, #2591ed 50%, #6eafe6 100%);
-	background-image:		-moz-linear-gradient(270deg, #0071d1 0%, #007fea 50%, #2591ed 50%, #6eafe6 100%);
 	background-image:		linear-gradient(180deg, #0071d1 0%, #007fea 50%, #2591ed 50%, #6eafe6 100%);
-	z-index:        1;
 }
 .toggle > .thumb::after {
-	content:			'OFF';
+	content:			attr(data-off);
 	left:					1.95em;
 	color:					#7d7d7d;
 	background-image:	  	-webkit-gradient(linear, left top, left bottom, from(#e5e5e5), color-stop(.5, #f0f0f0), color-stop(.5, #f9f9f9), to(#fefefe));
 	background-image:		-webkit-linear-gradient(270deg, #e5e5e5 0%, #f0f0f0 50%, #f9f9f9 50%, #fefefe 100%);
-	background-image:		-moz-linear-gradient(270deg, #e5e5e5 0%, #f0f0f0 50%, #f9f9f9 50%, #fefefe 100%);
 	background-image:		linear-gradient(180deg, #e5e5e5 0%, #f0f0f0 50%, #f9f9f9 50%, #fefefe 100%);
 }
 

@@ -266,6 +266,10 @@ section .row > label {
 	max-width:			30%;
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
 }
 section .row > span {
     padding: 			.7em .6em 0 30%;
@@ -507,7 +511,6 @@ section.panel footer {
     background-image:		-webkit-linear-gradient(270deg, #dadada 0%, #eee 15%);
     background-image:		linear-gradient(180deg, #dadada 0%, #eee 15%);
     box-shadow:				0 0 .1em .1em #aaa;
-    -webkit-border-radius:	1em;
     border-radius:	1em;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -ms-touch-action: 		pan-y;
@@ -526,18 +529,24 @@ section.panel footer {
     background-image:		-webkit-linear-gradient(270deg, #fafafa 0%, #e2e2e2 100%);
     background-image:		linear-gradient(180deg, #fafafa 0%, #e2e2e2 100%);
     box-shadow:				0 0 .2em #666;
-    -webkit-border-radius:	1em;
     border-radius:	1em;
     -webkit-transition:	  	all 200ms ease-in-out;
-    -moz-transition:		  	all 200ms ease-in-out;
     transition:			          	all 200ms ease-in-out;
     -webkit-transform:    	translateX(0);
-    -moz-transform:         	translateX(0);
+    -ms-transform:                     	translateX(0);
     transform:                     	translateX(0);
 }
-.toggle[toggled] > .thumb {
+.toggle > input {
+    position:       absolute;
+    right:          0;
+    top:            0;
+    width:          1px;
+    height:         1px;
+    z-index:        -1;
+}
+.toggle input:checked + .thumb {
     -webkit-transform:    translateX(3.1em);
-    -moz-transform:         translateX(3.1em);
+    -ms-transform:                     translateX(3.1em);
     transform:                     translateX(3.1em);
     background-color:    	#2285c4;
 	background-image:		-webkit-gradient(linear, left top, bottom left, from(#26c6fd), to(#0072be));
@@ -545,18 +554,19 @@ section.panel footer {
     background-image:		linear-gradient(180deg, #26c6fd 0%, #0072be 100%);
 }
 
-.toggle > .thumb::before, .toggle > .thumb::after {
+.toggle > .thumb::before, 
+.toggle > .thumb::after {
     position:      	absolute;
     top: 				    0;
     width: 			    inherit;
     z-index:		    1;
 }
 .toggle > .thumb::before {
-    content:    	'O';
+    content:    	attr(data-off);
     left: 				2em;
 }
 .toggle > .thumb::after {
-    content:    	'I';
+    content:    	attr(data-on);
     left: 				 -2.2em;
 }
 

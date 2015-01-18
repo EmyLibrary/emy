@@ -281,6 +281,10 @@ section .row > label {
     max-width:          30%;
     white-space:        nowrap;
     text-overflow:      ellipsis;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
 }
 section .row > span {
     padding:            .7em .6em 0 30%;
@@ -465,8 +469,6 @@ section.panel footer {
     font-size:          1.2em;
     line-height:        1.5em;
     background-color:   #ddd;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -ms-touch-action:   pan-y;
 }
 .toggle > .thumb {
     position:           absolute;
@@ -481,32 +483,41 @@ section.panel footer {
     -ms-transform:          translateX(0);
     transform:              translateX(0);
 }
-.toggle[toggled] > .thumb {
+.toggle > input {
+    position:       absolute;
+    right:          0;
+    top:            0;
+    width:          1px;
+    height:         1px;
+    z-index:        -1;
+}
+.toggle input:checked + .thumb {
     background-color:       #e13636;
     -webkit-transform:      translateX(3em);
     -ms-transform:          translateX(3em);
     transform:              translateX(3em);
 }
 
-.toggle > .thumb::before, .toggle > .thumb::after {
+.toggle input + .thumb::before, 
+.toggle input + .thumb::after {
     position:       absolute;
     left:           0;
     top:            0;
     width:          inherit;
     z-index:        1;
 }
-.toggle > .thumb::before {
-    content:    	'OFF';
+.toggle input + .thumb::before {
+    content:    	attr(data-off);
 }
-.toggle > .thumb::after {
-    content:    	'ON';
+.toggle input + .thumb::after {
+    content:    	attr(data-on);
     color:         	#fff;
     opacity:    	0;
 }
-.toggle[toggled] > .thumb::before {
+.toggle input:checked + .thumb::before {
     opacity:  		0;
 }
-.toggle[toggled] > .thumb::after {
+.toggle input:checked + .thumb::after {
     opacity:  		1;
 }
 
