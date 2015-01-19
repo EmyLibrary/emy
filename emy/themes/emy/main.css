@@ -317,10 +317,9 @@ section .row > textarea {
 }
 section .row > select {
     float:              right;
-    padding:            1em;
+    padding:            .75em 1em;
     width:              auto;
     color:              #425c8d;
-    font-size:          .8em;
     border:             0;
     clear:              both;
     -moz-appearance:    menuitem; /* since 'none' does not work in Firefox */
@@ -504,6 +503,9 @@ section.panel footer {
     left:           0;
     top:            0;
     width:          inherit;
+    font-size:      1em;
+    line-height:    1em;
+    padding:        .3em 0;
     z-index:        1;
 }
 .toggle input + .thumb::before {

@@ -307,7 +307,7 @@ section .row > select {
 	width:			auto;
 	color:				#000;
 	font-size:		.9em;
-	margin:		.3em .3em 0 0;
+	margin:		.2em .3em;
     padding: 		.5em .8em;
 	border:			0;
 	clear:			    both;

@@ -154,6 +154,9 @@ body .panel > ul > li,
 .row  {
   position: 		relative;
 }
+.row  {
+  overflow: 		hidden;
+}
 
 .row > label,
 .row > span,

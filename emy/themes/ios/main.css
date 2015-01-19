@@ -337,7 +337,7 @@ section fieldset {
 }
 section .row {
 	min-height:				2.8em;
-	border-bottom:		.1em solid #999;
+	border-bottom:		1px solid #999;
 }
 section .row > p {
 	height:				auto;
@@ -391,8 +391,8 @@ section .row > select {
 	float:			    right;
 	width:			auto;
 	color:			    #425c8d;
-	font-size:		.8em;
-	padding:	    1em;
+	font-size:		.9em;
+	padding:	    .9em 1em;
 	border:			0;
 	clear:			    both;
 	-moz-appearance:		menuitem; /* since none does not work */
