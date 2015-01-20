@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Elements Plugin Demo - Emy</title>
+	<meta name="description" content="Emy components plugin">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" href="../emy/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="../emy/apple-touch-icon-precomposed.png">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="../../emy.css">
+	<link rel="stylesheet" type="text/css" href="../../themes/emy/main.css">
+	<script type="application/x-javascript" src="../../emy.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="emy-elements.css">
+	<script type="application/x-javascript" src="emy-elements.js"></script>
+	<script>
+	function showFieldset(btn, eId) {
+		var view = emy.$('#'+eId);
+		var views = emy.$('#'+emy.getSelectedView().id+' .emy-segments-view');
+		for(var i=0,inb=views.length;i<inb;i++) {
+			emy.changeClass(views[i],'show','');
+		}
+		emy.addClass(view,'show');
+	}
+	
+	function myStepperCallback(element, value) {
+		emy.$('#steppercallbacklog').innerHTML = 'Callback returns: '+value;
+	}
+	function segmentFormSizeCallback(inputElement, value) {
+		emy.$('#formsegment-size-cb').innerHTML = 'Selected value : '+value;
+	}
+
+    // used as form selectMenu callback
+    function selectMenuCallback(selectElement) {
+        var selValue = selectElement.options[selectElement.selectedIndex].value;
+		emy.$('#selectmenu-cb').innerHTML = 'Callback returns : '+selValue;	
+	}
+	</script>
+</head>
+
+<body>
+
+	<header class="toolbar">
+		<div><a id="backButton" class="button" href="#">Back</a></div>
+		<h1 id="viewTitle">Emy Elements</h1>
+	</header>
+
+	<section id="home" data-title="Elements" selected="true">
+		<ul>
+			<li><a href="#segments">Segments</a></li>
+			<li><a href="#segmentsviews">Segments views</a></li>
+			<li><a href="#formsegments">Form segments</a></li>
+			<li><a href="#stepper">Form stepper</a></li>
+			<li><a href="#selectmenu">Select menu</a></li>
+		</ul>
+	</section>
+
+	<section id="segments" data-title="Segments">
+		<p>
+			Two buttons, 80% width (default)
+		</p>
+		<ul class="emy-segments">
+			<li><button>button</button></li>
+			<li><button>button</button></li>
+		</ul>
+
+		<p>
+			Two buttons, fixed width
+		</p>
+		<ul class="emy-segments fixed">
+			<li><button>button</button></li>
+			<li><button>button</button></li>
+		</ul>
+
+		<p>
+			Three buttons, first active
+		</p>
+		<ul class="emy-segments">
+			<li class="active"><button>button</button></li>
+			<li><button>button</button></li>
+			<li><button>button</button></li>
+		</ul>
+
+		<p>
+			non regular text length, first active
+		</p>
+		<ul class="emy-segments">
+			<li class="active"><button>peach</button></li>
+			<li><button>watermelon</button></li>
+			<li><button>banana</button></li>
+			<li><button>strawberry</button></li>
+		</ul>
+
+		<p>
+			list of buttons, first active
+		</p>
+		<ul class="emy-segments">
+			<li class="active"><button>1</button></li>
+			<li><button>2</button></li>
+			<li><button>3</button></li>
+			<li><button>4</button></li>
+			<li><button>5</button></li>
+			<li><button>6</button></li>
+			<li><button>7</button></li>
+			<li><button>8</button></li>
+		</ul>
+	</section>
+
+	<section id="formsegments" data-title="Form segments">
+		<form name="formsegments-form">
+			<p>
+				Those four segments are labels coupled with radio inputs. Perfect way to replace a select elements when you have just a few values.
+			</p>
+			<ul class="emy-segments fixed">
+				<li><input type="radio" name="color" value="red" id="formsegment-red"><label for="formsegment-red">Red</label></li>
+				<li><input type="radio" name="color" value="green" id="formsegment-green"><label for="formsegment-green">Green</label>
+				<li><input type="radio" name="color" value="blue" id="formsegment-blue"><label for="formsegment-blue">Blue</label>
+			</ul>
+			<br>
+			<p>
+				Same one, with a data-callback function
+			</p>
+			<ul class="emy-segments" data-callback="segmentFormSizeCallback">
+				<li><input type="radio" name="size" value="s" id="formsegment-size-s"><label for="formsegment-size-s">small</label></li>
+				<li><input type="radio" name="size" value="m" id="formsegment-size-m"><label for="formsegment-size-m">medium</label>
+				<li><input type="radio" name="size" value="l" id="formsegment-size-l"><label for="formsegment-size-l">large</label>
+				<li><input type="radio" name="size" value="xl" id="formsegment-size-xl"><label for="formsegment-size-xl">extra-large</label>
+			</ul>
+			<p id="formsegment-size-cb" style="text-align:center"></p>
+		</form>
+	</section>
+
+	<section id="segmentsviews" data-title="Segments views">
+
+		<ul class="emy-segments">
+			<li class="active"><button data-segmentview="fieldset1">View 1</button></li>
+			<li><button data-segmentview="fieldset2">View 2</button></li>
+			<li><button data-segmentview="fieldset3">View 3</button></li>
+			<li><button data-segmentview="fieldset4">View 4</button></li>
+		</ul>
+
+		<div id="fieldset1" class="emy-segments-view show">
+			<fieldset>
+				<div class="row">
+					<p>
+						This is the first fieldset
+					</p>
+				</div>
+			</fieldset>
+		</div>
+		<div id="fieldset2" class="emy-segments-view">
+			<fieldset>
+				<div class="row">
+					<p>
+						This is the second fieldset
+					</p>
+				</div>
+			</fieldset>
+		</div>
+		<div id="fieldset3" class="emy-segments-view">
+			<fieldset>
+				<div class="row">
+					<p>
+						This is the third fieldset
+					</p>
+				</div>
+			</fieldset>
+		</div>
+		<div id="fieldset4" class="emy-segments-view">
+			<fieldset>
+				<div class="row">
+					<p>
+						This is the fourth fieldset
+					</p>
+				</div>
+			</fieldset>
+		</div>
+
+	</section>
+
+	<section id="stepper" data-title="Steppers">
+		<fieldset>
+			<div class="row stepper">
+				<ul class="emy-stepper" data-stepinput="stepper1">
+					<li><button data-stepper='-1'>-</button></li>
+					<li><input type="hidden" id="stepper1" pattern="[0-9+]" value="0"></li>
+					<li><button data-stepper='1'>+</button></li>
+				</ul>
+				<label for="stepper1">Simple stepper</label>
+			</div>
+			<div class="row stepper">
+				<ul class="emy-stepper" data-stepinput="stepper2">
+					<li><button data-stepper='-1'>-</button></li>
+					<li><input type="number" id="stepper2" pattern="[0-9+]" value="2"></li>
+					<li><button data-stepper='1'>+</button></li>
+				</ul>
+				<label for="stepper2">Stepper with number</label>
+			</div>
+			<div class="row stepper">
+				<ul class="emy-stepper" data-stepinput="stepper3">
+					<li><button data-stepper='-15'>-</button></li>
+					<li><input type="number" id="stepper3" pattern="[0-9+]" value="0"></li>
+					<li><button data-stepper='15'>+</button></li>
+				</ul>
+				<label for="stepper3">Stepper by 15</label>
+			</div>
+			<div class="row stepper">
+				<ul class="emy-stepper" data-stepinput="stepper4">
+					<li><button data-stepper='-1'>-</button></li>
+					<li><input type="number" id="stepper4" pattern="[0-9+]" value="0" min="-3" max="6"></li>
+					<li><button data-stepper='1'>+</button></li>
+				</ul>
+				<label for="stepper4">Stepper with min/max</label>
+			</div>
+			<div class="row stepper">
+				<ul class="emy-stepper" data-stepinput="stepper5" data-callback="myStepperCallback">
+					<li><button data-stepper='-1'>-</button></li>
+					<li><input type="hidden" id="stepper5" value="0"></li>
+					<li><button data-stepper='1'>+</button></li>
+				</ul>
+				<label for="stepper5">Stepper with callback</label>
+			</div>
+			<div class="row"><p id="steppercallbacklog">Callback returns:</p></div>
+		</fieldset>
+	</section>
+
+
+	<section id="selectmenu" data-title="Select menus">
+		<form method="get" action="forms-result.php">
+		<fieldset>
+			<div class="row">
+				<select size="1" name="select1" id="beverage">
+					<option value="">---</option>
+					<option value="coffee">coffee</option>
+					<option value="tea">Tea</option>
+					<option value="milk">Milk</option>					
+					<option value="water">Water</option>
+					<option value="soda">Soda</option>
+				</select>
+				<label for="beverage">Normal select</label>
+			</div>
+			<div class="row">
+				<select size="1" name="brands" id="brands" data-selectmenu="true">
+					<option value="">---</option>
+					<option value="apple">Apple</option>
+					<option value="blackberry">Blackberry</option>
+					<option value="htc">HTC</option>
+					<option value="lenovo">Lenovo</option>
+					<option value="lg">LG</option>
+					<option value="nokia">Nokia</option>
+					<option value="samsung">Samsung</option>
+					<option value="sony">Sony</option>
+				</select>
+				<label for="brands">Brands</label>
+			</div>
+			<div class="row">
+				<select size="1" name="color" id="color" data-selectmenu="true">
+					<option value="">---</option>
+					<option value="red">Red</option>
+					<option value="blue">Blue</option>
+					<option value="green" selected>Green</option>
+					<option value="orange">Orange</option>
+					<option value="pink">Pink</option>
+					<option value="purple">Purple</option>
+					<option value="yellow">Yellow</option>
+					<option value="white">White</option>
+					<option value="black">Black</option>
+				</select>
+				<label for="color">Pre-Selected</label>
+			</div>
+			<div class="row">
+				<select size="1" name="town" id="town" data-selectmenu="true">
+					<option value="">---</option>
+					<optgroup label="France">
+						<option value="paris">Paris</option>
+						<option value="lyon">Lyon</option>
+						<option value="marseille">Marseille</option>
+						<option value="toulouse">Toulouse</option>
+						<option value="lille">Lille</option>
+					</optgroup>
+					<optgroup label="Germany">
+						<option value="berlin">Berlin</option>
+						<option value="hamburg">Hamburg</option>
+						<option value="Munchen">Munich</option>
+						<option value="koln">Cologne</option>
+						<option value="frankfurt">Frankfurt</option>
+					</optgroup>
+					<optgroup label="United Kingdom">
+						<option value="london">London</option>
+						<option value="manchester">Manchester</option>
+						<option value="birmingham">Birmingham</option>
+						<option value="leeds">Leeds-Bradford</option>
+						<option value="liverpool">Liverpool</option>
+					</optgroup>
+				</select>
+				<label for="town">Option groups</label>
+			</div>
+			<div class="row">
+				<select name="harrypotter[]" id="harrypotter" multiple="true" data-selectmenu="true">
+					<option value="">---</option>
+					<option value="23">Harry Potter</option>
+					<option value="45">Rubeus Hagrid</option>
+					<option value="12">Lord Voldemort</option>
+					<option value="7">Albus Dumbledore</option>
+					<option value="2">Ron Weasley</option>
+					<option value="6">Hermione Granger</option>
+					<option value="5">Severus Snape</option>
+					<option value="32">Quirinus Quirrell</option>
+					<option value="31">Ginny Weasley</option>
+					<option value="29">Sirius Black</option>
+				</select>
+				<label for="harrypotter">Select multiple</label>
+			</div>
+			<div class="row">
+				<select size="1" name="fruits" id="fruits" data-selectmenu="true" data-callback="selectMenuCallback">
+					<option value="">---</option>
+					<option value="apple">Apple</option>
+					<option value="pear">Pear</option>
+					<option value="pineapple">Pineapple</option>
+					<option value="watermelon">Watermelon</option>
+					<option value="nuts">Nuts</option>
+				</select>
+				<label for="fruits">Using callback</label>
+			</div>
+			<div class="row"><p id="selectmenu-cb">Callback returns : ---</p></div>
+		</fieldset>
+		<button type="submit" class="mainButton">Submit</button>
+		</form>
+	</section>
+
+
+</body>
+</html>
