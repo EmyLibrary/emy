@@ -263,7 +263,8 @@ section .row > label {
     top:            0;
     left:           0;
 	padding:				.8em .7em;
-	max-width:			30%;
+    min-width:          8em;
+    max-width:          30%;
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -377,8 +378,8 @@ section .row > input[type=checkbox]:checked {
 section .row > input[type=radio] + label, 
 section .row > input[type=checkbox] + label,
 section .row > .toggle + label {
-    padding-top:        .8em;
-    padding-bottom:     .8em;
+    width:              100%;
+    max-width:          100%;
 }
 
 /******************************** DIALOG *******************************************************/

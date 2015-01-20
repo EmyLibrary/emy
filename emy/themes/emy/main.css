@@ -276,7 +276,7 @@ section .row > p {
 section .row > label {
     top:                0;
     left:               0;
-    padding:            .9em .2em .9em .7em;
+    padding:            .8em .2em .8em .7em;
     min-width:          8em;
     max-width:          30%;
     white-space:        nowrap;
@@ -358,12 +358,9 @@ section .row > input[type=range] {
 }
 section .row > input[type=radio] + label, 
 section .row > input[type=checkbox] + label,
-section .row > input[type=range] + label,
 section .row > .toggle + label {
     width:              100%;
     max-width:          100%;
-    padding-top:        .8em;
-    padding-bottom:     .8em;
 }
 
 

@@ -348,11 +348,12 @@ section .row > p {
 section .row > label {
     top:            0;
     left:           0;
-    padding:        .7em 0 .6em .7em;
+    padding:        .8em 0 .8em .7em;
 	font-weight: 		bold;
+	width:			    8em;
 	max-width:			30%;
 	white-space:		nowrap;
-	text-overflow:	ellipsis;
+	text-overflow:	    ellipsis;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -ms-touch-action:   pan-y;
     -ms-user-select:    none;
@@ -424,12 +425,9 @@ section .row > input[type=checkbox] {
 }
 section .row > input[type=radio] + label, 
 section .row > input[type=checkbox] + label,
-section .row > input[type=range] + label,
 section .row > .toggle + label {
     width:              100%;
     max-width:          100%;
-    padding-top:        .8em;
-    padding-bottom:     .8em;
 }
 
 /************************* DIALOG *************************************************************/

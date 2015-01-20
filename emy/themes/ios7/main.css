@@ -357,12 +357,9 @@ section .row > input[type=checkbox]:checked {
 }
 section .row > input[type=radio] + label, 
 section .row > input[type=checkbox] + label,
-section .row > input[type=range] + label,
 section .row > .toggle + label {
     width:              100%;
     max-width:          100%;
-    padding-top:        .8em;
-    padding-bottom:     .8em;
 }
 
 /******************************** DIALOG *******************************************************/

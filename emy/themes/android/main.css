@@ -206,9 +206,9 @@ section .row > p {
 section .row > label {
     top:            0;
     left:           0;
-	width:			  	100%;
+	width:			100%;
 	margin:			0;
-	padding:        	.4em .7em 0 .7em;
+	padding:        	.4em .8em 0 .8em;
     font-size:          1.1em;
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
@@ -282,12 +282,7 @@ section .row > input[type=checkbox] {
 	-moz-appearance: 				checkbox;
 	appearance: 						    checkbox;
 }
-section .row > input[type=radio] + label, 
-section .row > input[type=checkbox] + label,
-section .row > .toggle + label {
-    padding-top:        .6em;
-    padding-bottom:     .6em;
-}
+
 
 /******************************** DIALOG *******************************************************/
 section.dialog {
