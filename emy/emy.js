@@ -978,18 +978,18 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 		var parentTarget = parent.parentNode;
 		parentTarget.removeChild(parent);
 
-		sendEvent("beforereplace", document.body, {
+		emy.sendEvent("beforereplace", document.body, {
 			fragment: frag
 		});
         
         var docNode;
 		while (frag.firstChild) {
 			docNode = parentTarget.appendChild(frag.firstChild);
-			sendEvent("afterreplace", document.body, {
+			emy.sendEvent("afterreplace", document.body, {
 				insertedNode: docNode
 			});
 		}
-		sendEvent("afterreplaceend", document.body, {
+		emy.sendEvent("afterreplaceend", document.body, {
 			fragment: frag
 		});
 	}
