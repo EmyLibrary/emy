@@ -282,7 +282,6 @@
 			xhr.open(method, url, true);
 			if (callback) {
 				xhr.onreadystatechange = function() {
-                    emy.log(xhr);
                     if(!xhr.aborted) {
                         if(xhr.readyState==4 && xhr.status==200 && xhr.responseText) {
                             xhr.aborted = true;
@@ -296,7 +295,7 @@
 			var data = null;
 			if (args && method != "GET") {
 				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				data = emy.param(args);
+				data = ajaxParam(args);
 			}
 			for (var header in emy.httpHeaders) {
 				xhr.setRequestHeader(header, emy.httpHeaders[header]);
