@@ -215,6 +215,15 @@ section > ul > li > a::before {
     transform:         rotateZ(45deg);
 }
 
+section > ul > li > a[target="_replace"] {
+    padding-top:        1.6em;
+    padding-bottom:     1.6em;
+    color:              #444;
+    background-image:   none;
+}
+section > ul > li > a[target="_replace"]::before {
+    display:            none;
+}
 
 section > ul > li > a[selected], 
 section > ul > li > a:active,
@@ -242,14 +251,8 @@ section > ul > li > a[selected="progress"]::before {
     -ms-transform:      none;
     transform:          none;
 }
-section > ul > li > a[target="_replace"] {
-    padding-top:        1.6em;
-    padding-bottom:     1.6em;
-    color:              #6495ed;
-    background-image:   none;
-}
-section > ul > li > a[target="_replace"]::before {
-    display:            none;
+section > ul > li > a[target="_replace"][selected="progress"]::before {
+    display:        block;
 }
 section > footer {
     padding:            .8em 0;

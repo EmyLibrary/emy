@@ -161,6 +161,7 @@ section > ul > li > a {
 	-webkit-box-sizing:  	initial;
 	-moz-box-sizing: 			initial;
 	box-sizing: 				    	initial;
+    position:               relative;
 	display:				    block;
 	margin: 					-.6em -.7em -.65em -.7em;
 	padding: 					.65em 1.8em .65em .7em;
@@ -168,21 +169,34 @@ section > ul > li > a {
 	background:			transparent;
 	text-decoration:  none;
 }
+section > ul > li > a[target="_replace"] {
+	padding-top: 		1.6em;
+	padding-bottom: 1.6em;
+	background-image: none;
+}
 
 section > ul > li > a[selected], 
 section > ul > li > a:active,
 section.panel > ul > li > a[selected], 
 section.panel > ul > li > a:active,
 section > ul > li > a[target="_replace"]:active {
-    background: 	#0783ad;
+    background: 	   #0783ad;
+}
+section > ul > li > a[selected="progress"]::before {
+    content:            '';
+    position:           absolute;
+    z-index:            1;
+    top:                50%;
+    right:              .3em;
+    display:            block;
+    width:              1.1em;
+    height:             1.1em;
+    margin:             -.55em 0 0 0;
+    background:         url(loading.gif) no-repeat center center;
+    background-size:    contain;
+    border:             0;
 }
 
-section > ul > li > a[target="_replace"] {
-	padding-top: 		1.6em;
-	padding-bottom: 1.6em;
-	color: 						#6495ed;
-	background-image: none;
-}
 section > footer {
     padding:		.8em 0;
     font-size:		.9em;

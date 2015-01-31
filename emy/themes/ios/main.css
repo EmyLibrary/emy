@@ -282,6 +282,12 @@ section > ul > li > a::after {
 	background:  url('listArrow.png') no-repeat left center;
 	background-size:          auto 100%;
 }
+section > ul > li > a[target="_replace"] {
+	padding-top: 		1.6em;
+	padding-bottom: 1.6em;
+	color: 						#6495ed;
+	background-image: none;
+}
 
 section > ul > li > a[selected], 
 section > ul > li > a:active,
@@ -314,15 +320,6 @@ section > ul > li > a[selected="progress"]::after {
 	transform:					none;
 }
 
-section > ul > li > a[target="_replace"] {
-	padding-top: 		1.6em;
-	padding-bottom: 1.6em;
-	color: 						#6495ed;
-	background-image: none;
-}
-section > ul > li > a[target="_replace"]::after {
-    display:    none;
-}
 
 section > footer {
 	padding:		.8em 0;

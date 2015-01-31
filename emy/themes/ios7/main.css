@@ -213,6 +213,15 @@ section > ul > li > a::before {
 	-moz-transform:  			rotate(45deg);
 	transform:  						rotate(45deg);
 }
+section > ul > li > a[target="_replace"] {
+	padding-top: 			1.6em;
+	padding-bottom: 	1.6em;
+	color: 							#6495ed;
+	background-image: none;
+}
+section > ul > li > a[target="_replace"]::before {
+    display:    none;
+}
 
 section > ul > li > a[selected], 
 section > ul > li > a:active,
@@ -223,29 +232,19 @@ section > ul > li > a[target="_replace"]:active {
 }
 
 section > ul > li > a[selected="progress"]::before {
-	display:		none;
+    display:    block;
+    width: 1.1em;
+    height: 1.1em;
+    margin: -.55em 0 0 0;
+	border:	0;
+    background: url(loading.gif) no-repeat center center;
+    background-size: contain;
+	-webkit-transform:  	none;
+	-moz-transform:  		none;
+	transform:  			none;
 }
-section > ul > li > a[selected="progress"]::after {
-	content:				'';
-	position:				absolute;
-	top:						50%;
-	right:						.5em;
-	border:					0;
-	width:					1.1em;
-	height:					1.1em;
-	margin:				-.55em 0 0 0;
-	background: 		url(loading.gif) no-repeat center center;
-	background-size:	1em auto;
-}
-section > ul > li > a[target="_replace"] {
-	padding-top: 			1.6em;
-	padding-bottom: 	1.6em;
-	color: 							#6495ed;
-	background-image: none;
-}
-section > ul > li > a[target="_replace"]::after {
-    display:    none;
-}
+
+
 section > footer {
     padding:		.8em 0;
     font-size:		.9em;
