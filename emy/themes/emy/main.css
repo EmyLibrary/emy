@@ -218,7 +218,7 @@ section > ul > li > a::before {
 section > ul > li > a[target="_replace"] {
     padding-top:        1.6em;
     padding-bottom:     1.6em;
-    color:              #444;
+    color:              rgba(0,0,0,.5);
     background-image:   none;
 }
 section > ul > li > a[target="_replace"]::before {
