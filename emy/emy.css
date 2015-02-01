@@ -232,7 +232,7 @@ body > section[emy-transition='slidebackout'] {
 /************************************************************************************************/
 
 *[data-hide='true'] {
-    display:    none;
+    display:    none!important;
 }
 
 #preloader {
