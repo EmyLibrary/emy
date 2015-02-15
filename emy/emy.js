@@ -240,13 +240,12 @@
 	panel that the incoming HTML will replace (if not supplied, emy will append
 	the incoming HTML to the `body`), and `cb` is a user-supplied callback function.
 	*/
-		showViewByHref: function(url, args, method, replace, cb) {
+		showViewByHref: function(url, args, method, replace, callback , errorCallback) {
 
-            function spbhCB(ajaxResult) {
+            function successCb(ajaxResult) {
                 var frag = document.createElement("div");
                 frag.innerHTML = ajaxResult;
                 // EVENT beforeInsert->body
-
                 if (replace) {
                     replaceElementWithFrag(replace, frag);
                     emy.busy = false;
@@ -254,16 +253,23 @@
                     emy.insertViews(frag);
                 }
 
-                if (cb) {
-                    setTimeout(cb, 1000, true);
+                if (callback) {
+                    emy.log('showViewByHref error callback');
+                    setTimeout(callback, 1000, true);
                 }   
-			};
+			}
+
+            function errorCb() {
+                emy.log('showViewByHref error callback');
+                emy.busy = false;
+                errorCallback();
+            }
 
             if (!emy.busy) {
 				emy.busy = true;
-				emy.ajax(url, args, method, spbhCB);
+				emy.ajax(url, args, method, successCb, errorCb);
 			} else {
-				cb(); // We didn't get the "lock", we may need to unselect something
+				callback(); // We didn't get the "lock", we may need to unselect something
 			}
 		},
 
@@ -280,17 +286,22 @@
 				url = url + "?" + ajaxParam(args);
 			}
 			xhr.open(method, url, true);
-			if (callback) {
-				xhr.onreadystatechange = function() {
-                    if(!xhr.aborted) {
-                        if(xhr.readyState==4 && xhr.status==200 && xhr.responseText) {
+            if (callback) {
+                // only if a callback function is set
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState==4 && !xhr.aborted)
+                    {
+                        // once call is done
+                        if(xhr.status==200 && xhr.responseText) {
+                            // if call status is ok
                             xhr.aborted = true;
-                            if(callback) callback(xhr.responseText);
-                        } else if(xhr.status==0 && !xhr.aborted) {
+                            callback(xhr.responseText);
+                        } else if(xhr.status==0) {
+                            // if ajax call failed
                             ajaxTimeout();
                         }
                     }
-				};
+                };
 			}
 			var data = null;
 			if (args && method != "GET") {
@@ -301,15 +312,16 @@
 				xhr.setRequestHeader(header, emy.httpHeaders[header]);
 			}
 			xhr.send(data);
+            // make the ajax call act as a failure is call is too long
+            // too long = 30sec by default
+            // but this can be change in global variables on top of the file
 			xhr.requestTimer = setTimeout(ajaxTimeout, ajaxTimeoutVal);
 			return xhr;
 
 			function ajaxTimeout() {
-				try {
-                    xhr.abord();
-                } catch (err) { }
-                if(errorCallback && !xhr.aborted) errorCallback(xhr);
                 xhr.aborted = true;
+                if(errorCallback)
+                    errorCallback(xhr);
             }
 		},
 
@@ -712,7 +724,9 @@ All forms without target="_self" will use emy's Ajax from submission.
 		link.setAttribute("selected", "progress");
 		emy.showViewByHref(link.href, null, "GET", replaceLink, function() {
 			link.removeAttribute("selected");
-		});
+		}, function error() {
+            link.removeAttribute("selected");
+        });
 	}
 
 	function resizeHandler() {
@@ -1016,15 +1030,12 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 					if ((sc[i].id != '') && (sc[i].id != undefined) && (typeof sc[i] === 'object') && !emy.hasClass(sc[i], 'toolbar')) {
 						heightVal = wih; /* default value */
 						if (window.navigator.standalone === false) { // for iphone
-							if (navigator.userAgent.toLowerCase()
-								.search('ipad') > -1) heightVal = (wih);
+							if (navigator.userAgent.toLowerCase().search('ipad') > -1) heightVal = (wih);
 							else if (emy.hasClass(sc[i], 'dialog')) heightVal = (wih + 60);
 							else if (screenHeight < 2) heightVal = (wih + 60);
 						} else {
-							if (navigator.userAgent.toLowerCase()
-								.search('android') > -1 && screenHeight == 0) heightVal = (wih + 50);
-							else if (navigator.userAgent.toLowerCase()
-								.search('firefox') > -1) heightVal = (wih - toolbarHeight);
+							if (navigator.userAgent.toLowerCase().search('android') > -1 && screenHeight == 0) heightVal = (wih + 50);
+							else if (navigator.userAgent.toLowerCase().search('firefox') > -1) heightVal = (wih - toolbarHeight);
 						}
 						sc[i].style.minHeight = heightVal + 'px';
 					}
