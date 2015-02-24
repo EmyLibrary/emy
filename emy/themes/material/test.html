@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="utf-8">
+	<title>Emy Interface</title>
+	<meta name="description" content="Emy library simpliest document">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="shortcut icon" href="../emy/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon-precomposed" href="../emy/apple-touch-icon-precomposed.png">
+	<meta name="msapplication-tap-highlight" content="no">
+
+	<link rel="stylesheet" type="text/css" href="../../emy.css">
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<script type="application/x-javascript" src="../../emy.js"></script>
+</head>
+
+<body>
+
+	<header class="toolbar">
+		<div><a id="backButton" class="button" href="#">Back</a></div>
+		<h1 id="viewTitle">Emy Interface</h1>
+		<div><a href="#dialog" class="button">Button</a></div>
+	</header>
+
+ <section id="home" data-title="Interface" selected="true">
+    <ul>
+      <li class="group">Navigation</li>
+      <li><a href="#screen1">Simple screen</a></li>
+      <li><a href="#screen2">Panel screen</a></li>
+      <li><a href="#dialog">Dialog screen</a></li>
+      <li class="group">Buttons</li>
+      <li><a href="#buttons">Buttons</a></li>
+      <li><a href="#buttons-panel">Buttons on panel</a></li>
+      <li class="group">Lists</li>
+      <li><a href="#list">List screen</a></li>
+      <li><a href="#list-panel">List screen in a panel</a></li>
+      <li><a href="#list-link">List screen with links</a></li>
+      <li><a href="#list-link-panel">List screen with links in a panel</a></li>
+      <li><a href="#list-link-panel" selected="progress">Ajax loading list link</a></li>
+      <li class="group">Form</li>
+      <li><a href="#form">Form inputs</a></li>
+    </ul>
+  </section>
+
+  <section id="screen1" data-title="Simple">
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.<br>
+		<br>
+		Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis.
+	</section>
+
+
+  <section id="screen2" data-title="Panel" class="panel">
+		<h2>Screen 2</h2>
+		<fieldset>
+			<div class="row">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.</p>
+			</div>
+			<div class="row">
+				<p>Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur.</p>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div class="row">
+				<p>Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem.</p>
+			</div>
+		</fieldset>
+		<footer>
+			Screen 2 footer text
+		</footer>
+	</section>
+
+
+    <section id="buttons" data-title="Buttons">
+        <div>
+            <a href="#home" class="mainButton">mainButton</a>
+            <a href="#home" class="mainButton darkButton">grayButton</a>
+            <a href="#home" class="mainButton redButton">redButton</a>
+            <a href="#home" class="mainButton greenButton">greenButton</a>
+            <a href="#home" class="mainButton disable">Disable</a>
+            <a href="#home" class="mainButton fullwidth">mainButton</a>
+        </div>
+        <div>
+            <a href="#home" class="mainButton noborder">mainButton</a>
+            <a href="#home" class="mainButton noborder darkButton">grayButton</a>
+            <a href="#home" class="mainButton noborder redButton">redButton</a>
+            <a href="#home" class="mainButton noborder greenButton">greenButton</a>
+            <a href="#home" class="mainButton noborder disable">Disable</a>
+            <a href="#home" class="mainButton noborder fullwidth">mainButton</a>
+        </div>
+    </section>
+
+    <section id="buttons-panel" data-title="Buttons on panel" class="panel">
+        <fieldset>
+            <div class="row">
+                <a href="#home" class="mainButton">mainButton</a>
+                <a href="#home" class="mainButton darkButton">grayButton</a>
+                <a href="#home" class="mainButton redButton">redButton</a>
+                <a href="#home" class="mainButton greenButton">greenButton</a>
+                <a href="#home" class="mainButton disable">Disable</a>
+                <a href="#home" class="mainButton fullwidth">mainButton</a>
+            </div>
+            <div class="row">
+                <a href="#home" class="mainButton noborder">mainButton</a>
+                <a href="#home" class="mainButton noborder darkButton">grayButton</a>
+                <a href="#home" class="mainButton noborder redButton">redButton</a>
+                <a href="#home" class="mainButton noborder greenButton">greenButton</a>
+                <a href="#home" class="mainButton noborder disable">Disable</a>
+                <a href="#home" class="mainButton noborder fullwidth">mainButton</a>
+            </div>
+        </fieldset>
+	</section>
+
+  <section id="list" data-title="List">
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+      <li>List item 4</li>
+      <li>List item 5</li>
+      <li>List item 6</li>
+      <li>List item 7</li>
+      <li>List item 8</li>
+      <li>List item 9</li>
+      <li>List item 10</li>
+      <li>List item 11</li>
+      <li>List item 12</li>
+    </ul>
+  </section>
+
+  <section id="list-panel" data-title="List in a panel" class="panel">
+    <ul>
+      <li>List item 1</li>
+      <li>List item 2</li>
+      <li>List item 3</li>
+      <li>List item 4</li>
+      <li>List item 5</li>
+      <li>List item 6</li>
+      <li>List item 7</li>
+      <li>List item 8</li>
+      <li>List item 9</li>
+      <li>List item 10</li>
+      <li>List item 11</li>
+      <li>List item 12</li>
+    </ul>
+  </section>
+
+  <section id="list-link" data-title="List with links">
+    <ul>
+      <li><a href="#screen1">List item 1</a></li>
+      <li><a href="#screen1">List item 2</a></li>
+      <li><a href="#screen1">List item 3</a></li>
+      <li><a href="#screen1">List item 4</a></li>
+      <li><a href="#screen1">List item 5</a></li>
+      <li><a href="#screen1">List item 6</a></li>
+      <li><a href="#screen1">List item 7</a></li>
+      <li><a href="#screen1">List item 8</a></li>
+      <li><a href="#screen1">List item 9</a></li>
+      <li><a href="#screen1">List item 10</a></li>
+      <li><a href="#screen1">List item 11</a></li>
+      <li><a href="#screen1">List item 12</a></li>
+    </ul>
+  </section>
+
+  <section id="list-link-panel" data-title="List with links in a panel" class="panel">
+    <ul>
+      <li><a href="#screen1">List item 1</a></li>
+      <li><a href="#screen1">List item 2</a></li>
+      <li><a href="#screen1">List item 3</a></li>
+      <li><a href="#screen1">List item 4</a></li>
+      <li><a href="#screen1">List item 5</a></li>
+      <li><a href="#screen1">List item 6</a></li>
+      <li><a href="#screen1">List item 7</a></li>
+      <li><a href="#screen1">List item 8</a></li>
+      <li><a href="#screen1">List item 9</a></li>
+      <li><a href="#screen1">List item 10</a></li>
+      <li><a href="#screen1">List item 11</a></li>
+      <li><a href="#screen1">List item 12</a></li>
+    </ul>
+  </section>
+
+  <section id="form" data-title="Form">
+    <form method="get" action="">
+      <fieldset>
+        <div class="row">
+          <input type="text" name="plaintext" id="plaintext" placeholder="Type your text" value onkeyup="this.setAttribute('value', this.value);">
+          <label for="plaintext">Plain text</label>
+        </div>
+        <div class="row">
+          <input type="email" name="email" id="email" placeholder="Type your email" value onkeyup="this.setAttribute('value', this.value);">
+          <label for="email">Email</label>
+        </div>
+        <div class="row">
+          <input type="url" name="website" id="website" placeholder="Website url" value onkeyup="this.setAttribute('value', this.value);">
+          <label for="website">Website</label>
+        </div>
+        <div class="row">
+          <input type="search" name="search" id="search" placeholder="Search keywords" value onkeyup="this.setAttribute('value', this.value);">
+          <label for="search">Search</label>
+        </div>
+        <div class="row">
+          <input type="tel" name="phone" id="phone" placeholder="Phone #" value onkeyup="this.setAttribute('value', this.value);">
+          <label for="phone">Phone #</label>
+        </div>
+        <div class="row">
+          <input type="number" pattern="[0-9]*" name="number" id="number" value placeholder="Numbers only" onkeyup="this.setAttribute('value', this.value);">
+          <label for="number">Numbers</label>
+        </div>
+        <div class="row">
+          <select name="list1" id="list1" size="1">
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+            <option value="5">Option 5</option>
+          </select>
+          <label for="list1">List</label>
+        </div>
+        <div class="row">
+          <textarea name="textarea" id="textarea" placeholder="Long text in here" value onkeyup="this.setAttribute('value', this.value.substr(0,2));"></textarea>
+          <label for="textarea">Textarea</label>
+        </div>
+        <div class="row">
+            <input type="radio" name="radio" id="radio1" value="1">
+            <label for="radio1">Radio 1</label>
+        </div>
+        <div class="row">
+            <input type="radio" name="radio" id="radio2" value="2">
+            <label for="radio2">Radio 2</label>
+        </div>
+        <div class="row">
+            <input type="checkbox" name="checkbox" id="checkbox1" value="1">
+            <label for="checkbox1">Checkbox</label>
+        </div>
+        <div class="row">
+            <div class="toggle" role="toggle">
+                <input type="checkbox" name="mytoggle" id="mytoggle">
+                <span class="thumb" data-on="ON" data-off="OFF"></span>
+            </div>
+            <label for="mytoggle">Toggle</label>
+        </div>
+        <div class="row">
+            <input type="range" name="range" id="range" min="1" max="20">
+            <label for="range">Range</label>
+        </div>
+      </fieldset>
+      <a type="submit" class="mainButton fullwidth">Submit</a>
+    </form>
+  </section>
+
+  <section id="dialog" data-title="Search" class="dialog">
+    <header class="toolbar">
+      <div><button class="button" type="cancel">Cancel</button></div>
+      <h1>Dialog View</h1>
+      <div><a href="form.dialogform.submit()" class="button blueButton">Submit</a></div>
+    </header>
+
+    <form id="dialogform" method="get" action="panel.html">
+      <fieldset>
+        <div class="row">
+          <input type="text" name="artist" placeholder="Type your keywords">
+          <label>Keywords</label>
+        </div>
+      </fieldset>
+    </form>
+  </section>
+
+</body>
+</html>
