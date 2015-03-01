@@ -121,11 +121,11 @@ header.toolbar #backButton::after {
 	content:    	'';
 	position:   	absolute;
     z-index:        0;
-	top:            -1.5em;
-	left:           -1.5em;
-	width:         	6em;
-	height:        	6em;
-    border-radius:  6em;
+	top:            1.5em;
+	left:           1.5em;
+	width:         	.5em;
+	height:        	.5em;
+    border-radius:  .5em;
 }
 header.toolbar #backButton:active, 
 header.toolbar #backButton[selected] {
