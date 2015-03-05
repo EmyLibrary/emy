@@ -63,6 +63,8 @@ Nothing fancy, we just create a few demo apps to show how easy you can create ap
 - [Maps app](http://www.emy-library.org/demos/maps/maps.html): Using third party APIs + onshow / onexit views events
 - [Facebook app](http://www.emy-library.org/demos/facebook/): Generating elements based on API callbacks
 - [Instagram app](http://www.emy-library.org/demos/instagram/): Responsive web design layout (yes, double tap to like/dislike works)
+- [Chat app](http://www.emy-library.org/demos/chat/): Based on Firebase.io DaaS - Emy meets WebSockets & realtime communication
+
 
 ### Themes & extensions
 
@@ -70,7 +72,7 @@ Emy is lightweight & simple but you can [get some extensions & themes](http://ww
 
 #### Supported platforms
 You can expect a full & smooth experience on:
-- iOS 5.x and above
+- iOS 6.x and above
 - Android 4.x and above
 - Blackberry 7, 10 and above
 - WindowsPhone 8 and above
@@ -79,7 +81,7 @@ You can expect a full & smooth experience on:
 It even works fine on desktop Safari, Chrome, Firefox & Internet Explorer 10 and above.
 
 You might get some UI bugs yet have a functionnal app on "old" platforms as:
-- iOS 3.x
+- iOS 5.x
 - Android 2.3.x
 - Blackberry 6
 - WindowsPhone 7.5
