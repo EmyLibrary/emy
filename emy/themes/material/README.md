@@ -1,7 +1,7 @@
-###Default theme - Emy Library
+###Material theme - Emy Library
 ---
 
-This theme is the defaut look'n'feel for Emy. It is simple and flat on purpose, to maximize performance even on low-end smartphones.
-Of course, it should be fine with Emy v1.0 & v1.1, and might be the best file to fork if you want to create your own theme.
+This theme follows Google Material UI style guidelines so your webapp can look like a native Android 5 one.
+It should be fine with Emy v1.1, but hasn't been tested on v1.0
 
-![Emy default theme](http://www.emy-library.org/files/themes/emy/1.1/screenshots/emy-1.jpg)
+![Material theme](http://www.emy-library.org/files/themes/material/1.1/screenshots/material-1.jpg)
