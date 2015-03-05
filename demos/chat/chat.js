@@ -67,7 +67,7 @@ window.chat = {
 		// ask user room name
 		var roomName = window.prompt("Create a new room", "new room "+ts);
 		// add created ID reference
-		if(roomTitle!='') {
+		if(roomName!='') {
 			// add created ID reference
 			chat.createdRoomId = "new room "+ts;
 			// push new room to Firebase
