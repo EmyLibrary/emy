@@ -260,47 +260,245 @@ body > section[emy-transition='switchbackout'] {
     animation-name: anim-switchbackout;
 }
 
+/* 49% step is needed for z-index */
 @-webkit-keyframes 'anim-switchin' {
     0%      { -webkit-transform: translateX(0%) scale(1);  z-index: -2; }
-    50% { -webkit-transform: translateX(55%) scale(0.8); z-index: -1;  }
-    100%      { -webkit-transform: translateX(0%) scale(1);  z-index: -1; }
+    49% 	{ -webkit-transform: translateX(55%) scale(0.8); z-index: -2;  }
+    50% 	{ -webkit-transform: translateX(55%) scale(0.8); z-index: -1;  }
+    100%    { -webkit-transform: translateX(0%) scale(1);  z-index: -1; }
 }
 @-webkit-keyframes 'anim-switchout' {
     0%      { -webkit-transform: translateX(0%) scale(1);  z-index: -1; }
-    50% { -webkit-transform: translateX(-55%) scale(0.8);  z-index: -2;  }
-    100%      { -webkit-transform: translateX(0%) scale(1);  z-index: -2; }
+    49% 	{ -webkit-transform: translateX(-55%) scale(0.8);  z-index: -1;  }
+    50% 	{ -webkit-transform: translateX(-55%) scale(0.8);  z-index: -2;  }
+    100%    { -webkit-transform: translateX(0%) scale(1);  z-index: -2; }
 }
 @-webkit-keyframes 'anim-switchbackin' {
     0%      { -webkit-transform: translateX(0%) scale(1); z-index: -2;  }
-    50% { -webkit-transform: translateX(-55%) scale(0.8);  z-index: -1;  }
-    100%      { -webkit-transform: translateX(0%) scale(1);  z-index: -1;  }
+    49% 	{ -webkit-transform: translateX(-55%) scale(0.8);  z-index: -2;  }
+    50% 	{ -webkit-transform: translateX(-55%) scale(0.8);  z-index: -1;  }
+    100%    { -webkit-transform: translateX(0%) scale(1);  z-index: -1;  }
 }
 @-webkit-keyframes 'anim-switchbackout' {
     0%      { -webkit-transform: translateX(0%) scale(1);  z-index: -1; }
-    50% { -webkit-transform: translateX(55%) scale(0.8); z-index: -2;  }
-    100%      { -webkit-transform: translateX(0%) scale(1);  z-index: -2; }
+    49% 	{ -webkit-transform: translateX(55%) scale(0.8); z-index: -1;  }
+    50% 	{ -webkit-transform: translateX(55%) scale(0.8); z-index: -2;  }
+    100%    { -webkit-transform: translateX(0%) scale(1);  z-index: -2; }
 }
 @keyframes anim-switchin {
     0%      { transform: translateX(0%) scale(1);  z-index: -2; }
-    50% { transform: translateX(55%) scale(0.8); z-index: -1;  }
-    100%      { transform: translateX(0%) scale(1);  z-index: -1; }
+    49% 	{ transform: translateX(55%) scale(0.8); z-index: -2;  }
+    50% 	{ transform: translateX(55%) scale(0.8); z-index: -1;  }
+    100%    { transform: translateX(0%) scale(1);  z-index: -1; }
 }
 @keyframes anim-switchout {
     0%      { transform: translateX(0%) scale(1);  z-index: -1; }
+    49% { transform: translateX(-55%) scale(0.8);  z-index: -1;  }
     50% { transform: translateX(-55%) scale(0.8);  z-index: -2;  }
     100%      { transform: translateX(0%) scale(1);  z-index: -2; }
 }
 @keyframes anim-switchbackin {
     0%      { transform: translateX(0%) scale(1); z-index: -2;  }
+    49% { transform: translateX(-55%) scale(0.8);  z-index: -2;  }
     50% { transform: translateX(-55%) scale(0.8);  z-index: -1;  }
     100%      { transform: translateX(0%) scale(1);  z-index: -1;  }
 }
 @keyframes anim-switchbackout {
     0%      { transform: translateX(0%) scale(1);  z-index: -1; }
+    49% { transform: translateX(55%) scale(0.8); z-index: -1;  }
     50% { transform: translateX(55%) scale(0.8); z-index: -2;  }
     100%      { transform: translateX(0%) scale(1);  z-index: -2; }
 }
 
+<<<<<<< HEAD
+=======
+/************************************************************************************************/
+body > section[emy-transition^='rotate'] {
+    -webkit-animation-duration:     	900ms;
+    -moz-animation-duration:            900ms;
+    animation-duration:                 900ms;
+    -webkit-transform-style:            preserve-3d;
+}
+body > section[emy-transition='rotatein'] {
+    -webkit-animation-name:         'anim-rotatein';
+    -moz-animation-name:            'anim-rotatein';
+    animation-name:                         anim-rotatein;
+}
+body > section[emy-transition='rotateout'] {
+    -webkit-animation-name:     'anim-rotateout';
+    -moz-animation-name:        'anim-rotateout';
+    animation-name:                     anim-rotateout;
+}
+body > section[emy-transition='rotatebackin'] {
+    -webkit-animation-name:     'anim-rotatebackin';
+    -moz-animation-name:        'anim-rotatebackin';
+    animation-name:                     anim-rotatebackin;
+}
+body > section[emy-transition='rotatebackout'] {
+    -webkit-animation-name:     'anim-rotatebackout';
+    -moz-animation-name:        'anim-rotatebackout';
+    animation-name:                     anim-rotatebackout;
+}
+
+@-webkit-keyframes 'anim-rotatein' {
+    0%      { -webkit-transform: scale(1,1) rotateY(180deg);	}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateY(0deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateY(0deg);	}
+	100%   	{ -webkit-transform: scale(1,1) rotateY(0deg);		}
+}
+@-webkit-keyframes 'anim-rotateout' {
+    0%      { -webkit-transform: scale(1,1) rotateY(0deg);		}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateY(0deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateY(0deg);   	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateY(-180deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateY(-180deg);	}
+	100%   	{ -webkit-transform: scale(1,1)	rotateY(-180deg);	}
+}
+@-webkit-keyframes 'anim-rotatebackin' {
+    0%      { -webkit-transform: scale(1,1) rotateY(180deg);	}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateY(360deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateY(360deg);	}
+	100%   	{ -webkit-transform: scale(1,1) rotateY(360deg);	}
+}
+@-webkit-keyframes 'anim-rotatebackout' {
+    0%      { -webkit-transform: scale(1,1) rotateY(0deg);		}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateY(0deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateY(0deg);   	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateY(180deg);	}
+	100%   	{ -webkit-transform: scale(1,1)	rotateY(180deg);	}
+}
+@keyframes anim-rotatein {
+    0%      { transform: scale(1,1) rotateY(180deg);	}
+    20%   	{ transform: scale(.8,.8) rotateY(180deg);	}
+    30%   	{ transform: scale(.8,.8) rotateY(180deg);	}
+    70% 	{ transform: scale(.8,.8) rotateY(0deg);	}
+	80%   	{ transform: scale(.8,.8) rotateY(0deg);	}
+	100%   	{ transform: scale(1,1) rotateY(0deg);		}
+}
+@keyframes anim-rotateout {
+    0%      { transform: scale(1,1) rotateY(0deg);		}
+    20%   	{ transform: scale(.8,.8) rotateY(0deg);	}
+    30%   	{ transform: scale(.8,.8) rotateY(0deg);   	}
+    70% 	{ transform: scale(.8,.8) rotateY(-180deg);	}
+	80%   	{ transform: scale(.8,.8) rotateY(-180deg);	}
+	100%   	{ transform: scale(1,1)	rotateY(-180deg);	}
+}
+@keyframes anim-rotatebackin {
+    0%      { transform: scale(1,1) rotateY(180deg);	}
+    20%   	{ transform: scale(.8,.8) rotateY(180deg);	}
+    30%   	{ transform: scale(.8,.8) rotateY(180deg);	}
+    70% 	{ transform: scale(.8,.8) rotateY(360deg);	}
+	80%   	{ transform: scale(.8,.8) rotateY(360deg);	}
+	100%   	{ transform: scale(1,1) rotateY(360deg);	}
+}
+@keyframes anim-rotatebackout {
+    0%      { transform: scale(1,1) rotateY(0deg);		}
+    20%   	{ transform: scale(.8,.8) rotateY(0deg);	}
+    30%   	{ transform: scale(.8,.8) rotateY(0deg);   	}
+    70% 	{ transform: scale(.8,.8) rotateY(180deg);	}
+	80%   	{ transform: scale(.8,.8) rotateY(180deg);	}
+	100%   	{ transform: scale(1,1)	rotateY(180deg);	}
+}
+
+/************************************************************************************************/
+body > section[emy-transition^='rotatehor'] {
+    -webkit-animation-duration:     	900ms;
+    -moz-animation-duration:            900ms;
+    animation-duration:                 900ms;
+    -webkit-transform-style:            preserve-3d;
+}
+body > section[emy-transition='rotatehorin'] {
+    -webkit-animation-name:         'anim-rotatehorin';
+    -moz-animation-name:            'anim-rotatehorin';
+    animation-name:                 anim-rotatehorin;
+}
+body > section[emy-transition='rotatehorout'] {
+    -webkit-animation-name:     'anim-rotatehorout';
+    -moz-animation-name:        'anim-rotatehorout';
+    animation-name:             anim-rotatehorout;
+}
+body > section[emy-transition='rotatehorbackin'] {
+    -webkit-animation-name:     'anim-rotatehorbackin';
+    -moz-animation-name:        'anim-rotatehorbackin';
+    animation-name:             anim-rotatehorbackin;
+}
+body > section[emy-transition='rotatehorbackout'] {
+    -webkit-animation-name:     'anim-rotatehorbackout';
+    -moz-animation-name:        'anim-rotatehorbackout';
+    animation-name:             anim-rotatehorbackout;
+}
+
+@-webkit-keyframes 'anim-rotatehorin' {
+    0%      { -webkit-transform: scale(1,1) rotateX(180deg);	}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateX(0deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateX(0deg);	}
+	100%   	{ -webkit-transform: scale(1,1) rotateX(0deg);		}
+}
+@-webkit-keyframes 'anim-rotatehorout' {
+    0%      { -webkit-transform: scale(1,1) rotateX(0deg);		}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateX(0deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateX(0deg);   	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateX(-180deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateX(-180deg);	}
+	100%   	{ -webkit-transform: scale(1,1)	rotateX(-180deg);	}
+}
+@-webkit-keyframes 'anim-rotatehorbackin' {
+    0%      { -webkit-transform: scale(1,1) rotateX(180deg);	}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateX(360deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateX(360deg);	}
+	100%   	{ -webkit-transform: scale(1,1) rotateX(360deg);	}
+}
+@-webkit-keyframes 'anim-rotatehorbackout' {
+    0%      { -webkit-transform: scale(1,1) rotateX(0deg);		}
+    20%   	{ -webkit-transform: scale(.8,.8) rotateX(0deg);	}
+    30%   	{ -webkit-transform: scale(.8,.8) rotateX(0deg);   	}
+    70% 	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+	80%   	{ -webkit-transform: scale(.8,.8) rotateX(180deg);	}
+	100%   	{ -webkit-transform: scale(1,1)	rotateX(180deg);	}
+}
+@keyframes anim-rotatehorin {
+    0%      { transform: scale(1,1) rotateX(180deg);	}
+    20%   	{ transform: scale(.8,.8) rotateX(180deg);	}
+    30%   	{ transform: scale(.8,.8) rotateX(180deg);	}
+    70% 	{ transform: scale(.8,.8) rotateX(0deg);	}
+	80%   	{ transform: scale(.8,.8) rotateX(0deg);	}
+	100%   	{ transform: scale(1,1) rotateX(0deg);		}
+}
+@keyframes anim-rotatehorout {
+    0%      { transform: scale(1,1) rotateX(0deg);		}
+    20%   	{ transform: scale(.8,.8) rotateX(0deg);	}
+    30%   	{ transform: scale(.8,.8) rotateX(0deg);   	}
+    70% 	{ transform: scale(.8,.8) rotateX(-180deg);	}
+	80%   	{ transform: scale(.8,.8) rotateX(-180deg);	}
+	100%   	{ transform: scale(1,1)	rotateX(-180deg);	}
+}
+@keyframes anim-rotatehorbackin {
+    0%      { transform: scale(1,1) rotateX(180deg);	}
+    20%   	{ transform: scale(.8,.8) rotateX(180deg);	}
+    30%   	{ transform: scale(.8,.8) rotateX(180deg);	}
+    70% 	{ transform: scale(.8,.8) rotateX(360deg);	}
+	80%   	{ transform: scale(.8,.8) rotateX(360deg);	}
+	100%   	{ transform: scale(1,1) rotateX(360deg);	}
+}
+@keyframes anim-rotatehorbackout {
+    0%      { transform: scale(1,1) rotateX(0deg);		}
+    20%   	{ transform: scale(.8,.8) rotateX(0deg);	}
+    30%   	{ transform: scale(.8,.8) rotateX(0deg);   	}
+    70% 	{ transform: scale(.8,.8) rotateX(180deg);	}
+	80%   	{ transform: scale(.8,.8) rotateX(180deg);	}
+	100%   	{ transform: scale(1,1)	rotateX(180deg);	}
+}
+
+>>>>>>> v1.1
 /************************************************************************************************/
 body > section[emy-transition^='flip3d'] {
     -webkit-animation-duration:     750ms;
@@ -492,4 +690,91 @@ body > section[emy-transition='hingebackout'] {
     55% { transform: rotate(80deg); animation-timing-function: ease-in-out; }
     72%     { transform: rotate(78deg); opacity: 1; animation-timing-function: cubic-bezier(.5,0,.7,0); }
     100% { transform: translateX(2em) translateY(20em) rotate(80deg); opacity: 0;  animation-timing-function: cubic-bezier(0,1,0,1); }
+<<<<<<< HEAD
+=======
+}
+
+/************************************************************************************************/
+body > section[emy-transition^='flow'] {
+    -webkit-animation-duration:   800ms;
+    -moz-animation-duration:      800ms;
+    animation-duration:           800ms;
+}
+body > section[emy-transition='flowin'] {
+    -webkit-animation-name: 'anim-flowin';
+    -moz-animation-name: 'anim-flowin';
+    animation-name: anim-flowin;
+}
+body > section[emy-transition='flowout'] {
+    -webkit-animation-name: 'anim-flowout';
+    -moz-animation-name: 'anim-flowout';
+    animation-name: anim-flowout;
+}
+body > section[emy-transition='flowbackin'] {
+    -webkit-animation-name: 'anim-flowbackin';
+    -moz-animation-name: 'anim-flowbackin';
+    animation-name: anim-flowbackin;
+}
+body > section[emy-transition='flowbackout'] {
+    -webkit-animation-name: 'anim-flowbackout';
+    -moz-animation-name: 'anim-flowbackout';
+    animation-name: anim-flowbackout;
+}
+
+@-webkit-keyframes 'anim-flowin' {
+    0%      { -webkit-transform: translateX(100%) scale(.8); }
+    25%      { -webkit-transform: translateX(100%) scale(.8); }
+    75%      { -webkit-transform: translateX(0%) scale(.8); }
+    80%      { -webkit-transform: translateX(0%) scale(.8); }
+    100%      { -webkit-transform: translateX(0%) scale(1); }
+}
+@-webkit-keyframes 'anim-flowout' {
+    0%      { -webkit-transform: translateX(0%) scale(1); }
+    20%      { -webkit-transform: translateX(0%) scale(.8); }
+    25%      { -webkit-transform: translateX(0%) scale(.8); }
+    85%      { -webkit-transform: translateX(-100%) scale(.8); }
+    100%      { -webkit-transform: translateX(-100%) scale(.8); }
+}
+@-webkit-keyframes 'anim-flowbackin' {
+    0%      { -webkit-transform: translateX(-100%) scale(.8); }
+    25%      { -webkit-transform: translateX(-100%) scale(.8); }
+    75%      { -webkit-transform: translateX(0%) scale(.8); }
+    80%      { -webkit-transform: translateX(0%) scale(.8); }
+    100%      { -webkit-transform: translateX(0%) scale(1); }
+}
+@-webkit-keyframes 'anim-flowbackout' {
+    0%      { -webkit-transform: translateX(0%) scale(1); }
+    20%      { -webkit-transform: translateX(0%) scale(.8); }
+    25%      { -webkit-transform: translateX(0%) scale(.8); }
+    85%      { -webkit-transform: translateX(100%) scale(.8); }
+    100%      { -webkit-transform: translateX(100%) scale(.8); }
+}
+@keyframes anim-flowin {
+    0%       { transform: translateX(100%) scale(.8); }
+    25%      { transform: translateX(100%) scale(.8); }
+    75%      { transform: translateX(0%) scale(.8); }
+    80%      { transform: translateX(0%) scale(.8); }
+    100%     { transform: translateX(0%) scale(1); }
+}
+@keyframes anim-flowout {
+    0%       { transform: translateX(0%) scale(1); }
+    20%      { transform: translateX(0%) scale(.8); }
+    25%      { transform: translateX(0%) scale(.8); }
+    85%      { transform: translateX(-100%) scale(.8); }
+    100%     { transform: translateX(-100%) scale(.8); }
+}
+@keyframes anim-flowbackin {
+    0%       { transform: translateX(-100%) scale(.8); }
+    25%      { transform: translateX(-100%) scale(.8); }
+    75%      { transform: translateX(0%) scale(.8); }
+    80%      { transform: translateX(0%) scale(.8); }
+    100%     { transform: translateX(0%) scale(1); }
+}
+@keyframes anim-flowbackout {
+    0%       { transform: translateX(0%) scale(1); }
+    20%      { transform: translateX(0%) scale(.8); }
+    25%      { transform: translateX(0%) scale(.8); }
+    85%      { transform: translateX(100%) scale(.8); }
+    100%     { transform: translateX(100%) scale(.8); }
+>>>>>>> v1.1
 }

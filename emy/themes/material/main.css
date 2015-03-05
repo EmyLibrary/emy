@@ -1,0 +1,718 @@
+/*
+Theme:		Google Material theme
+Version:	1.1
+Author:		@remi_grumeau
+*/
+
+@font-face {
+  font-family: 'RobotoDraft';
+  font-style: normal;
+  font-weight: 400;
+  src:  local('RobotoDraft'), 
+        local('RobotoDraft-Regular'), 
+        url(robotodraft-regular.eot) format('eot'),
+        url(robotodraft-regular.woff) format('woff');
+}
+
+@-webkit-keyframes scaleUp {
+    0%      {   opacity: 1; -webkit-transform:  scale(0,0);         }
+    100%    {   opacity: 0; -webkit-transform:  scale(12, 12);    }
+}
+@keyframes scaleUp {
+    0%      {   opacity: 1; transform:  scale(0,0);         }
+    100%    {   opacity: 0; transform:  scale(12, 12);        }
+}
+
+/******************************** BODY *******************************************************/
+body {
+    margin: 		0;
+    color: 			#212121;
+    font-family: 	"RobotoDraft", Helvetica, Arial, sans-serif;
+    background:  	#f9f9f9   ;
+}
+body > *:not(.toolbar) {
+    left:			0;
+    top:			0;
+    margin: 		0;
+    padding:		3.5em 0 0 0;
+}
+body > section {
+    background:     #fff;
+}
+
+/******************************** HEADER *******************************************************/
+header.toolbar {
+	position:		fixed;
+    display:        table;
+    width:          100%;
+    height: 		3.45em;
+    z-index:		9;
+    color:          rgba(0,0,0,0.87);
+    background: 	#03a9f4;
+    -webkit-box-shadow: 0 .2em .2em rgba(0,0,0,.25);
+    box-shadow:         0 .2em .2em rgba(0,0,0,.25);
+}
+header.toolbar h1 {
+    position:       static;
+    display:        table-cell;
+    width:          100%;
+    margin:         0;
+    padding: 	    0 .8em;
+    font-size: 	  	1.25em;
+    color: 			#fff;
+    font-weight: 	normal;
+    text-align: 	left;
+    vertical-align: middle;
+}
+
+header.toolbar > div {
+    display:        table-cell;
+    width:          auto;
+    max-width:      50%;
+    height:         3.45em;
+}
+header.toolbar .button {
+    margin:			0;
+    padding:		1.2em .8em 1.1em .8em;
+    width:			auto;
+    color:			inherit;
+    font-family:	inherit;
+    font-size:		1em;
+    text-align:		center;
+    text-transform: uppercase;
+    background:     transparent;
+}
+header.toolbar .button[selected], body > .toolbar .button:active,
+header.toolbar .blueButton {
+    color: 	        inherit;
+    background: 	transparent;
+}
+header.toolbar .redButton {
+    color:          #fff;
+    background: 	#ff0000;
+}
+header.toolbar .greenButton {
+    color:          #fff;
+    background: 	#1fb728;
+}
+header.toolbar #backButton {
+	position:   	relative;
+	width:        	3.5em;
+	height:       	3.5em;
+	text-indent:  	4em;
+	background: 	transparent;
+}
+header.toolbar #backButton::before {
+	content:    	'';
+	position:   	absolute;
+    z-index:        1;
+	top:            50%;
+	left:           1.5em;
+	width:         	.7em;
+	height:        	.7em;
+	margin:      	-.4em 0 0 0;
+	border:			0;
+	border-left: 	.15em solid rgba(0,0,0,0.87);
+	border-bottom: 	.15em solid rgba(0,0,0,0.87);
+	-webkit-transform:  	rotateZ(45deg);
+	transform:  			rotateZ(45deg);
+}
+header.toolbar #backButton::after {
+	content:    	'';
+	position:   	absolute;
+    z-index:        0;
+	top:            1.5em;
+	left:           1.5em;
+	width:         	.5em;
+	height:        	.5em;
+    border-radius:  .5em;
+}
+header.toolbar #backButton:active, 
+header.toolbar #backButton[selected] {
+    background:     transparent;
+}
+header.toolbar #backButton[selected]::before {
+    border-color:   #01579B;
+}
+header.toolbar #backButton[selected]::after {
+    background:         rgba(255,255,255,.4);
+    -webkit-animation:  scaleUp 300ms ease-in 1 forwards;
+    animation:          scaleUp 300ms ease-in 1 forwards;
+}
+
+/******************************** MAIN BUTTON *******************************************************/
+.mainButton {
+    display:            inline-block;
+    position:           relative;
+    margin:             .3em .15em .4em .15em;
+    padding:            .8em;
+    color:              #666;
+    text-align:         center;
+    font-size:          1em;
+    text-transform:     uppercase;
+    text-decoration:    none;
+    background:         #fff;
+    box-shadow:         0 .15em .15em rgba(0,0,0,.4);
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action: 		pan-y;
+    overflow:           hidden;
+}
+.mainButton[selected], .mainButton:active {
+    background:     #ddd;
+}
+button.mainButton {
+    border:         0;
+}
+
+.mainButton.darkButton {
+	color:         #fff;
+	background:    #253945;
+}
+.mainButton.darkButton[selected], .mainButton.darkButton:active {
+	background:    #03a9f4;
+}
+.mainButton.redButton {
+	color:         #fff;
+	background:    #C00;
+}
+.mainButton.redButton[selected], .mainButton.redButton:active {
+	background:    #f22;
+}
+.mainButton.greenButton {
+	color:         #fff;
+	background:    #00a504;
+}
+.mainButton.greenButton[selected], .mainButton.greenButton:active {
+	background:    #0D0;    
+}
+.mainButton.disable {
+    opacity:       .7;
+}
+
+.mainButton.noborder {
+	background:     transparent;
+    box-shadow:     none;
+}
+.mainButton.noborder[selected], .mainButton.noborder:active {
+	color:         #355163;
+}
+.mainButton.noborder.darkButton {
+	color:         #000;
+}
+.mainButton.noborder.redButton {
+	color:         #C00;
+}
+.mainButton.noborder.greenButton {
+	color:         #00a504;
+}
+
+.mainButton.fullwidth {
+    width: 98%;
+    margin:	.5em 1%;
+}
+
+
+/******************************** LIST *******************************************************/
+section > ul {
+	font-size:         1em;
+	list-style-type:   none;
+}
+section > ul > li {
+    padding:            1.2em 1em;
+    font-size:          inherit;
+}
+section > ul > li + li {
+	border-top:        1px solid #e1e1e1;
+}
+section > ul > li.group + li,
+section.panel > ul > li.group + li {
+	border-top:        0;
+}
+section > ul > li.group,
+section.panel > ul > li.group {
+	padding:           .7em 1.3em;
+	font-size:         .8em;
+	font-weight:       normal;
+	border:            0;
+    color:             rgba(0,0,0,.5);
+}
+section.panel > ul > li.group {
+	padding:           .4em .4em;
+}
+
+section > ul > li > a {
+    box-sizing:         initial;
+    display:            block;
+    margin:             -1.2em -1em -1.25em -1em;
+    padding:            1.2em 2.8em 1.2em 1em;
+    color:              #333;
+    text-decoration:    none;
+    background:         transparent;
+}
+
+section > ul > li > a[target="_replace"] {
+    padding-top:        1.6em;
+    padding-bottom:     1.6em;
+    color:              rgba(0,0,0,.5);
+    background-image:   none;
+}
+section > ul > li > a[target="_replace"]::before {
+    display:            none;
+}
+
+section > ul > li > a[selected], 
+section > ul > li > a:active,
+section.panel > ul > li > a[selected], 
+section.panel > ul > li > a:active,
+section > ul > li > a[target="_replace"]:active {
+    background:         #ebebeb;
+}
+
+section > ul > li > a[selected]::before, 
+section > ul > li > a:active::before,
+section.panel > ul > li > a[selected]::before, 
+section.panel > ul > li > a:active::before {
+    border-color:       #fff;
+}
+section > ul > li > a[selected="progress"]::before {
+    content:            '';
+    z-index:            1;
+    position:           absolute;
+    top:                50%;
+    right:              .5em;
+    width:              2em;
+    height:             2em;
+    margin:             -1em 0 0 0;
+    background:         url(loading.gif) no-repeat center center;
+    background-size:    2em auto;
+    border:             0;
+    -webkit-transform:  none;
+    -ms-transform:      none;
+    transform:          none;
+}
+section > ul > li > a[target="_replace"][selected="progress"]::before {
+    display:        block;
+}
+section > footer {
+    padding:            .8em 0;
+    font-size:          .9em;
+    text-align:         center;
+}
+
+/******************************** FIELDSET *******************************************************/
+section fieldset {
+    border:	            0;
+    margin-bottom:      .5em;
+}
+section .row {
+    min-height:         2.8em;
+    font-size:          1em;
+    background:         #fff;
+    border-bottom:      1px solid #d2d2d2;
+}
+section .row > p {
+    padding:            .7em;
+    height:             auto;
+    text-align:         left;
+}
+
+section .row > label {
+    top:                0;
+    left:               0;
+    padding:            .7em;
+    width:              100%;
+    font-size:          1.2em;
+    color:              #757575;
+    white-space:        nowrap;
+    text-overflow:      ellipsis;
+    opacity:            .6;
+    -webkit-transform-origin:   0 0;
+    transform-origin:   0 0;
+    -webkit-transform:  scale(1,1) translateY(1.7em);
+    transform:          scale(1,1) translateY(1.7em);
+    -webkit-transition: -webkit-transform 150ms ease-out;
+    transition:         transform 150ms ease-out;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
+}
+section .row > textarea + label,
+section .row > select + label,
+section .row > textarea:focus + label,
+section .row > textarea:not([value=""]) + label,
+section .row > input:focus + label,
+section .row > input:not([value=""]) + label {
+    opacity:            1;
+    -webkit-transform:  scale(.7,.7) translateX(.2em);
+    transform:          scale(.7,.7) translateX(.2em);
+}
+
+
+section .row > span {
+    padding:            .7em .6em 0 30%;
+    margin:             0;
+}
+
+section .row > input,
+section .row > textarea,
+section .row > select {
+    margin:             0;
+    width:              100%;
+    height:             inherit;
+    font-size:          1.3em;
+    color:              #222;
+    background:         transparent;
+    -webkit-appearance: none;
+    -moz-appearance:    button;
+    appearance:         none;
+}
+section .row > input::-moz-focus-inner {
+    border:     0;  /* remove inner bevel border */
+}
+section .row > input::-webkit-input-placeholder,
+section .row > textarea::-webkit-input-placeholder { /* WebKit browsers */
+    opacity:  0;
+}
+section .row > input:-moz-placeholder,
+section .row > textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    opacity:  0;
+}
+section .row > input::-moz-placeholder,
+section .row > textarea::-moz-placeholder { /* Mozilla Firefox 19+ */
+    opacity:  0;
+}
+section .row > input:-ms-input-placeholder,
+section .row > textarea:-ms-input-placeholder { /* Internet Explorer 10+ */
+    opacity:  0;
+}
+
+
+section .row > textarea,
+section .row > input:not([type=radio]):not([type=checkbox]) {
+    width:              94%;
+    margin:             0 3% .2em 3%;
+    padding:            2em 0 .3em 0;
+    color:              #000;
+    font-size:          1.3em;
+    border:             0;
+    resize:             none;
+    border-radius:      0;
+    border-bottom:      2px solid transparent;
+    outline:            0;
+    -webkit-transition: border-color 150ms ease-out;
+    transition:         border-color 150ms ease-out;
+}
+section .row > textarea:focus,
+section .row > input:not([type=radio]):not([type=checkbox]):focus {
+    border-color:       #03a9f4;
+}
+section .row > textarea {
+    margin-top:         2em;
+    padding-top:        0;
+    min-height:         6em;
+    vertical-align:     top;
+}
+section .row > select {
+    margin-top:         1.3em;
+    float:              left;
+    padding:            .6em;
+    width:              100%;
+    color:              inherit;
+    border:             0;
+    clear:              both;
+}
+section .row > select::-ms-expand {
+    display:            none;
+} 
+/* hide the input themselves, and use pseudo elements on label for styling */
+section .row > input[type=radio],
+section .row > input[type=checkbox] {
+    position:           absolute;
+    top:                0;
+    left:               0;
+    width:              1px;
+    height:             1px;
+    opacity:            0;
+}
+/* make a pseudo element look like input at default state */
+section .row > input[type=radio] + label::before,
+section .row > input[type=checkbox] + label::before {
+    content:            '';
+    position:           absolute;
+    z-index:            2;
+    display:            block;
+    top:                50%;
+    left:               1.4em;
+    width:              1.4em;
+    height:             1.4em;
+    margin:             -.7em; /* aka half of width & height to centered it */
+}
+/* radio label pseudo element to look like radio using gradient background */
+section .row > input[type=radio] + label::before {
+    background:         #03a9f4; /* same as border */
+    border-radius:      1.5em;
+    -webkit-transition: background 250ms ease-in-out;
+    transition:         background 250ms ease-in-out;
+    background-image:   -webkit-radial-gradient(center, circle closest-side,   #fff 0%, #fff 80%, #000 82%, #000 100%);
+    background-image:   radial-gradient(circle closest-side at center,         #fff 0%, #fff 80%, #000 82%, #000 100%);
+}
+section .row > input[type=radio]:checked + label::before {
+    background-image:   -webkit-radial-gradient(center, circle closest-side,   #03a9f4 0%, #03a9f4 55%, #fff 55%, #fff 82%, #03a9f4 85%, #03a9f4 100%);
+    background-image:   radial-gradient(circle closest-side at center,         #03a9f4 0%, #03a9f4 55%, #fff 55%, #fff 82%, #03a9f4 85%, #03a9f4 100%);
+}
+
+section .row > input[type=checkbox]:checked {
+    top:                50%;
+    left:               .7em;
+    width:              1.4em;
+    height:             1.4em;
+    margin-top:         -.7em;
+    opacity:            1;
+    background:         #03a9f4;
+    border-radius:      0;
+}
+/* checkbox label pseudo element to look like checkbox using box shadow background */
+section .row > input[type=checkbox] + label::before {
+    box-shadow:         inset 0 0 0 .15em #222;
+}
+section .row > input[type=checkbox]:checked + label::before {
+    width:              .3em;
+    height:             .6em;
+    margin:             -.4em -.25em;
+    background:         transparent;
+    border-right:       .15em solid #fff;
+    border-bottom:      .15em solid #fff;
+    box-shadow:         none;
+    -webkit-transform:  rotateZ(45deg);
+    transform:          rotateZ(45deg);
+}
+
+
+/* setting another pseudo element below to scale it as a tap graphical callback */
+section .row > input[type=radio] + label::after,
+section .row > input[type=checkbox] + label::after {
+    content:            '';
+    position:           absolute;
+    z-index:            1;
+    display:            block;
+    top:                50%;
+    left:               1.4em;
+    width:              6em;
+    height:             6em;
+    margin:             -3em;
+    border-radius:      3em;
+    background:         rgba(0,0,0,.2);
+    opacity:            0;
+}
+section .row > input[type=radio]:checked + label::after,
+section .row > input[type=checkbox]:checked + label::after {
+    -webkit-animation:  scaleUp 350ms ease-out;
+    animation:          scaleUp 350ms ease-out;
+}
+
+
+
+section .row > input[type=range] {
+    margin-right:       2%;
+    margin-top:         2em!important;
+    margin-bottom:      1em!important;
+    padding:            initial!important;
+    width:              68%;
+    height:             auto;
+    -webkit-appearance: slider-horizontal;
+    -moz-appearance:    slider-horizontal;
+    appearance:         slider-horizontal;
+}
+
+section .row > .toggle + label, 
+section .row > input[type=radio] + label, 
+section .row > input[type=checkbox] + label,
+section .row > .toggle + label {
+    position:           static;
+    display:            block;
+    width:              100%;
+    max-width:          100%;
+    padding:            1em 1em 1em 2.8em;
+    font-size:          1.3em;
+    color:              #222;
+    -webkit-transform:  none;
+    transform:          none;
+    white-space:        normal;
+    opacity:            1;
+}
+section .row > .toggle + label {
+    padding:            1em;
+}
+
+
+/******************************** DIALOG *******************************************************/
+section.dialog {
+    top:                0;
+    padding:            0;
+    background-color:   rgba(0,0,0,0);
+    -webkit-transition:     background 250ms ease-in-out;
+    transition:             background 250ms ease-in-out;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   none;
+}
+section.dialog header.toolbar {
+    position:           absolute;
+    width:              100%;
+    z-index:            11;
+    -webkit-box-shadow: none;
+    box-shadow:         none;
+}
+section.dialog fieldset {
+    width:              100%;
+    padding:            .3em 0;
+    margin-top:         2.8em;
+    border:             none;
+    background:         #03a9f4;
+    -webkit-transform:  translateY(-100%);
+    -ms-transform:      translateY(-100%);
+    transform:          translateY(-100%);
+    -webkit-transition: all 300ms ease-in-out;
+    transition:         all 300ms ease-in-out;
+}
+
+section.dialog.show {
+    z-index:            11;
+	background: 		rgba(0,0,0,.8);
+}
+section.dialog.show fieldset {
+    -webkit-transform:  translateY(0%);
+    -ms-transform:      translateY(0%);
+    transform:          translateY(0%);
+}
+
+section.dialog fieldset > div.row {
+    font-size:          1em;
+    background-color:   transparent;
+}
+section.dialog fieldset > div.row:first-child {
+    border:             0;
+}
+section.dialog fieldset > div.row > label,
+section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
+    color:              #fff;
+    border-color:       #fff;
+}
+section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
+    padding:            .5em 0 .5em 8.5em;
+}
+
+/******************************** PANEL *******************************************************/
+section.panel {
+    padding-left:       .4em;
+    padding-right:      .4em;
+    color:              #757575;
+    border:             0;
+    background:         #f9f9f9;
+}
+section.panel > *:first-child {
+	margin-top:        .7em;
+}
+section.panel h2 {
+    padding:            1.4em .4em 1em .4em;
+    font-size:          1.4em;
+    font-weight:        normal;
+    color:              #03a9f4;
+}
+
+section.panel fieldset > .row {
+    min-height:         2.8em;
+}
+section.panel ul,
+section.panel fieldset {
+    display:            inline-block;
+    margin:             .4em 0;
+    padding:            0;
+    width:              100%;
+    font-size:          1em;
+    border:             0;
+    background:         #fff;
+}
+section.panel ul > li {
+    list-style:         none;
+}
+section.panel footer {
+    padding:            .5em 0;
+}
+
+/******************************** TOGGLE *******************************************************/
+
+.toggle {
+    z-index:            0;
+    top:                0;
+    right:              0;
+    width:              5em;
+    height:             4em;
+}
+.toggle > .thumb {
+    position:           absolute;
+    top:                1em;
+    left:               .5em;
+    width:              2em;
+    height:             2em;
+    border-radius:      1em;
+    background-color:       #fff;
+    box-shadow:         0 0 .5em rgba(0,0,0,.6);
+    -webkit-transition:     all 200ms ease-in-out;
+    transition:             all 200ms ease-in-out;
+    -webkit-transform:      translateX(0);
+    -ms-transform:          translateX(0);
+    transform:              translateX(0);
+}
+.toggle > input {
+    position:       absolute;
+    left:           20%;
+    top:            50%;
+    width:          60%;
+    height:         1.5em;
+    margin-top:     -.75em;
+    z-index:        0;
+    border:         0;
+    border-radius:  1em;
+    background:     #939393;
+    -webkit-appearance: none;
+    -moz-appearance:    menuitem;
+    appearance:         none;
+}
+.toggle input:checked {
+    background:     #2fbefe;
+}
+.toggle input:checked + .thumb {
+    background-color:       #03a9f4;
+    -webkit-transform:      translateX(2em);
+    -ms-transform:          translateX(2em);
+    transform:              translateX(2em);
+}
+
+.toggle input + .thumb::before, 
+.toggle input + .thumb::after {
+    position:       absolute;
+    left:           0;
+    top:            0;
+    width:          inherit;
+    font-size:      1em;
+    line-height:    1em;
+    padding:        .3em 0;
+    z-index:        1;
+}
+.toggle input + .thumb::after {
+    color:         	#fff;
+    opacity:    	0;
+}
+.toggle input:checked + .thumb::before {
+    opacity:  		0;
+}
+.toggle input:checked + .thumb::after {
+    opacity:  		1;
+}
+
+/************************************************************************************************/
+#preloader {
+    background-image:	url(loading.gif);
+}
+

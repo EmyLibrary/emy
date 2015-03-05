@@ -4,81 +4,112 @@
 .tcenter	{	text-align:	center;		}
 
 
+/******************** GRID *****************/
+
+.emy-grid > *[class^="w"] {
+    display:    block;
+    float:      left;
+}
+.emy-grid .w10 {  width:  10%;    }
+.emy-grid .w20 {  width:  20%;    }
+.emy-grid .w25 {  width:  25%;    }
+.emy-grid .w30 {  width:  30%;    }
+.emy-grid .w33 {  width:  33.33%; }
+.emy-grid .w40 {  width:  40%;    }
+.emy-grid .w50 {  width:  50%;    }
+.emy-grid .w60 {  width:  60%;    }
+.emy-grid .w66 {  width:  66.6%;  }
+.emy-grid .w70 {  width:  70%;    }
+.emy-grid .w75 {  width:  75%;    }
+.emy-grid .w80 {  width:  80%;    }
+.emy-grid .w90 {  width:  90%;    }
+.emy-grid .w100 {  width:  100%;   }
+
 /******************** BOARD *****************/
-section.board {
-  background: 	#000;
+section.icon-board {
+    background:     #000;
 }
-section.board li, section.board li:last-child {
-  width: auto;
-	font-size:			1em;
-	text-align:   center;
-  font-weight: normal;
-  border: 0;
+section.icon-board li, section.icon-board li:first-child {
+    width:          auto;
+    font-size:      1em;
+    text-align:     center;
+    font-weight:    normal;
+    border:         0!important;
 }
-section.board li > a {
-  color:  #fff;
-  padding-right: .7em;
+section.icon-board ul {
+    padding-top:    .5em;
+    overflow:       hidden;
 }
-section.board li > a:active,
-section.board li > a[selected] /* to reset system sets */
+section.icon-board li > a {
+    color:          #fff;
+    padding-right: .7em;
+}
+section.icon-board li > a:active,
+section.icon-board li > a[selected] /* to reset system sets */
 {
     background-color: 	rgba(255,255,255,.3) !important;
     background-image: 	none !important;
     -webkit-border-radius:	.4em;
-    -moz-border-radius:		    .4em;
-    border-radius:					          .4em;
+    -moz-border-radius:		.4em;
+    border-radius:			.4em;
 }
-section.board li > a::after {
-  display:  none;
+section.icon-board li > a::after {
+    display:        none;
 }
-section.board li > a span {
-  font-size:  .7em;
+section.icon-board li > a span {
+    font-size:      .7em;
 }
-section.board li a img {
-	display:			block;
-	width:				3em;
-	height:			  	3em;
-	margin:			0 auto;
-	border: 			none;
+section.icon-board li a img {
+	display:       block;
+	width:         3em;
+	height:        3em;
+	margin:        0 auto;
+	border:        none;
 }
-section ul.board a > span
-{
-  display:        block;
-	width: 				  100%;
-	text-align:	  center;
-	color:				      #fff;
-	overflow:			hidden;
-	text-overflow:	  ellipsis;
-	white-space : 		nowrap;
+section.icon-board a > span {
+    display:        block;
+    width:          100%;
+    padding:        15% 0 10% 0;
+    text-align:     center;
+    color:          #fff;
+    overflow:       hidden;
+    text-overflow:  ellipsis;
+    white-space:    nowrap;
+}
+
+section.icon-board li[class^="w"] img {
+    width:          100%;
+    height:         auto;
 }
 
 
 /******************** CAPTION IN LIST *****************/
 span.caption {
-  display:  block;
-	color:		#444;
-	font-size:	.8em;
-	font-weight:  normal;
+    display:        block;
+    color:          #444;
+    font-size:      .8em;
+    font-weight:    normal;
 }
 a:active span.caption,
 a[selected] span.caption {
-	color:		#fff;
+    color:          #fff;
 }
 
 /******************** BUBBLE IN LIST *****************/
 span.bubble {
-    float:               right;
-    min-width:   2.5em;
-    margin-top: -.2em;
-    padding: 		  .3em .5em;
-    font-size:       0.9em;
-    color:              #fff;
-    text-align:    center;
-    border:			      0px;
-    background-color:	          #8894aa;
+    position:       absolute;
+    right:          2em;
+    min-width:      2.5em;
+    margin-top:     -.2em;
+    padding:        .25em .5em;
+    font-size:      0.9em;
+    color:          #fff;
+    text-align:     center;
+    border:         1px solid rgba(0,0,0,0);
+    background-color:       #8894aa;
     -webkit-border-radius:	1em;
-    -moz-border-radius:		    1em;
-    border-radius:					          1em;
+    -moz-border-radius:		1em;
+    border-radius:			1em;
 }
 a:active span.bubble,
 a[selected] span.bubble {
@@ -89,34 +120,27 @@ a[selected] span.bubble {
 
 /******************** ICON IN LIST *****************/
 ul li a img {
-	border:	0;
+    border:	    0;
 }
 ul li.icon {
-  display:  table-row;
-  float:    none;
-  width:    100%;
-  padding:  0;
+    display:    table-row;
+    float:      none;
+    width:      100%;
+    padding:    0;
 }
 ul li.icon img, ul li.icon span {
-  display:  table-cell;
-  vertical-align: middle;
+    display:        table-cell;
+    vertical-align: middle;
 }
 ul li.icon span {
-  width:    100%;
-  padding-left:  .4em;
+    width:      100%;
+    padding-left:   .4em;
 }
 ul li.icon img+span {
-  padding-left:  .2em;
+    padding-left:   .2em;
 }
 
 ul li a img {
-  vertical-align: middle;
-  margin: -.65em .5em -.65em -.7em;
-}
-
-
-/******************** HALF SIZE BUTTON *****************/
-.mainButton.half {
-	display:	inline-block;
-	width:		47%;
+    margin:         -.65em .5em -.65em -.7em;
+    vertical-align: middle;
 }

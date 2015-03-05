@@ -282,6 +282,12 @@ section > ul > li > a::after {
 	background:  url('listArrow.png') no-repeat left center;
 	background-size:          auto 100%;
 }
+section > ul > li > a[target="_replace"] {
+	padding-top: 		1.6em;
+	padding-bottom: 1.6em;
+	color: 						#6495ed;
+	background-image: none;
+}
 
 section > ul > li > a[selected], 
 section > ul > li > a:active,
@@ -314,15 +320,6 @@ section > ul > li > a[selected="progress"]::after {
 	transform:					none;
 }
 
-section > ul > li > a[target="_replace"] {
-	padding-top: 		1.6em;
-	padding-bottom: 1.6em;
-	color: 						#6495ed;
-	background-image: none;
-}
-section > ul > li > a[target="_replace"]::after {
-    display:    none;
-}
 
 section > footer {
 	padding:		.8em 0;
@@ -335,67 +332,74 @@ section fieldset {
 	border:	0;
 	margin-bottom:	.5em;
 }
-section fieldset > .row {
+section .row {
 	min-height:				2.8em;
-	border-bottom:		.1em solid #999;
+	border-bottom:		1px solid #999;
 }
-section fieldset > .row > p {
+section .row > p {
 	height:				auto;
 	padding:			.7em;
 	text-align:		left;
 }
 
-section fieldset > .row > label {
-	margin:				.7em 0 0 .7em;
+section .row > label {
+    top:            0;
+    left:           0;
+    padding:        .8em 0 .8em .7em;
 	font-weight: 		bold;
+	width:			    8em;
 	max-width:			30%;
 	white-space:		nowrap;
-	text-overflow:	ellipsis;
+	text-overflow:	    ellipsis;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
 }
-section fieldset > .row > span {
+section .row > span {
     padding: 				.7em .6em 0 30%;
     margin: 			  	0;
 }
 
-section fieldset > .row > input,
-section fieldset > .row > textarea,
-section fieldset > .row > select {
+section .row > input,
+section .row > textarea,
+section .row > select {
 	width:					100%;
 	margin: 				0;
 	height: 					inherit;
-	font-size:				.85em;
+	font-size:				.9em;
 	background:		transparent;
 	-webkit-appearance: none;
 	-moz-appearance:		none;
 	appearance:					none;
 }
-section fieldset > .row > textarea,
-section fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
-    padding: 		.8em .8em .9em 7em;
+section .row > textarea,
+section .row > input:not([type=radio]):not([type=checkbox]) {
+    padding: 		.9em .8em .9em 7em;
     border:			0;
     resize: 		    none;
     -webkit-border-radius:     0;
     -moz-border-radius: 	        0;
     border-radius: 	                    0;
 }
-section fieldset > .row > textarea {
+section .row > textarea {
   min-height:   8em;
 }
-section fieldset > .row > select {
+section .row > select {
 	float:			    right;
 	width:			auto;
 	color:			    #425c8d;
-	font-size:		.8em;
-	padding:	    1em;
+	font-size:		.9em;
+	padding:	    .9em 1em;
 	border:			0;
 	clear:			    both;
 	-moz-appearance:		menuitem; /* since none does not work */
 }
-section fieldset > .row > select::-ms-expand {
+section .row > select::-ms-expand {
     display: none;
 } 
-section fieldset > .row > input[type|=radio], 
-section fieldset > .row > input[type|=checkbox] {
+section .row > input[type=radio], 
+section .row > input[type=checkbox] {
 	float:				right;
 	padding:		0;
 	margin:		.5em 10px 0 0;
@@ -408,13 +412,19 @@ section fieldset > .row > input[type|=checkbox] {
 	-moz-border-radius: 			1em;
 	border-radius: 						1em;
 }
-section fieldset > .row > input[type|=checkbox] {
+section .row > input[type=checkbox] {
 	-webkit-border-radius: 	.5em;
 	-moz-border-radius: 			.5em;
 	border-radius:						.5em;
 	-webkit-appearance: 		checkbox;
 	-moz-appearance: 				checkbox;
 	appearance: 							checkbox;
+}
+section .row > input[type=radio] + label, 
+section .row > input[type=checkbox] + label,
+section .row > .toggle + label {
+    width:              100%;
+    max-width:          100%;
 }
 
 /************************* DIALOG *************************************************************/
@@ -469,10 +479,10 @@ section.dialog fieldset > div.row {
 	border-radius:					    0;
 }
 section.dialog fieldset > div.row > label {
-    margin-top: 	.85em;
+    padding-top: 	1em;
     z-index:          	2;
 }
-section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
     font-size:      1em;
     width:            100%;
     border:			 1px solid #47607c;
@@ -481,7 +491,7 @@ section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox
     -moz-border-radius:		    0;
     border-radius:		                0;
 }
-section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
+section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
 	padding:			.5em 0 .5em 8.5em;
 }
 
@@ -568,75 +578,76 @@ section.panel footer {
 	margin:              	.4em .4em 0 0;
 	border:					.1em solid #888;
 	font-size:				1.2em;
-	font-weight:		bold;
+	font-weight:		    bold;
 	line-height:			1.5em;
-	-webkit-border-radius: 	.3em;
-	-moz-border-radius: 		    .3em;
-	border-radius:					    .3em;
+	border-radius:			.3em;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-ms-touch-action: 		pan-y;
 }
 .panel .toggle {
   margin:                 .35em .35em 0 0;
 }
-.toggle[toggled] {
+.toggleinput:checked {
   border-color: 	#143fae;
 }
 
 .toggle > .thumb {
-	position:       	absolute;
-	width: 			    2em;
-	height:           	inherit;
-	margin:          	-.1em 0 0 -.1em;
-	border: 		    .1em solid #888;
-	z-index:		    2;
+    position:       	absolute;
+    top:				0;
+    left:				0;
+    width: 			    2em;
+    height:           	inherit;
+    margin:          	-.1em 0 0 -.1em;
+    border: 		    .1em solid #888;
+    z-index:		    2;
+    border-radius:      .3em;
+	box-shadow:         0 0 .2em rgba(0,0,0,.5);
 	background-image:	  		-webkit-gradient(linear, left top, right top, from(#d3d3d3), to(#fff));
 	background-image:			-webkit-linear-gradient(270deg, #d3d3d3 0%, #fff 100%);
-	background-image:			-moz-linear-gradient(270deg, #d3d3d3 0%, #fff 100%);
 	background-image:			linear-gradient(180deg, #d3d3d3 0%, #fff 100%);
-	-webkit-border-radius:	    .3em;
-	-moz-border-radius:			.3em;
-	border-radius:						.3em;
-	-webkit-box-shadow:			0 0 .2em rgba(0,0,0,.5);
-	-moz-box-shadow:				0 0 .2em rgba(0,0,0,.5);
-	box-shadow:							0 0 .2em rgba(0,0,0,.5);
 	-webkit-transition:	    -webkit-transform 200ms ease-in-out;
-	-moz-transition:			-moz-transform 200ms ease-in-out;
-	transition:			    		transform 200ms ease-in-out;
+	transition:             transform 200ms ease-in-out;
 	-webkit-transform:    	translateX(0);
-	-moz-transform:         	translateX(0);
-	transform:                     	translateX(0);
+	-ms-transform:          translateX(0);
+	transform:              translateX(0);
 }
-.toggle[toggled] > .thumb {
-	-webkit-transform:    translateX(3em);
-	-moz-transform:         translateX(3em);
-	transform:                     translateX(3em);
+.toggle > input {
+    position:       absolute;
+    right:          0;
+    top:            0;
+    width:          1px;
+    height:         1px;
+    z-index:        -1;
+}
+.toggle input:checked + .thumb {
+    -webkit-transform:  translateX(3em);
+    -ms-transform:      translateX(3em);
+    transform:          translateX(3em);
 }
 
-.toggle > .thumb::before, .toggle > .thumb::after {
-	position:      absolute;
-	left: 				0;
-	top: 				0;
-	width: 			3.2em;
-	text-align: 	center;
+.toggle > .thumb::before,
+.toggle > .thumb::after {
+    position:       absolute;
+    left:           0;
+    top:            0;
+    width:          3.2em;
+    text-align: 	center;
 }
 .thumb::before {
-	content:          'ON';
-	color: 				#fff;
-	margin-left:    -3.2em;
+	content:       attr(data-on);
+	z-index:       1;
+	color:         #fff;
+	margin-left:   -3.2em;
 	background-image:	  	-webkit-gradient(linear, left top, left bottom, from(#0071d1), color-stop(.5, #007fea), color-stop(.5, #2591ed), to(#6eafe6));
 	background-image:		-webkit-linear-gradient(270deg, #0071d1 0%, #007fea 50%, #2591ed 50%, #6eafe6 100%);
-	background-image:		-moz-linear-gradient(270deg, #0071d1 0%, #007fea 50%, #2591ed 50%, #6eafe6 100%);
 	background-image:		linear-gradient(180deg, #0071d1 0%, #007fea 50%, #2591ed 50%, #6eafe6 100%);
-	z-index:        1;
 }
 .toggle > .thumb::after {
-	content:			'OFF';
+	content:			attr(data-off);
 	left:					1.95em;
 	color:					#7d7d7d;
 	background-image:	  	-webkit-gradient(linear, left top, left bottom, from(#e5e5e5), color-stop(.5, #f0f0f0), color-stop(.5, #f9f9f9), to(#fefefe));
 	background-image:		-webkit-linear-gradient(270deg, #e5e5e5 0%, #f0f0f0 50%, #f9f9f9 50%, #fefefe 100%);
-	background-image:		-moz-linear-gradient(270deg, #e5e5e5 0%, #f0f0f0 50%, #f9f9f9 50%, #fefefe 100%);
 	background-image:		linear-gradient(180deg, #e5e5e5 0%, #f0f0f0 50%, #f9f9f9 50%, #fefefe 100%);
 }
 

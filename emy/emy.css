@@ -1,16 +1,16 @@
 /*
    Copyright (c) 2013, Emy Library
-   Version 1.0
+   Version 1.1
 */
 body {
   font-size:        100%;
   overflow-x:    hidden;
   -webkit-text-size-adjust: none;
 }
-textarea {
+input, select, button, textarea {
 	font-family:	inherit;
 }
-input, textarea, select,
+input, textarea, select, button,
 .button, .whiteButton, .redButton, .grayButton, .toggle,
 body section li > a {
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -34,16 +34,18 @@ body * {
     box-sizing: 		            border-box;
     margin:		0;
     padding:	    0;
+<<<<<<< HEAD
     border:;		    0;
+=======
+    border:		    0;
+>>>>>>> v1.1
     -webkit-backface-visibility:    hidden;
 }
 
 body > *:not(.toolbar) {
-	display:		none;
-	position: 	  	absolute;
 	width: 			100%;
-	height: 			auto;
-	z-index:        -1;
+	height: 		auto;
+	vertical-align:	top;
 	-webkit-animation-duration:   300ms;
 	-moz-animation-duration:        300ms;
 	animation-duration:                    300ms;
@@ -54,8 +56,22 @@ body > *:not(.toolbar) {
 	-moz-animation-fill-mode:        forwards;
 	animation-fill-mode:                    forwards;
 }
+.no-js body > *:not(.toolbar):not([selected]) {
+	padding-top:	0;
+	padding-bottom:	1em;
+	border-bottom:	1px solid rgba(50,50,50,.6);
+}
+.no-js body > *:not(.toolbar):not([selected]).panel {
+	border-bottom:	1px solid rgba(255,255,255,.6);
+}
+.js body > *:not(.toolbar) {
+	display:		none;
+	position: 	  	absolute;
+	z-index:        -1;
+}
 
-body > *[selected] {
+.no-js body > *,
+.js body > *[selected] {
 	display:	  inline-block;
 }
 
@@ -63,7 +79,10 @@ body > *[selected] {
 
 header.toolbar {
     position:           	absolute;
+    top:					0px;
+    left:					0px;
     width:					100%;
+    z-index:				999;
     overflow:         	hidden;
 }
 header.toolbar > div {
@@ -136,13 +155,16 @@ body .panel > h2 {
 body .panel > ul,
 body .panel > fieldset,
 body .panel > ul > li,
-fieldset > .row  {
+.row  {
   position: 		relative;
 }
+.row  {
+  overflow: 		hidden;
+}
 
-fieldset > .row > label,
-fieldset > .row > span,
-fieldset > .row > .toggle {
+.row > label,
+.row > span,
+.row > .toggle {
   position:         absolute;
   overflow:	     hidden;
 }
@@ -214,7 +236,7 @@ body > section[emy-transition='slidebackout'] {
 /************************************************************************************************/
 
 *[data-hide='true'] {
-    display:    none;
+    display:    none!important;
 }
 
 #preloader {

@@ -1,238 +1,228 @@
 /*
 Theme:		Emy Theme
-Version:	1.0
+Version:	1.1
 Author:		@remi_grumeau
 */
 
 /******************************** BODY *******************************************************/
 body {
-    font-family: 	  	Helvetica, Arial, sans-serif;
-    margin: 			  	0;
-    color: 				  	#333;
+    margin: 		0;
+    color: 			#333;
+    font-family: 	Helvetica, Arial, sans-serif;
     background:  	#fff;
 }
 body > *:not(.toolbar) {
+    left:			0;
+    top:			0;
     margin: 		0;
     padding:		2.8em 0 0 0;
-    left:				0;
-    top:				0;
 }
 body > section {
-    background: #fff;
+    background:     #fff;
 }
 
 /******************************** HEADER *******************************************************/
 header.toolbar {
-	position:				fixed;
-    height: 				    2.8em;
-    z-index:				9;
-    background: 		#e13636;
+	position:		fixed;
+    height: 		2.8em;
+    z-index:		9;
+    background: 	#e13636;
 }
 header.toolbar h1 {
-    position:      	absolute;
-    top:                	0;
-    left:                	50%;
-    width:           	50%;
-    margin:        	0 0 0 -25%;
-    padding: 	    	0.45em 0 0 0;
+    position:       absolute;
+    top:            0;
+    left:           50%;
+    width:          50%;
+    margin:         0 0 0 -25%;
+    padding: 	    0.45em 0 0 0;
     font-size: 	  	1.4em;
-    color: 			    #fff;
-    font-weight: 	    normal;
-    text-align: 	        center;
+    color: 			#fff;
+    font-weight: 	normal;
+    text-align: 	center;
 }
 
 header.toolbar > div {
-    display:            block;
-    float:                  left;
-    width:                auto;
+    display:        block;
+    float:          left;
+    width:          auto;
     max-width:      30em;
 }
 header.toolbar > div:first-child,
 header.toolbar > div:first-child > .button {
-	  float:			left;
+    float:          left;
 }
 header.toolbar > div:last-child,
 header.toolbar > div:last-child > .button {
-	  float:			right;
+    float:          right;
 }
 header.toolbar .button {
-    width:					auto;
-    margin:				0;
-    padding:				.85em .5em;
-    color:					    #e13636;
-    font-family:		inherit;
-    font-size:			    1em;
-    text-align:			center;
-    background: 		#fff;
+    margin:			0;
+    padding:		.85em .5em;
+    width:			auto;
+    color:			#e13636;
+    font-family:	inherit;
+    font-size:		1em;
+    text-align:		center;
+    background: 	#fff;
 }
 header.toolbar .button[selected], body > .toolbar .button:active,
 header.toolbar .blueButton {
-    color: 	#e13636;
+    color: 	        #e13636;
     background: 	#fff;
 }
 header.toolbar .redButton {
-    background: 		#ff0000;
+    background: 	#ff0000;
 }
 header.toolbar .greenButton {
-    background: 		#1fb728;
+    background: 	#1fb728;
 }
 header.toolbar #backButton {
-	position:   			relative;
-	width:        			3em;
-	height:       			2.8em;
-	text-indent:  		4em;
-	background: 		#e13636;
-	-webkit-transform:  	skew(0deg, 0deg);
-	-moz-transform:  			skew(0deg, 0deg);
-	transform:  						skew(0deg, 0deg);
-}
-header.toolbar #backButton::before, 
-header.toolbar #backButton::after {
-	content:    	'';
-	position:   	absolute;
-	top:             	.45em;
-	left:              	50%;
-	width:         	.2em;
-	height:        	1em;
-	margin:      	0 0 0 -.3em;
-	background: #fff;
+	position:   	relative;
+	width:        	3em;
+	height:       	2.8em;
+	text-indent:  	4em;
+	background: 	#e13636;
 }
 header.toolbar #backButton::before {
-  -webkit-transform:  	skew(-45deg, 45deg);
-  -moz-transform:  		skew(-45deg, 45deg);
-  transform:  					skew(-45deg, 45deg);
+	content:    	'';
+	position:   	absolute;
+	top:            50%;
+	left:           1.2em;
+	width:         	.8em;
+	height:        	.85em;
+	margin:      	-.45em 0 0 0;
+	border:			0;
+	border-left: 	.15em solid #fff;
+	border-bottom: 	.15em solid #fff;
+	-webkit-transform:  	rotateZ(45deg);
+	transform:  			rotateZ(45deg);
 }
-header.toolbar #backButton::after {
-  top:             1.3em;
-  -webkit-transform:  	skew(45deg, -45deg);
-  -moz-transform:  		skew(45deg, -45deg);
-  transform:  					skew(45deg, -45deg);
-}
-header.toolbar #backButton:active, header.toolbar #backButton[selected] {
-    background:   #fff;
+header.toolbar #backButton:active, 
+header.toolbar #backButton[selected] {
+    background:     #fff;
 }
 header.toolbar #backButton[selected]::before, 
 header.toolbar #backButton[selected]::after, 
 header.toolbar #backButton:active::before,
 header.toolbar #backButton:active::after {
-    background:   #e13636;
+    border-color:   #e13636;
 }
 
 /******************************** MAIN BUTTON *******************************************************/
 .mainButton {
-    display:					   	block;
-    position:           			relative;
-    margin:             			.3em .15em .4em .15em;
-    padding:				   		.5em .5em;
-    color: 						    #fff;
-    text-align:			   		center;
-    font-size: 			   		1.1em;
-    text-decoration:   	none;
-  	background: 		       	#355163;
+    display:            block;
+    position:           relative;
+    margin:             .3em .15em .4em .15em;
+    padding:            .5em .5em;
+    color:              #fff;
+    text-align:         center;
+    font-size:          1.1em;
+    text-decoration:    none;
+    background:         #355163;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -ms-touch-action: 		pan-y;
 }
 .mainButton[selected], .mainButton:active {
-    background: 	#0c212e;
+    background:         #0c212e;
 }
 button.mainButton {
-    width:  		100%;
-    border: 	0;
+    width:          100%;
+    border:         0;
 }
 
 .panel .mainButton {
-	color:	 #355163;
-	background:	#c2cbd0;
+	color:         #355163;
+	background:    #c2cbd0;
 }
 .panel .mainButton[selected], .panel .mainButton:active {
-	color:	 #355163;
-	background:	#fff;
+	color:         #355163;
+	background:    #fff;
 }
 
 .mainButton.darkButton {
-	background:       #253945;
+	background:    #253945;
 }
 .mainButton.redButton {
-	background:       #e13636;
+	background:    #e13636;
 }
 .panel .mainButton.redButton {
-	color:	#fff;
+	color:         #fff;
 }
 .mainButton.redButton[selected], .redButton:active,
 .panel .redButton[selected], .panel .redButton:active {
-	background:       #f00;
+	background:    #f00;
 }
 .mainButton.greenButton {
-	background:       #00a504;
+	background:    #00a504;
 }
 .mainButton.disable {
-    opacity:        .7;
+    opacity:       .7;
 }
 
 /******************************** LIST *******************************************************/
 section > ul {
-	font-size:			1.2em;
-	list-style-type:none;
+	font-size:         1.2em;
+	list-style-type:   none;
 }
 section > ul > li {
-	padding:    		  	.6em .7em;
-	font-size:    	    	inherit;
-	border-bottom:		  .1em solid #ccc;
+	padding:           .6em .7em;
+	font-size:         inherit;
+	border-bottom:     .1em solid #ccc;
 }
 section > ul > li:first-child {
-	border-top:					.1em solid #ccc;
+	border-top:        .1em solid #ccc;
 }
 section > ul > li.group + li,
 section.panel > ul > li.group + li {
-	border-top:			0;
+	border-top:        0;
 }
 section > ul > li.group,
 section.panel > ul > li.group {
-	padding: 			  		.4em 0 .4em 1em;
-	font-size:		    		.75em;
-	font-weight: 			normal;
-  	text-transform: 	uppercase;
-	color:				        	#C2CDD5;
-	background: 			#355163;
-	border:     0;
+	padding:           .4em 0 .4em 1em;
+	font-size:         .75em;
+	font-weight:       normal;
+  	text-transform:    uppercase;
+	color:             #C2CDD5;
+	background:        #355163;
+	border:            0;
 }
 section.panel > ul > li.group {
-	padding: 			.4em .4em;
+	padding:           .4em .4em;
 }
 
 section > ul > li > a {
-	-webkit-box-sizing:  		initial;
-	-moz-box-sizing: 		    	initial;
-	box-sizing: 				        	initial;
-	display:				      			block;
-	margin: 				      			-.6em -.7em -.65em -.7em;
-	padding: 				    			.65em 1.8em .65em .7em;
-	color:      		          				#333;
-	text-decoration:  				none;
-	background:			    		transparent;
-	-webkit-transform:  		skew(0deg, 0deg);
-	-moz-transform:  				skew(0deg, 0deg);
-	transform:  							skew(0deg, 0deg);
+    box-sizing:         initial;
+    display:            block;
+    margin:             -.6em -.7em -.65em -.7em;
+    padding:            .65em 1.8em .65em .7em;
+    color:              #333;
+    text-decoration:    none;
+    background:         transparent;
 }
-section > ul > li > a::before,
-section > ul > li > a::after {
-	content:	        '';
-	position:	      	absolute;
-	top:			        50%;
-	right:		            .2em;
-	width:		        .5em;
-	height:		        .1em;
-	margin:		    -.3em .5em 0 0;
-	background-color:  #355163;
-	-webkit-transform:  	skew(-45deg, 45deg);
-	-moz-transform:  			skew(-45deg, 45deg);
-	transform:  						skew(-45deg, 45deg);
+section > ul > li > a::before {
+	content:	       '';
+	position:          absolute;
+	top:			   50%;
+	right:		       .3em;
+	width:		       .5em;
+	height:		       .5em;
+	margin:            -.25em .5em 0 0;
+	border-top:        .1em solid #355163;
+	border-right:      .1em solid #355163;
+	background:        transparent;
+	-webkit-transform: rotateZ(45deg);
+	-ms-transform:     rotateZ(45deg);
+    transform:         rotateZ(45deg);
 }
-section > ul > li > a::after {
-	margin-top:		    .2em;
-	-webkit-transform:  	skew(45deg, -45deg);
-	-moz-transform:  			skew(45deg, -45deg);
-	transform:  						skew(45deg, -45deg);
+
+section > ul > li > a[target="_replace"] {
+    padding-top:        1.6em;
+    padding-bottom:     1.6em;
+    color:              rgba(0,0,0,.5);
+    background-image:   none;
+}
+section > ul > li > a[target="_replace"]::before {
+    display:            none;
 }
 
 section > ul > li > a[selected], 
@@ -240,287 +230,296 @@ section > ul > li > a:active,
 section.panel > ul > li > a[selected], 
 section.panel > ul > li > a:active,
 section > ul > li > a[target="_replace"]:active {
-  color:      		        #fff;
-  background: 	#e13636;
+    color:              #fff;
+    background:         #e13636;
 }
 
 section > ul > li > a[selected]::before, 
 section > ul > li > a:active::before,
-section > ul > li > a[selected]::after, 
-section > ul > li > a:active::after,
 section.panel > ul > li > a[selected]::before, 
-section.panel > ul > li > a:active::before,
-section.panel > ul > li > a[selected]::after, 
-section.panel > ul > li > a:active::after {
-	background-color:		#fff;
+section.panel > ul > li > a:active::before {
+    border-color:       #fff;
 }
 section > ul > li > a[selected="progress"]::before {
-	background:	transparent;
+    width:              1.1em;
+    height:             1.1em;
+    margin:             -.55em .25em 0 0;
+    background:         url(loading.gif) no-repeat center center;
+    background-size:    1em auto;
+    border:             0;
+    -webkit-transform:  none;
+    -ms-transform:      none;
+    transform:          none;
 }
-section > ul > li > a[selected="progress"]::after {
-	-webkit-transform:		none;
-	-moz-transform:			none;
-	transform:						none;
-	border:					0;
-	width:					1.1em;
-	height:					1.1em;
-	margin:				-.55em .25em 0 0;
-	background: 		url(loading.gif) no-repeat center center;
-	background-size:	1em auto;
-}
-section > ul > li > a[target="_replace"] {
-	padding-top: 			1.6em;
-	padding-bottom: 	1.6em;
-	color: 							#6495ed;
-	background-image: none;
-}
-section > ul > li > a[target="_replace"]::after {
-    display:    none;
+section > ul > li > a[target="_replace"][selected="progress"]::before {
+    display:        block;
 }
 section > footer {
-    padding:		.8em 0;
-    font-size:		.9em;
-    text-align:	center;
+    padding:            .8em 0;
+    font-size:          .9em;
+    text-align:         center;
 }
 
 /******************************** FIELDSET *******************************************************/
 section fieldset {
-    border:	0;
-    margin-bottom:	.5em;
+    border:	            0;
+    margin-bottom:      .5em;
 }
-section fieldset > .row {
-	min-height:				2.8em;
-	font-size:						1em;
-	border-bottom:		.1em solid #ddd;
+section .row {
+    min-height:         2.8em;
+    font-size:          1em;
+    border-bottom:      .1em solid #ddd;
 }
-section fieldset > .row > p {
-	height:				auto;
-	padding:			.7em;
-	text-align:		left;
-}
-
-section fieldset > .row > label {
-	padding:				.8em .7em;
-	max-width:			30%;
-	white-space:		nowrap;
-	text-overflow:	ellipsis;
-}
-section fieldset > .row > span {
-    padding: 			.7em .6em 0 30%;
-    margin: 			  0;
+section .row > p {
+    padding:            .7em;
+    height:             auto;
+    text-align:         left;
 }
 
-section fieldset > .row > input,
-section fieldset > .row > textarea,
-section fieldset > .row > select {
-	width:					100%;
-	margin: 				0;
-	height: 					inherit;
-	font-size:				.9em;
-	color:						#355163;
-	background:		transparent;
-	-webkit-appearance: none;
-	-moz-appearance:		none;
-	appearance:					none;
+section .row > label {
+    top:                0;
+    left:               0;
+    padding:            .8em .2em .8em .7em;
+    min-width:          8em;
+    max-width:          30%;
+    white-space:        nowrap;
+    text-overflow:      ellipsis;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
 }
-section fieldset > .row > textarea,
-section fieldset > .row > input:not([type|=radio]):not([type|=checkbox]) {
-    padding: 			.9em .8em 1em 8em;
-    border:				0;
-    resize: 				none;
-    -webkit-border-radius: 	0;
-    -moz-border-radius: 			0;
-    border-radius: 						0;
+section .row > span {
+    padding:            .7em .6em 0 30%;
+    margin:             0;
 }
-section fieldset > .row > textarea {
-  min-height:   6em;
+
+section .row > input,
+section .row > textarea,
+section .row > select {
+    margin:             0;
+    width:              100%;
+    height:             inherit;
+    font-size:          1em;
+    color:              #355163;
+    background:         transparent;
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
 }
-section fieldset > .row > select {
-	float:			    right;
-	width:			auto;
-	color:			    #425c8d;
-	font-size:		.8em;
-	padding:	  	1em;
-	border:			0;
-	clear:			    both;
-	-moz-appearance:		menuitem; /* since none does not work */
+section .row > textarea,
+section .row > input:not([type=radio]):not([type=checkbox]) {
+    padding:            .9em .8em .9em 8em;
+    border:             0;
+    resize:             none;
+    border-radius:      0;
 }
-section fieldset > .row > select::-ms-expand {
-    display: none;
+section .row > textarea {
+    min-height:         6em;
+    vertical-align:     top;
+}
+section .row > select {
+    float:              right;
+    padding:            .75em 1em;
+    width:              auto;
+    color:              #425c8d;
+    border:             0;
+    clear:              both;
+    -moz-appearance:    menuitem; /* since 'none' does not work in Firefox */
+}
+section .row > select::-ms-expand {
+    display:            none;
 } 
-section fieldset > .row > input[type|=radio], 
-section fieldset > .row > input[type|=checkbox] {
-	float:				right;
-	padding:		0;
-	margin:		.5em 10px 0 0;
-	height:			2em;
-	width:			2em;
-	-webkit-appearance: 		radio;
-	-moz-appearance: 				radio;
-	appearance: 							radio;
-	-webkit-border-radius: 	1em;
-	-moz-border-radius: 			1em;
-	border-radius: 						1em;
+section .row > input[type=radio], 
+section .row > input[type=checkbox] {
+    float:              right;
+    padding:            0;
+    margin:             .5em 10px 0 0;
+    height:             2em;
+    width:              2em;
+    border-radius:      1em;
+    -webkit-appearance: radio;
+    -moz-appearance:    radio;
+    appearance:         radio;
 }
-section fieldset > .row > input[type|=checkbox] {
-	-webkit-border-radius: 	.5em;
-	-moz-border-radius: 		    .5em;
-	border-radius:					    .5em;
-	-webkit-appearance: 		checkbox;
-	-moz-appearance: 				checkbox;
-	appearance: 						    checkbox;
+section .row > input[type=checkbox] {
+    border-radius:      .5em;
+    -webkit-appearance: checkbox;
+    -moz-appearance:    checkbox;
+    appearance:         checkbox;
 }
+section .row > input[type=range] {
+    float:              right;
+    margin-right:       2%;
+    padding-left:       0px!important;
+    padding-right:      0px!important;
+    width:              68%;
+    height:             auto;
+    -webkit-appearance: slider-horizontal;
+    -moz-appearance:    slider-horizontal;
+    appearance:         slider-horizontal;
+}
+section .row > input[type=radio] + label, 
+section .row > input[type=checkbox] + label,
+section .row > .toggle + label {
+    width:              100%;
+    max-width:          100%;
+}
+
 
 /******************************** DIALOG *******************************************************/
 section.dialog {
-	top:				0;
-	padding: 		0;
-	background-color: 		rgba(0,0,0,0);
-	-webkit-transition:		background 250ms ease-in-out;
-	-moz-transition:			background 250ms ease-in-out;
-	transition:						background 250ms ease-in-out;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-	-ms-touch-action: 		none;
+    top:                0;
+    padding:            0;
+    background-color:   rgba(0,0,0,0);
+    -webkit-transition:     background 250ms ease-in-out;
+    transition:             background 250ms ease-in-out;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   none;
 }
 section.dialog header.toolbar {
-  position:   absolute;
-  width:        100%;
-  z-index:     11;
+    position:           absolute;
+    width:              100%;
+    z-index:            11;
 }
 section.dialog fieldset {
-	margin-top:       	2.8em;
-	width:                   100%;
-	border: 			    none;
-	padding: 			    .3em 0;
-	background: 	    #e13636;
-	-webkit-transform:	  	  translateY(-100%);
-	-moz-transform:			  translateY(-100%);
-	transform:			      		  translateY(-100%);
-	-webkit-transition:	  	  all 300ms ease-in-out;
-	-moz-transition:		      all 300ms ease-in-out;
-	transition:			      		  all 300ms ease-in-out;
+    width:              100%;
+    padding:            .3em 0;
+    margin-top:         2.8em;
+    border:             none;
+    background:         #e13636;
+    -webkit-transform:  translateY(-100%);
+    -ms-transform:      translateY(-100%);
+    transform:          translateY(-100%);
+    -webkit-transition: all 300ms ease-in-out;
+    transition:         all 300ms ease-in-out;
 }
 
 section.dialog.show {
 	background: 		rgba(0,0,0,.8);
 }
 section.dialog.show fieldset {
-	-webkit-transform:	  translateY(0%);
-	-moz-transform:		  translateY(0%);
-	transform:			          translateY(0%);
+    -webkit-transform:  translateY(0%);
+    -ms-transform:      translateY(0%);
+    transform:          translateY(0%);
 }
 
 section.dialog fieldset > div.row {
-	font-size:		1em;
-    background-color:	transparent;
+    font-size:          1em;
+    background-color:   transparent;
 }
 section.dialog fieldset > div.row:first-child {
-	border: 	0;
+    border:             0;
 }
 section.dialog fieldset > div.row > label,
-section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
-    color:			#fff;
+section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
+    color:              #fff;
 }
-section.dialog fieldset > div.row > label {
-
-}
-section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type|=radio]):not([type|=checkbox]) {
-	padding:			.5em 0 .5em 8.5em;
+section.dialog fieldset > div.row > label + section.dialog fieldset > div.row > input:not([type=radio]):not([type=checkbox]) {
+    padding:            .5em 0 .5em 8.5em;
 }
 
 /******************************** PANEL *******************************************************/
 section.panel {
-	padding-left: 	        .4em;
-	padding-right: 	    .4em;
-	border:						0;
-	background:			#355163;
+    padding-left:       .4em;
+    padding-right:      .4em;
+    border:             0;
+    background:         #355163;
 }
 section.panel > *:first-child {
-	margin-top:		.7em;
+	margin-top:        .7em;
 }
 section.panel h2 {
-	margin: 			  	0 0 .2em .3em;
-	font-size: 			1.2em;
-	font-weight:	    normal;
-	color: 				    #fff;
+    margin:             0 0 .2em .3em;
+    font-size:          1.2em;
+    font-weight:        normal;
+    color:              #fff;
 }
 
 section.panel fieldset > .row {
-  min-height:			2.8em;
+    min-height:         2.8em;
 }
 section.panel ul,
 section.panel fieldset {
-	display:			    inline-block;
-	width:				    100%;
-	margin: 			    .4em 0;
-	padding: 			  	0;
-	font-size: 		  	1em;
-	border:				    0;
-	background:		#fff;
+    display:            inline-block;
+    margin:             .4em 0;
+    padding:            0;
+    width:              100%;
+    font-size:          1em;
+    border:             0;
+    background:         #fff;
 }
 section.panel ul > li {
-    list-style:		        none;
+    list-style:         none;
 }
-
 section.panel footer {
-	padding-top:	0;
-	color: 				#4c4c4c;
+    padding-top:        0;
+    color:              #4c4c4c;
 }
 
 /******************************** TOGGLE *******************************************************/
 
 .toggle {
-    top:                    0;
-    right:                 0;
-    width: 				6em;
-    height: 				1.6em;
-    margin:            .4em;
-    font-size: 		1.2em;
-    line-height:		1.5em;
+    top:                0;
+    margin:             .4em;
+    right:              0;
+    width:              6em;
+    height:             1.6em;
+    font-size:          1.2em;
+    line-height:        1.5em;
     background-color:   #ddd;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
-    -ms-touch-action: 		pan-y;
 }
 .toggle > .thumb {
-    position:      absolute;
-    width: 			3em;
-    height:         inherit;
-    color:            #444;
-    text-align: 	center;
-    background-color:   	#bbb;
-    -webkit-transition:	  	all 200ms ease-in-out;
-    -moz-transition:		  	all 200ms ease-in-out;
-    transition:			          	all 200ms ease-in-out;
-    -webkit-transform:    	translateX(0);
-    -moz-transform:         	translateX(0);
-    transform:                     	translateX(0);
+    position:           absolute;
+    width:              3em;
+    height:             inherit;
+    color:              #444;
+    text-align:         center;
+    background-color:       #bbb;
+    -webkit-transition:     all 200ms ease-in-out;
+    transition:             all 200ms ease-in-out;
+    -webkit-transform:      translateX(0);
+    -ms-transform:          translateX(0);
+    transform:              translateX(0);
 }
-.toggle[toggled] > .thumb {
-    -webkit-transform:    translateX(3em);
-    -moz-transform:         translateX(3em);
-    transform:                     translateX(3em);
-    background-color:    #e13636;
+.toggle > input {
+    position:       absolute;
+    right:          0;
+    top:            0;
+    width:          1px;
+    height:         1px;
+    z-index:        -1;
+}
+.toggle input:checked + .thumb {
+    background-color:       #e13636;
+    -webkit-transform:      translateX(3em);
+    -ms-transform:          translateX(3em);
+    transform:              translateX(3em);
 }
 
-.toggle > .thumb::before, .toggle > .thumb::after {
-    position:      	absolute;
-    left: 				    0;
-    top: 				    0;
-    width: 			    inherit;
-    z-index:		    1;
+.toggle input + .thumb::before, 
+.toggle input + .thumb::after {
+    position:       absolute;
+    left:           0;
+    top:            0;
+    width:          inherit;
+    font-size:      1em;
+    line-height:    1em;
+    padding:        .3em 0;
+    z-index:        1;
 }
-.toggle > .thumb::before {
-    content:    	'OFF';
+.toggle input + .thumb::before {
+    content:    	attr(data-off);
 }
-.toggle > .thumb::after {
-    content:    	'ON';
+.toggle input + .thumb::after {
+    content:    	attr(data-on);
     color:         	#fff;
     opacity:    	0;
 }
-.toggle[toggled] > .thumb::before {
+.toggle input:checked + .thumb::before {
     opacity:  		0;
 }
-.toggle[toggled] > .thumb::after {
+.toggle input:checked + .thumb::after {
     opacity:  		1;
 }
 

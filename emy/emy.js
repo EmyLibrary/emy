@@ -1,7 +1,7 @@
 /*
    Copyright (c) 2012-13, Emy Project Members.
    See LICENSE.txt for licensing terms.
-   Version 1.0
+   Version 1.1
  */
 
 (function() {
@@ -17,9 +17,9 @@
 	var currentWidth = 0;
 	var currentHeight = 0;
 	var currentHash = location.hash;
-	var hashPrefix = "#";
-	var viewHistory = []; // Navigation stack (poorly named, different from browser history)
-	var newViewCount = 0;
+	var hashPrefix = "#_";
+	var navStackStartIndex = 0; // Browser navigation stack index onload
+	var navStack = []; // Navigation stack
 	var checkTimer;
 	var screenHeight = 0;
 
@@ -33,12 +33,16 @@
 	*/
 
 	window.emy = {
+<<<<<<< HEAD
 	/*
 	version
 	useful for plugins, support & debug
 	*/
 	v : 1.0,
 	/*
+=======
+    /*
+>>>>>>> v1.1
 	used in emy.log()
 	initialized at: onload.
 	This is set to `true`, console.log is enabled
@@ -59,16 +63,6 @@
 	Value can be 'css', 'js' or 'none' - if 'css', a test is done onLoad to determine is 'css' transition is supported. If not, value is changed to 'js'.
 	*/
 	transitionMode: 'css',
-
-		/*
-	emy.ajaxErrHandler
-	initialized at: onload.
-	If defined, this user-set function will be called when an AJAX call returns
-	with an HTTP status other than `200` (currently all HTTP statuses other than
-	`200`, even including 200-level statuses like `201 Created`, are seen as
-	errors.  A status of `0` is treated as success for file:// URLs).
-	*/
-	ajaxErrHandler: null,
 
 	/*
 	emy.httpHeaders
@@ -101,6 +95,12 @@
 	*/
 	ready : false,
 
+    /* version
+	useful for plugins, support & debug
+	*/
+	v : function() {
+        return 1.1;
+    },
 	/*
 	emy.init
 	Loads private function init(), automatically loaded by onload event, but you can manually load it
@@ -133,7 +133,7 @@
 
 				if (currentDialog) {
 					currentDialog.removeAttribute("selected");
-					sendEvent("blur", currentDialog); // EVENT: BLUR
+					emy.sendEvent("emy-blur", currentDialog); // EVENT: BLUR
 					currentDialog = null;
 				}
 
@@ -143,7 +143,7 @@
 			when hidden. Currently they don't receive any `load` or `unload` events.
 			*/
 				if (emy.hasClass(view, "dialog")) {
-					sendEvent("focus", view); // EVENT: FOCUS
+					emy.sendEvent("emy-focus", view); // EVENT: FOCUS
 					showDialog(view);
 				}
 				/*
@@ -153,15 +153,17 @@
 			*/
 				else {
 					//			  emy.$('header.toolbar').style.display='';
-					sendEvent("load", view); // EVENT: LOAD
+					emy.sendEvent("emy-load", view); // EVENT: LOAD
 					var fromView = currentView;
-					sendEvent("blur", currentView); // EVENT: BLUR
+					emy.sendEvent("emy-blur", currentView); // EVENT: BLUR
 					currentView = view;
-					sendEvent("focus", view); // EVENT: FOCUS
+					emy.sendEvent("emy-focus", view); // EVENT: FOCUS
 
-					if (fromView) setTimeout(slideViews, 0, fromView, view, backwards);
-					else updateView(view, fromView);
-
+					if (fromView) {
+						setTimeout(slideViews, 0, fromView, view, backwards);
+					} else {
+						updateView(view, fromView);
+					}
 				}
 			}
 		},
@@ -175,20 +177,20 @@
 				nodeId = node.id;
 			} else {
 				nodeId = view;
-				node = emy.$(hashPrefix + nodeId);
+				node = emy.$('#'+nodeId);
 			}
 
 			if (!node) emy.log("gotoView: node is null");
 
 			if (!emy.busy) {
 				emy.busy = true;
-				var index = viewHistory.indexOf(nodeId);
+				var index = navStack.indexOf(nodeId);
 				var backwards = index != -1;
 				if (backwards) {
 					// we're going back, remove history from index on
 					// remember - viewId will be added again in updateView
-					viewHistory.splice(index);
-				} else if (replace) viewHistory.pop();
+					navStack.splice(index);
+				} else if (replace) navStack.pop();
 
 				emy.showView(node, backwards);
 				return false;
@@ -214,30 +216,27 @@
 	*/
 		goBack: function(viewId) {
 			if (viewId) {
-				var a = viewHistory.length - (viewHistory.indexOf(viewId) + 1);
-				viewHistory = viewHistory.slice(0, (viewHistory.length - a));
-				window.history.go(-a);
+				var a = navStack.length - (navStack.indexOf(viewId) + 1);
+				navStack = navStack.slice(0, (navStack.length - a));
+				if(window.history.length > navStackStartIndex)
+					window.history.go(-a);
+				else
+					emy.showView(viewId, true);
 			} else {
-				window.history.go(-1);
-				viewHistory.pop();
+				if(window.history.length - (navStackStartIndex-1) == 1) {
+					// history.length can't be equal to 1 when you ask to go back so it means 
+					// the cache manifest is goofing browser's history stack. In this case, we use
+					// showView to navigate between views
+					// navStackStartIndex is important here since window.history can be more than 1
+					// if user comes from another page
+					emy.showView(navStack.pop(), true);
+				} else {
+					navStack.pop();
+					window.history.go(-1);
+				}
 			}
-			emy.log(viewHistory);
+			return navStack;
 		},
-
-
-		/*
-	method: emy.replaceView(viewId)
-	Loads a new view at the same level in the history stack.
-	Currently it will do a slide-in animation, but replaces
-	the current view in the navStack.
-	It should probably use a different animation (slide-up/slide-down).
-	Since for now it just doesn't work, we removed it
-
-	replaceView: function(view)
-	{
-	    gotoView(view, true);
-	},
-	*/
 
 		/*
 	method: emy.showViewByHref(href, args, method, replace, cb)
@@ -250,109 +249,89 @@
 	panel that the incoming HTML will replace (if not supplied, emy will append
 	the incoming HTML to the `body`), and `cb` is a user-supplied callback function.
 	*/
-		showViewByHref: function(url, args, method, replace, cb) {
-			// I don't think we need onerror, because readyState will still go to 4 in that case
+		showViewByHref: function(url, args, method, replace, callback , errorCallback) {
 
-			function spbhCB(xhr) {
-				if (xhr.readyState == 4) {
-					if ((xhr.status == 200 || xhr.status == 0) && !xhr.aborted) {
-						// Add 'if (xhr.responseText)' to make sure we have something???
-						// Can't use createDocumentFragment() here because firstChild is null and childNodes is empty
-						var frag = document.createElement("div");
-						frag.innerHTML = xhr.responseText;
-						// EVENT beforeInsert->body
-						/*
-					events:
-					When new views are inserted into the DOM after an AJAX load, the `body`
-					element receives a `beforeinsert` event with `{ fragment: frag }` parameters
-					and afterwards receives an `afterinsert` event with `{insertedNode: docNode}` parameters.
-					*/
-						sendEvent("beforeinsert", document.body, {
-							fragment: frag
-						})
-						if (replace) {
-							replaceElementWithFrag(replace, frag);
-							emy.busy = false;
-						} else emy.insertViews(frag);
-					} else {
-						emy.busy = false;
-						if (emy.ajaxErrHandler) {
-							emy.ajaxErrHandler("Error contacting server, please try again later");
-						}
-					}
-					if (cb) {
-						setTimeout(cb, 1000, true);
-					}
-				}
+            function successCb(ajaxResult) {
+                var frag = document.createElement("div");
+                frag.innerHTML = ajaxResult;
+                // EVENT beforeInsert->body
+                if (replace) {
+                    replaceElementWithFrag(replace, frag);
+                    emy.busy = false;
+                } else {
+                    emy.insertViews(frag);
+                }
 
-			};
-			if (!emy.busy) {
+                if (callback) {
+                    emy.log('showViewByHref error callback');
+                    setTimeout(callback, 1000, true);
+                }   
+			}
+
+            function errorCb() {
+                emy.log('showViewByHref error callback');
+                emy.busy = false;
+                errorCallback();
+            }
+
+            if (!emy.busy) {
 				emy.busy = true;
-				emy.ajax(url, args, method, spbhCB);
+				emy.ajax(url, args, method, successCb, errorCb);
 			} else {
-				cb(); // We didn't get the "lock", we may need to unselect something
+				callback(); // We didn't get the "lock", we may need to unselect something
 			}
 		},
 
 		/*
-	method: emy.ajax(url, args, method, cb)
+	method: emy.ajax(url, parameters, method, callback, errorCallback)
 	Handles ajax requests and also fires a `setTimeout()` call
 	to abort the request if it takes longer than 30 seconds. See `showViewByHref()`
 	above for a description of the various arguments (`url` is the same as `href`).
 	*/
-		ajax: function(url, args, method, cb) {
+		ajax: function(url, args, method, callback, errorCallback) {
 			var xhr = new XMLHttpRequest();
 			method = method ? method.toUpperCase() : "GET";
 			if (args && method == "GET") {
-				url = url + "?" + emy.param(args);
+				url = url + "?" + ajaxParam(args);
 			}
 			xhr.open(method, url, true);
-			if (cb) {
-				xhr.onreadystatechange = function() {
-					cb(xhr);
-				};
+            if (callback) {
+                // only if a callback function is set
+                xhr.onreadystatechange = function() {
+                    if(xhr.readyState==4 && !xhr.aborted)
+                    {
+                        // once call is done
+                        if(xhr.status==200 && xhr.responseText) {
+                            // if call status is ok
+                            xhr.aborted = true;
+                            callback(xhr.responseText);
+                        } else if(xhr.status==0) {
+                            // if ajax call failed
+                            ajaxTimeout();
+                        }
+                    }
+                };
 			}
 			var data = null;
 			if (args && method != "GET") {
 				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				data = emy.param(args);
+				data = ajaxParam(args);
 			}
 			for (var header in emy.httpHeaders) {
 				xhr.setRequestHeader(header, emy.httpHeaders[header]);
 			}
 			xhr.send(data);
+            // make the ajax call act as a failure is call is too long
+            // too long = 30sec by default
+            // but this can be change in global variables on top of the file
 			xhr.requestTimer = setTimeout(ajaxTimeout, ajaxTimeoutVal);
 			return xhr;
 
 			function ajaxTimeout() {
-				try {
-					xhr.abort();
-					xhr.aborted = true;
-				} catch (err) {
-					emy.log(err);
-				}
-			}
-		},
-
-		/*
-	method: emy.param(o)
-	Stripped-down, simplified object-only version of a jQuery function that
-	converts an object of keys/values into a URL-encoded querystring.
-	*/
-		param: function(o) {
-			var s = [];
-			// Serialize the key/values
-			for (var key in o) {
-				var value = o[key];
-				if (typeof(value) == "object" && typeof(value.length) == "number") {
-					for (var i = 0; i < value.length; i++) {
-						s[s.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value[i]);
-					}
-				} else s[s.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value);
-			}
-			// Return the resulting serialization
-			return s.join("&")
-				.replace(/%20/g, "+");
+                xhr.aborted = true;
+                if(errorCallback)
+                    errorCallback(xhr);
+            }
 		},
 
 		/*
@@ -362,14 +341,36 @@
 	fragment into the view DOM. Each child-node of the HTML fragment is a panel
 	and if any of them are already in the DOM, they will be replaced by the
 	incoming elements.
+	go parameter can be set to false if you don't want Emy to navigate to this newly inserted screen
 	*/
-		insertViews: function(frag) {
-			var nodes = frag.childNodes;
-			var targetView;
-			for (var i = 0; i < nodes.length; ++i) {
+		insertViews: function(frag, go) {
+
+			var newfrag;
+			if(typeof frag==='string') {
+				// if the frag parameter is a HTML string
+				// it is added to a DIV element to loop on childNodes
+				newfrag = document.createElement('div');
+				newfrag.innerHTML = frag;
+			} else if(frag.nodeName.toLowerCase()=='section' && frag.getAttribute('data-title')) {
+				// if the frag parameter is a section view element
+				// it is added to a DIV element for code consistency
+				newfrag = document.createElement('div');
+				newfrag.appendChild(frag);
+			} else
+				newfrag = frag;
+
+			var nodes = newfrag.childNodes, targetView;
+			// set go to false if you dont want to navigate to the inserted view
+			go = (go==false)?false:true;
+
+			emy.sendEvent("emy-beforeinsert", document.body, {
+				fragment: newfrag
+			});
+
+			for (var i = 0, inb = nodes.length; i < inb; i++) {
 				var child = nodes[i];
-				if (child.nodeType == 1) {
-					if (!child.id) child.id = "__" + (++newViewCount) + "__";
+				if (child && child.nodeName.toLowerCase()=='section') {
+					if (!child.id) child.id = "__" + (new Date().getTime()) + "__";
 
 					var clone = emy.$('#' + child.id);
 					var docNode;
@@ -379,7 +380,7 @@
 					} else
 						docNode = document.body.appendChild(child);
 
-					sendEvent("afterinsert", document.body, {
+					emy.sendEvent("emy-afterinsert", document.body, {
 						insertedNode: docNode
 					});
 					fitHeight();
@@ -391,14 +392,14 @@
 					--i;
 				}
 			}
-			sendEvent("afterinsertend", document.body, {
-				fragment: frag
+
+			emy.sendEvent("emy-afterinsertend", document.body, {
+				fragment: newfrag
 			})
 
-			if (targetView) setTimeout(function() {
-				emy.showView(targetView)
-			}, 1);
-
+			if (targetView && go) {
+				setTimeout(function() { emy.showView(targetView); }, 1);
+			}
 		},
 
 		/*
@@ -429,18 +430,30 @@
 
 		/*
 	emy.isNativeUrl(href)
-	Determines whether the supplied URL string launches a native iPhone app (maps, YouTube, phone, email, etc). If so, emy does nothing (doesn't attempt to load a view or slide to it) and allows the phone to handle it the click natively.
+	Determines whether the supplied URL string launches a native app (maps, YouTube, phone, email, etc). 
+    If so, emy does not attempt to load or slide to a view and do let the phone handling the click natively.
 	*/
 		isNativeUrl: function(url) {
 			var urlPatterns = [
-			new RegExp("^http:\/\/maps.google.com\/maps\?"),
-			new RegExp("^mailto:"),
-			new RegExp("^tel:"),
-			new RegExp("^http:\/\/www.youtube.com\/watch\\?v="),
-			new RegExp("^http:\/\/www.youtube.com\/v\/"),
-			new RegExp("^javascript:"),
-			new RegExp("^sms:"),
-			new RegExp("^callto:")];
+                new RegExp("^javascript:"),
+                new RegExp("^mailto:"),
+                new RegExp("^tel:"),
+                new RegExp("^sms:"),
+                new RegExp("^callto:"),
+                new RegExp("^skype:"),
+                new RegExp("^video:"),
+                new RegExp("^music:"),
+                new RegExp("^maps:"),
+                new RegExp("^feed:"),
+                new RegExp("^(http|https):\/\/itunes.apple.com\/"),
+                new RegExp("^(http|https):\/\/youtube.com\/watch\\?v="),
+                new RegExp("^(http|https):\/\/youtube.com\/v\/"),
+                new RegExp("^http:\/\/youtu.be\/"),
+                new RegExp("^(http|https):\/\/maps.google.com\/?"),
+                new RegExp("^(http|https):\/\/www.google.com\/maps\/?"),
+                new RegExp("^(http|https):\/\/facebook.com\/"),
+                new RegExp("^(http|https):\/\/twitter.com\/")
+            ];
 			var out = false;
 			for (var i = 0; i < urlPatterns.length; i++) {
 				if (url.match(urlPatterns[i])) out = true;
@@ -453,7 +466,11 @@
 	Returns true/false if the given element `el` has the class `name`.
 	*/
 		hasClass: function(el, name) {
+<<<<<<< HEAD
 			return ((el.className).indexOf(name) > -1) ? true : false;
+=======
+			return ((el.className).indexOf(name) > -1)?true:false;
+>>>>>>> v1.1
 		},
 
 		/*
@@ -461,7 +478,8 @@
 	Add the given class `name` to element `el`
 	*/
 		addClass: function(el, name) {
-			if (!emy.hasClass(el, name)) el.className += " " + name;
+			if (!emy.hasClass(el, name))
+				el.className += " "+name;
 		},
 
 		/*
@@ -469,7 +487,7 @@
 	change the given class `name` to `newname` to element `el`
 	*/
 		changeClass: function(el, name, newname) {
-			if (emy.hasClass(el, name)) el.className = el.className.replace(new RegExp('(\\s|^)' + name + '(\\s|$)'), newname);
+			if (emy.hasClass(el, name)) el.className = el.className.replace(new RegExp('(\\s|^)' + name + '(\\s|$)'), ' '+newname+' ');
 		},
 
 		/*
@@ -482,8 +500,8 @@
 		$: function(a) {
 			if(document.querySelectorAll) {
 				var res = document.querySelectorAll(a);
-				return (res.length==0)?null:(res.length==1 & '#'+res[0].id==a)?res[0]:res;
-			} else {
+				return (res.length==0)?null:((res.length==1 && '#'+res[0].id==a)?res[0]:res);
+			} else {
 				// this should soon be removed, since all modern browsers supports querySelectorAll now
 				if (a.substr(0, 1) == '#') return (document.getElementById(a.substr(1))) ? document.getElementById(a.substr(1)) : null;
 				else if (a.substr(0, 1) == '.') return (document.getElementsByClassName(a.substr(1))) ? document.getElementsByClassName(a.substr(1)) : null;
@@ -506,6 +524,26 @@
 		*/
 		log: function() {
 			if ((window.console != undefined) && emy.logging==true) console.log.apply(console, arguments);
+		},
+
+		findParent : function(node, localName) {
+			while (node && (node.nodeType != 1 || node.localName.toLowerCase() != localName))
+			node = node.parentNode;
+			return node;
+		},
+
+		sendEvent : function(type, node, props) {
+			if (node) {
+				var event = document.createEvent("UIEvent");
+				event.initEvent(type, false, false); // no bubble, no cancel
+				if (props) {
+					for (i in props) {
+						event[i] = props[i];
+					}
+				}
+				node.dispatchEvent(event);
+			}
+			emy.log('event sent: ' + type);
 		}
 	};
 
@@ -529,6 +567,8 @@ anchor-based load will win because it is done second.
 	{
 		if(!emy.ready)
 		{
+			emy.changeClass(emy.$('html')[0],'no-js','js');
+		
 			emy.ready=true;
 			var a = document.createElement('div').style;
 			prefix = (a.WebkitTransform == '') ? 'webkit' : (a.MozTransform == '') ? 'moz' : (a.msTransform == '') ? 'ms' : (a.transform == '') ? 'none' : null;
@@ -562,16 +602,28 @@ anchor-based load will win because it is done second.
 				emy.prefixedProperty['animationDuration'] = 'MSAnimationDuration';
 				emy.prefixedProperty['animationEnd'] = 'MSAnimationEnd';
 			}
+			
+			navStackStartIndex = history.length;
 
-			var view = emy.getSelectedView();
-			var locView = getViewFromLocation();
+			var defaultView = emy.getSelectedView();
 
-			if (view) {
-				originalView = view;
-				emy.showView(view);
+			// get requested view ID as a hash value in the URL
+			var locViewId = location.hash.substr(hashPrefix.length);
+			var locView = (locViewId)?emy.$('#' + locViewId):null;
+
+			if (defaultView) {
+				// get the default view node, aka got a "selected" attribute
+				emy.originalView = defaultView;
+				emy.showView(defaultView);
+			} else {
+				// no default view set, so we take the first view
+				var views = emy.getAllViews();
+				emy.originalView = (views.length>0)?views[0]:false;
 			}
 
-			if (locView && (locView != view)) emy.showView(locView);
+			// navigate to the requested view if different than the default one
+			if (locView && (locView != defaultView))
+				emy.showView(locView);
 
 			//set resize handler onorientationchange if available, otherwise use onresize
 			if (typeof window.onorientationchange == "object") window.onorientationchange = resizeHandler;
@@ -584,7 +636,8 @@ anchor-based load will win because it is done second.
 			setTimeout(function() {
 				preloadImages();
 				checkLocation();
-				fitHeight()
+				fitHeight();
+				emy.sendEvent('emy-ready', document);
 			}, 1);
 		}
 	}
@@ -616,7 +669,7 @@ anchor-based load will win because it is done second.
 	addEventListener("click", function(event) { /* an iOS6 bug stops the timer when a new tab fires an alert - this fixes the issue */
 		if (!emy.busy && !("onhashchange" in window)) checkTimer = setInterval(checkLocation, 300);
 
-		var link = findParent(event.target, "a");
+		var link = emy.findParent(event.target, "a");
 		if (link) {
 			function unselect() {
 				link.removeAttribute("selected");
@@ -637,7 +690,11 @@ anchor-based load will win because it is done second.
 				location.href = link.href;
 			} else if (!link.target && link.getAttribute('href')) {
 				followAjax(link, null);
+<<<<<<< HEAD
 			} else if (link.getAttribute('href') == '') {
+=======
+			} else if (link.href == '' || !link.href) {
+>>>>>>> v1.1
 				return;
 			} else {
 				return;
@@ -645,28 +702,13 @@ anchor-based load will win because it is done second.
 			event.preventDefault();
 		}
 
-
-		var div = findParent(event.target, "div");
-		if (div && emy.hasClass(div, "toggle")) {
-			var toggleVal = div.getAttribute("toggled");
-			(toggleVal != null) ? div.removeAttribute('toggled') : div.setAttribute("toggled", "");
-			// if an input element is inside the toggle, its value will be set to true/false.
-			var nodes = div.childNodes;
-			for (var i = 0; i < nodes.length; ++i) {
-				if (nodes[i].nodeType == 1) {
-					if (nodes[i].getAttribute('type') != null) {
-						nodes[i].value = (toggleVal == null);
-					}
-				}
-			}
-			event.preventDefault();
-		}
-
-		var button = findParent(event.srcElement, "button");
+		var button = emy.findParent(event.srcElement, "button");
 		if (button && button.getAttribute("type") == "cancel") {
-			var view = findParent(event.srcElement, "section");
+			var view = emy.findParent(event.srcElement, "section");
 			if(emy.hasClass(view,'dialog'))
 				cancelDialog(view);
+		} else if(button && button.getAttribute("type") != "submit") {
+			event.preventDefault();
 		}
 	}, true);
 
@@ -695,26 +737,9 @@ All forms without target="_self" will use emy's Ajax from submission.
 		link.setAttribute("selected", "progress");
 		emy.showViewByHref(link.href, null, "GET", replaceLink, function() {
 			link.removeAttribute("selected");
-		});
-	}
-
-	function sendEvent(type, node, props) {
-		if (node) {
-			var event = document.createEvent("UIEvent");
-			event.initEvent(type, false, false); // no bubble, no cancel
-			if (props) {
-				for (i in props) {
-					event[i] = props[i];
-				}
-			}
-			node.dispatchEvent(event);
-		}
-		emy.log('event sent: ' + type);
-	}
-
-	function getViewFromLocation() {
-		var view = location.hash.substr(hashPrefix.length);
-		return (view) ? emy.$('#' + view) : null;
+		}, function error() {
+            link.removeAttribute("selected");
+        });
 	}
 
 	function resizeHandler() {
@@ -722,8 +747,6 @@ All forms without target="_self" will use emy's Ajax from submission.
 	}
 
 	function checkLocation() {
-		emy.log('checkLocation');
-		emy.log(viewHistory);
 		if (location.hash != currentHash) {
 			var viewId = location.hash.substr(hashPrefix.length);
 			if ((viewId == "") && originalView) // Workaround for WebKit Bug #63777
@@ -766,19 +789,21 @@ All forms without target="_self" will use emy's Ajax from submission.
 	}
 
 	function hideForm(form) {
-		emy.$('header.toolbar')
-			.style.display = '';
-		if (undefined == form.srcElement) form.removeAttribute("selected");
+		if (undefined == form.srcElement) {
+			form.removeAttribute("selected");
+		}
 		else {
+			var toolbarElement = emy.$('#'+form.srcElement.id+' .toolbar')[0];
+			toolbarElement.style.display = '';
 			form.srcElement.removeAttribute("selected");
 			form.srcElement.removeEventListener(emy.prefixedProperty['transitionEnd'], hideForm, false);
 		}
 	}
 
 	function updateView(view, fromView) {
-		if (!view.id) view.id = "__" + (++newViewCount) + "__";
+		if (!view.id) view.id = "__" + (new Date().getTime()) + "__";
 
-		currentHash = hashPrefix + '' + view.id;
+		currentHash = hashPrefix + view.id;
 		if (!fromView) { // If fromView is null, this is the initial load and we want to replace a hash of "" with "#_home" or whatever the initial view id is.
 			//		location.replace(location.protocol + "//" + location.hostname + location.port + location.pathname + newHash + location.search);
 			location.replace(currentHash);
@@ -787,7 +812,7 @@ All forms without target="_self" will use emy's Ajax from submission.
 			location.assign(currentHash);
 		}
 
-		viewHistory.push(view.id);
+		navStack.push(view.id);
 
 		var viewTitle = emy.$('#viewTitle');
 		if (view.getAttribute('data-title')) {
@@ -798,7 +823,7 @@ All forms without target="_self" will use emy's Ajax from submission.
 
 		var backButton = emy.$("#backButton");
 		if (backButton) {
-			var prevView = emy.$('#' + viewHistory[viewHistory.length - 2]);
+			var prevView = emy.$('#' + navStack[navStack.length - 2]);
 			if (prevView && !view.getAttribute("data-hidebackbutton")) {
 				backButton.style.display = "block";
 				backButton.innerHTML = (prevView.getAttribute('data-title')) ? prevView.getAttribute('data-title') : "Back";
@@ -823,10 +848,10 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 		scrollTo(0, 1);
 		clearInterval(checkTimer);
 
-		sendEvent("beforetransition", fromView, {
+		emy.sendEvent("emy-beforetransition", fromView, {
 			out: true
 		});
-		sendEvent("beforetransition", toView, {
+		emy.sendEvent("emy-beforetransition", toView, {
 			out: false
 		});
 
@@ -849,14 +874,14 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 			if (fromView.getAttribute('data-onexit')) eval(fromView.getAttribute('data-onexit'));
 			if (toView.getAttribute('data-onshow')) eval(toView.getAttribute('data-onshow'));
 
-			sendEvent("aftertransition", fromView, {
+			emy.sendEvent("emy-aftertransition", fromView, {
 				out: true
 			});
-			sendEvent("aftertransition", toView, {
+			emy.sendEvent("emy-aftertransition", toView, {
 				out: false
 			});
 
-			if (backwards) sendEvent("unload", fromView); // EVENT: UNLOAD
+			if (backwards) emy.sendEvent("emy-unload", fromView); // EVENT: UNLOAD
 		}
 	}
 
@@ -908,18 +933,37 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 
 	function submitForm(form) {
 		emy.addClass(form, "progress");
-		sendEvent("beforeformsubmit", document.body, {
+		emy.sendEvent("emy-beforeformsubmit", document.body, {
 			form: form
 		})
 		emy.showViewByHref(form.getAttribute('action'), encodeForm(form), form.hasAttribute('method') ? form.getAttribute('method') : 'GET', null, function() {
 			emy.changeClass(form, 'progress', '');
 			cancelDialog(form);
-			sendEvent("afterformsubmit", document.body, {
+			emy.sendEvent("emy-afterformsubmit", document.body, {
 				form: form
 			})
 		});
 	}
 
+    /*
+	Stripped-down, simplified object-only version of a jQuery function that
+	converts an object of keys/values into a URL-encoded querystring.
+	*/
+	function ajaxParam(o) {
+			var s = [];
+			// Serialize the key/values
+			for (var key in o) {
+				var value = o[key];
+				if (value != null && typeof(value) == "object" && typeof(value.length) == "number") {
+					for (var i = 0; i < value.length; i++) {
+						s[s.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value[i]);
+					}
+				} else s[s.length] = encodeURIComponent(key) + '=' + encodeURIComponent(value);
+			}
+			// Return the resulting serialization
+			return s.join("&").replace(/%20/g, "+");
+    }
+    
 	function encodeForm(form) {
 		function encode(inputs) {
 			for (var i = 0; i < inputs.length; ++i) {
@@ -955,27 +999,25 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 		return args;
 	}
 
-	function findParent(node, localName) {
-		while (node && (node.nodeType != 1 || node.localName.toLowerCase() != localName))
-		node = node.parentNode;
-		return node;
-	}
-
 	function replaceElementWithFrag(replace, frag) {
 		var parent = replace.parentNode;
 		var parentTarget = parent.parentNode;
 		parentTarget.removeChild(parent);
 
-		var docNode;
+		emy.sendEvent("beforereplace", document.body, {
+			fragment: frag
+		});
+        
+        var docNode;
 		while (frag.firstChild) {
 			docNode = parentTarget.appendChild(frag.firstChild);
-			sendEvent("afterinsert", document.body, {
+			emy.sendEvent("afterreplace", document.body, {
 				insertedNode: docNode
 			});
 		}
-		sendEvent("afterinsertend", document.body, {
+		emy.sendEvent("afterreplaceend", document.body, {
 			fragment: frag
-		})
+		});
 	}
 
 	function preloadImages() {
@@ -1001,15 +1043,12 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 					if ((sc[i].id != '') && (sc[i].id != undefined) && (typeof sc[i] === 'object') && !emy.hasClass(sc[i], 'toolbar')) {
 						heightVal = wih; /* default value */
 						if (window.navigator.standalone === false) { // for iphone
-							if (navigator.userAgent.toLowerCase()
-								.search('ipad') > -1) heightVal = (wih);
+							if (navigator.userAgent.toLowerCase().search('ipad') > -1) heightVal = (wih);
 							else if (emy.hasClass(sc[i], 'dialog')) heightVal = (wih + 60);
 							else if (screenHeight < 2) heightVal = (wih + 60);
 						} else {
-							if (navigator.userAgent.toLowerCase()
-								.search('android') > -1 && screenHeight == 0) heightVal = (wih + 50);
-							else if (navigator.userAgent.toLowerCase()
-								.search('firefox') > -1) heightVal = (wih - toolbarHeight);
+							if (navigator.userAgent.toLowerCase().search('android') > -1 && screenHeight == 0) heightVal = (wih + 50);
+							else if (navigator.userAgent.toLowerCase().search('firefox') > -1) heightVal = (wih - toolbarHeight);
 						}
 						sc[i].style.minHeight = heightVal + 'px';
 					}

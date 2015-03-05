@@ -166,6 +166,11 @@ section > ul > li > a::after {
 	background-position: right center;
 	background-size:          auto 100%;
 }
+section > ul > li > a[target="_replace"] {
+	padding-top: 			1.6em;
+	padding-bottom: 	1.6em;
+    color:              rgba(255,255,255,.6);
+}
 
 section > ul > li > a[selected], 
 section > ul > li > a:active,
@@ -176,25 +181,17 @@ section > ul > li > a[target="_replace"]:active {
 }
 
 section > ul > li > a[selected="progress"]::after {
-	-webkit-transform:		none;
-	-moz-transform:			none;
-	-o-transform:					none;
 	border:					0;
 	width:					1.1em;
 	height:					1.1em;
 	margin:				-0.55em 0.25em 0 0;
 	background: 		url(loading.gif) no-repeat center center;
-	background-size:			1em auto;
+	background-size:			contain;
+	-webkit-transform:		none;
+	-moz-transform:			none;
+	transform:			    none;
 }
-section > ul > li > a[target="_replace"] {
-	padding-top: 			1.6em;
-	padding-bottom: 	1.6em;
-	color: 						#6495ed;
-	background-image: none;
-}
-section > ul > li > a[target="_replace"]::after {
-    display:    none;
-}
+
 section > footer {
     padding:		.8em 0;
     font-size:		.9em;
@@ -206,34 +203,38 @@ section fieldset {
     border:	0;
     margin-bottom:	.5em;
 }
-section fieldset > .row {
+section .row {
     min-height:				2.8em;
 }
-section fieldset > .row > p {
+section .row > p {
 	height:				 	auto;
 	padding:				.7em .4em;
 	text-align:			left;
 }
-section fieldset > .row > label {
-	display:          		block;
-	position:        		static;
+section .row > label {
+    top:                   0;
+    left:                   0;
 	width:			        100%;
 	color:              		#999;
 	margin:				0;
 	padding:        		.7em 0 .4em .7em;
 	white-space:		nowrap;
 	text-overflow:	ellipsis;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
 }
-section fieldset > .row > span {
+section .row > span {
     padding: 				.7em .6em 0 30%;
     margin: 			  	0;
 }
 
-section fieldset > .row > input,
-section fieldset > .row > textarea,
-section fieldset > .row > select {
+section .row > input,
+section .row > textarea,
+section .row > select {
     width:				  	100%;
-    margin: 				0;
+    margin: 				2em 0 0 0;
     height: 			  		inherit;
     font-size:				1em;
     color:          			#000;
@@ -247,31 +248,30 @@ section fieldset > .row > select {
     -moz-appearance:			none;
     appearance:						none;
 }
-section fieldset > .row > input:focus,
-section fieldset > .row > textarea:focus,
-section fieldset > .row > select:focus {
+section .row > input:focus,
+section .row > textarea:focus,
+section .row > select:focus {
     color:                      #000;
     border-color:      #f00;
     background:       #fff;
 }
 
-section fieldset > .row > textarea,
-section fieldset > .row > input:not([type=radio]):not([type=checkbox]) {
-	margin:       	0;
+section .row > textarea,
+section .row > input:not([type=radio]):not([type=checkbox]) {
 	resize: 		    none;
 }
-section fieldset > .row > textarea {
+section .row > textarea {
 	min-height:   6em;
 }
-section fieldset > .row > select {
+section .row > select {
 	clear:			      both;
 	-moz-appearance:		menuitem; /* since none does work */
 }
-section fieldset > .row > select::-ms-expand {
+section .row > select::-ms-expand {
     display: none;
 } 
-section fieldset > .row > input[type=radio], 
-section fieldset > .row > input[type=checkbox] {
+section .row > input[type=radio], 
+section .row > input[type=checkbox] {
 	position:    	absolute;
 	top:              	0;
 	right:				0;
@@ -282,16 +282,16 @@ section fieldset > .row > input[type=checkbox] {
 	background:		transparent;
 	border-size:		1px;
 }
-section fieldset > .row > input[type=radio] {
+section .row > input[type=radio] {
 	-webkit-border-radius:	1em;
 	-moz-border-radius:		1em;
 	border-radius:					1em;
 }
-section fieldset > .row > input[type=radio]:checked {
+section .row > input[type=radio]:checked {
 	border-color:	rgba(255,255,255,.5);
 	background-color:	#fff;
 }
-section fieldset > .row > input[type=checkbox]:checked::after {
+section .row > input[type=checkbox]:checked::after {
 	content: 		'';
 	position:		absolute;
 	top: 				0;
@@ -305,6 +305,13 @@ section fieldset > .row > input[type=checkbox]:checked::after {
 	-moz-transform:		rotate(45deg);
 	transform:					rotate(45deg);
 }
+section .row > input[type=radio] + label, 
+section .row > input[type=checkbox] + label,
+section .row > .toggle + label {
+    width:              100%;
+    max-width:          100%;
+}
+
 
 /******************************** DIALOG *******************************************************/
 section.dialog {
@@ -405,62 +412,52 @@ section.panel footer {
 
 /******************************** TOGGLE *******************************************************/
 
+
 .toggle {
-	top:					0;
-	right:					0;
-	width:				6em;
-	height:				1.6em;
-	margin:            .4em;
-	font-size: 		1.2em;
-	line-height:		1.5em;
-	background-color:   	#2a2a2a;
-	-webkit-tap-highlight-color: rgba(0,0,0,0);
-	-ms-touch-action: 		pan-y;
-	-ms-user-select: 			none;
-	user-select: 					none;
+    top:				.4em;
+    right:				.4em;
+    width:				4em;
+    height:				2em;
+}
+.toggle > input {
+    position:           absolute;
+	z-index:			1;
+    top:                .25em;
+    left:               0;
+    width:              inherit;
+    height:             1.5em;
+    z-index:            1;
+	font-size:			1em;
+    background:         transparent;
+	border:				.2em solid #fff;
+	border-radius:		0;
+	-webkit-transition:	background 200ms ease-in-out;
+    transition:			background 200ms ease-in-out;
+    -webkit-appearance: none;
+    appearance:         none;
 }
 .toggle > .thumb {
-    position:      	absolute;
-    width: 			    3em;
+    position:      			absolute;
+	z-index:			    2;
+    width: 				    .7em;
     height:         		inherit;
-    color:            		#bdbebd;
-    text-align: 		center;
-    background-color:   	#575757;
-    -webkit-transition:	  	all 200ms ease-in-out;
-    -moz-transition:			all 200ms ease-in-out;
-    transition:			            all 200ms ease-in-out;
+    background-color:   	#fff;
+    -webkit-transition:	  	-webkit-transform 200ms ease-in-out;
+    transition:			    transform 200ms ease-in-out;
     -webkit-transform:    	translateX(0);
-    -moz-transform:         	translateX(0);
-    transform:                     	translateX(0);
+    -ms-transform:          translateX(0);
+    transform:              translateX(0);
 }
-.toggle[toggled] > .thumb {
-    -webkit-transform:    translateX(3em);
-    -moz-transform:         translateX(3em);
-    transform:                     translateX(3em);
-    background-color:    #f00;
+.row > .toggle input:checked {
+    background-color:       #777;
+}
+.row > .toggle input:checked + .thumb {
+    -webkit-transform:  translateX(3.3em);
+    -ms-transform:      translateX(3.3em);
+    transform:          translateX(3.3em);
 }
 
-.toggle > .thumb::before, .toggle > .thumb::after {
-    position:      absolute;
-    left: 				0;
-    top: 				0;
-    width: 			inherit;
-    z-index:		1;
-}
-.toggle > .thumb::before {
-    content:    	'OFF';
-}
-.toggle > .thumb::after {
-    content:    	'ON';
-    color:         	#fff;
-    opacity:    	0;
-}
-.toggle[toggled] > .thumb::before {
-    opacity:  		0;
-}
-.toggle[toggled] > .thumb::after {
-    opacity:  		1;
-}
+
 
 /************************************************************************************************/
 #preloader {

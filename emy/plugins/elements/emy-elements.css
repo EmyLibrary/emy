@@ -1,0 +1,214 @@
+/*** SEGMENTS *******************************/
+.emy-segments {
+	display:	table;
+	margin:		.5em auto;
+	width:		80%;
+	font-size:	inherit;
+}
+.emy-segments.fixed {
+	width:		auto;
+}
+.emy-segments li {
+	display:	table-cell;
+	float:		none;
+	width:		auto;
+	height:		auto;
+	font-size:	inherit;
+	padding:	0;
+	border:		0!important;
+}
+.emy-segments li input[type='radio'] + label {
+	display:	block;
+}
+.emy-segments li button,
+.emy-segments li input[type='radio'] + label {
+	width:		100%;
+	font-size:	inherit;
+	padding:	.4em .6em;
+	color:		#e13636;
+	text-align:			center;
+	border:				1px solid #e13636!important;
+	border-left:		0!important;
+	text-decoration:	none;
+	background-color:	transparent;
+	overflow:			hidden;
+	text-overflow:		ellipsis;
+	white-space:		nowrap;
+	-webkit-appearance:	none;
+	appearance:			none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -ms-touch-action:   pan-y;
+    -ms-user-select:    none;
+    user-select:        none;
+}
+.emy-segments li:first-child button,
+.emy-segments li:first-child input[type='radio'] + label {
+	border-left:	1px solid #e13636!important;
+	border-top-left-radius:		.4em;
+	border-bottom-left-radius:	.4em;
+}
+.emy-segments li:last-child button,
+.emy-segments li:last-child input[type='radio'] + label {
+	border-top-right-radius:	.4em;
+	border-bottom-right-radius:	.4em;
+}
+.emy-segments li.active button,
+.emy-segments li input[type='radio']:checked + label {
+	color:				#fff;
+	border-left:		0;
+	background-color:	#e13636;
+}
+
+/*** SEGMENTS VIEWS ***************************/
+.emy-segments-view {
+	display:		none;
+}
+.emy-segments-view.show {
+	display:		block;
+}
+.emy-segments li input[type='radio'] {
+	display:	none;
+}
+
+
+/*** STEPPER **********************************/
+.row.stepper {
+	font-size:	1.1em;
+}
+.row.stepper label {
+	max-width:	50%;
+}
+.emy-stepper {
+	display:	table;
+	position:	absolute;
+	top:		0;
+	right:		0;
+	margin:		.4em .3em 0 0;
+	width:		auto;
+	font-size:	1em;
+}
+.emy-stepper li {
+	position:	relative;
+	display:	table-cell;
+	float:		none;
+	width:		auto;
+	font-size:	inherit;
+	padding:	0;
+	border:		0!important;
+	vertical-align:		top;
+}
+.emy-stepper li button {
+	width:		2.5em;
+	font-size:	inherit;
+	padding:	.35em;
+	color:		#e13636;
+	text-align:			center;
+	border:				1px solid #e13636!important;
+	text-decoration:	none;
+	background-color:	transparent;
+	-webkit-appearance:	none;
+	appearance:			none;
+}
+.emy-stepper li:first-child button {
+	border-right:		0!important;
+	border-top-left-radius:		.4em;
+	border-bottom-left-radius:	.4em;
+}
+.emy-stepper li:last-child button {
+	border-top-right-radius:	.4em;
+	border-bottom-right-radius:	.4em;
+}
+.emy-stepper li button[selected] {
+	color:				#fff;
+	border-left:		0;
+	background-color:	#e13636;
+}
+.emy-stepper li input {
+	display:		block;
+	font-family:	inherit;
+	top:			0;
+	bottom:			0;
+	width:			3.3em;
+	height:			100%;
+	margin:			auto;
+	padding:		.35em;
+	font-size:		1em;
+	color:			#000;
+	text-align:		center;
+	outline:		none;
+	border:				1px solid #e13636!important;
+	border-right:		0!important;
+	-webkit-border-radius:	0;
+	border-radius:			0;
+	background-color:	transparent;
+	vertical-align:		middle;
+	-webkit-appearance:	none;
+	appearance:			none;
+}
+
+/****** SELECTMENU ******/
+.row select[data-selectmenu='true'],
+.row select[data-selectmenu='true'] + label {
+    display:            none;
+}
+.row select[data-selectmenu] + label + span {
+    position:           static;
+    display:            block;
+    width:              100%;
+    padding-right:      2em;
+    padding-top:        .8em;
+    padding-bottom:     .8em;
+    color:              #425c8d;
+    text-align:         right;
+}
+.row select[data-selectmenu] + label + span + a.selectmenu {
+    position:           absolute;
+    top:                0;
+    left:               0;
+    width:              100%;
+    height:             100%;
+    padding:            .8em;
+    text-decoration:    none;
+}
+.row select[data-selectmenu] + label + span + a.selectmenu[selected="true"] {
+    color:              #fff;
+    background-color:   #e13636;
+}
+.row select[data-selectmenu] + label + span + a.selectmenu::before {
+	content:	        '';
+	position:	      	absolute;
+	top:			    50%;
+	right:		        .3em;
+	width:		        .5em;
+	height:		        .5em;
+	margin:		    	-.25em .5em 0 0;
+	border-top:  		.1em solid #355163;
+	border-right:  		.1em solid #355163;
+	background:			transparent;
+	-webkit-transform:  rotateZ(45deg);
+	-moz-transform:  	rotateZ(45deg);
+	transform:  		rotateZ(45deg);
+}
+.row select[data-selectmenu] + label + span + a.selectmenu[selected="true"]::before {
+    border-color:       #fff;
+}
+
+
+/**** selectMenu view ****/
+ul.selectview a {
+	padding:		.65em .7em .65em 2.6em;
+}
+ul.selectview a::before {
+	right:			auto;
+	left:			.8em;
+	width:			.8em;
+	margin-top:		-.45em;
+	-webkit-transform:  	rotateZ(135deg);
+	-moz-transform:  		rotateZ(135deg);
+	transform:  			rotateZ(135deg);
+}
+ul.selectview a:not(.active)::before {
+	border-color:	transparent;
+}
+
+
