@@ -34,11 +34,7 @@ body * {
     box-sizing: 		            border-box;
     margin:		0;
     padding:	    0;
-<<<<<<< HEAD
-    border:;		    0;
-=======
     border:		    0;
->>>>>>> v1.1
     -webkit-backface-visibility:    hidden;
 }
 
