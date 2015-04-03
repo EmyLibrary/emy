@@ -33,16 +33,12 @@
 	*/
 
 	window.emy = {
-<<<<<<< HEAD
 	/*
 	version
 	useful for plugins, support & debug
 	*/
 	v : 1.0,
-	/*
-=======
     /*
->>>>>>> v1.1
 	used in emy.log()
 	initialized at: onload.
 	This is set to `true`, console.log is enabled
@@ -289,7 +285,13 @@
 	above for a description of the various arguments (`url` is the same as `href`).
 	*/
 		ajax: function(url, args, method, callback, errorCallback) {
-			var xhr = new XMLHttpRequest();
+
+            var xhr = new XMLHttpRequest();
+            if(!xhr)
+                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            if(!xhr)
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            
 			method = method ? method.toUpperCase() : "GET";
 			if (args && method == "GET") {
 				url = url + "?" + ajaxParam(args);
@@ -466,11 +468,7 @@
 	Returns true/false if the given element `el` has the class `name`.
 	*/
 		hasClass: function(el, name) {
-<<<<<<< HEAD
-			return ((el.className).indexOf(name) > -1) ? true : false;
-=======
 			return ((el.className).indexOf(name) > -1)?true:false;
->>>>>>> v1.1
 		},
 
 		/*
@@ -690,11 +688,9 @@ anchor-based load will win because it is done second.
 				location.href = link.href;
 			} else if (!link.target && link.getAttribute('href')) {
 				followAjax(link, null);
-<<<<<<< HEAD
 			} else if (link.getAttribute('href') == '') {
-=======
+
 			} else if (link.href == '' || !link.href) {
->>>>>>> v1.1
 				return;
 			} else {
 				return;
