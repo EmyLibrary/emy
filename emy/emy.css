@@ -83,6 +83,7 @@ header.toolbar {
 }
 header.toolbar > div {
     display:            	block;
+    vertical-align:         middle;
 }
 header.toolbar h1 {
     position:           	absolute;
