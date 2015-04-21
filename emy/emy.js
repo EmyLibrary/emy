@@ -165,7 +165,7 @@
 		},
 
 
-		gotoView: function(view, replace) {
+        gotoView: function(view, replace) {
 			var node, nodeId;
 
 			if (view instanceof HTMLElement) {
@@ -217,7 +217,6 @@
 				if(window.history.length > navStackStartIndex)
 					window.history.go(-a);
 				else
-					emy.showView(viewId, true);
 			} else {
 				if(window.history.length - (navStackStartIndex-1) == 1) {
 					// history.length can't be equal to 1 when you ask to go back so it means 
@@ -225,7 +224,13 @@
 					// showView to navigate between views
 					// navStackStartIndex is important here since window.history can be more than 1
 					// if user comes from another page
-					emy.showView(navStack.pop(), true);
+                    var view = navStack.pop();
+
+                    if(emy.$('#'+view) == currentView)
+                        emy.showView(emy.$('#'+navStack.pop()), true);
+                    else
+                        emy.showView(emy.$('#'+view), true);
+
 				} else {
 					navStack.pop();
 					window.history.go(-1);
