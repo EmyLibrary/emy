@@ -220,7 +220,7 @@
 					emy.showView(viewId, true);
 			} else {
 				if(window.history.length - (navStackStartIndex-1) == 1) {
-					// history.length can't be equal to 1 when you ask to go back so it means 
+					// history.length can't be equal to 1 when you ask to go back so it means
 					// the cache manifest is goofing browser's history stack. In this case, we use
 					// showView to navigate between views
 					// navStackStartIndex is important here since window.history can be more than 1
@@ -261,7 +261,7 @@
                 if (callback) {
                     emy.log('showViewByHref error callback');
                     setTimeout(callback, 1000, true);
-                }   
+                }
 			}
 
             function errorCb() {
@@ -291,7 +291,7 @@
                 xhr = new ActiveXObject("Msxml2.XMLHTTP");
             if(!xhr)
                 xhr = new ActiveXObject("Microsoft.XMLHTTP");
-            
+
 			method = method ? method.toUpperCase() : "GET";
 			if (args && method == "GET") {
 				url = url + "?" + ajaxParam(args);
@@ -432,7 +432,7 @@
 
 		/*
 	emy.isNativeUrl(href)
-	Determines whether the supplied URL string launches a native app (maps, YouTube, phone, email, etc). 
+	Determines whether the supplied URL string launches a native app (maps, YouTube, phone, email, etc).
     If so, emy does not attempt to load or slide to a view and do let the phone handling the click natively.
 	*/
 		isNativeUrl: function(url) {
@@ -468,7 +468,10 @@
 	Returns true/false if the given element `el` has the class `name`.
 	*/
 		hasClass: function(el, name) {
-			return ((el.className).indexOf(name) > -1)?true:false;
+			if(el)
+				return ((el.className).indexOf(name) > -1)?true:false;
+			else
+				return false;
 		},
 
 		/*
@@ -566,7 +569,7 @@ anchor-based load will win because it is done second.
 		if(!emy.ready)
 		{
 			emy.changeClass(emy.$('html')[0],'no-js','js');
-		
+
 			emy.ready=true;
 			var a = document.createElement('div').style;
 			prefix = (a.WebkitTransform == '') ? 'webkit' : (a.MozTransform == '') ? 'moz' : (a.msTransform == '') ? 'ms' : (a.transform == '') ? 'none' : null;
@@ -600,7 +603,7 @@ anchor-based load will win because it is done second.
 				emy.prefixedProperty['animationDuration'] = 'MSAnimationDuration';
 				emy.prefixedProperty['animationEnd'] = 'MSAnimationEnd';
 			}
-			
+
 			navStackStartIndex = history.length;
 
 			var defaultView = emy.getSelectedView();
@@ -959,7 +962,7 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 			// Return the resulting serialization
 			return s.join("&").replace(/%20/g, "+");
     }
-    
+
 	function encodeForm(form) {
 		function encode(inputs) {
 			for (var i = 0; i < inputs.length; ++i) {
@@ -1003,7 +1006,7 @@ parameters `{ out :true }`, the panel being navigated to receives `{ out: false 
 		emy.sendEvent("beforereplace", document.body, {
 			fragment: frag
 		});
-        
+
         var docNode;
 		while (frag.firstChild) {
 			docNode = parentTarget.appendChild(frag.firstChild);
